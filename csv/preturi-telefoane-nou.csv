@@ -1,0 +1,10 @@
+Brand,Model,Capacitate,Culoare,NOU_SIGILAT,NOU_DESIGILAT,FOLOSIT,Baterie_100_90,Baterie_80_70,Baterie_60_50,Baterie_sub50,Carcasa_Impecabila,Carcasa_Urme_Minore,Carcasa_Zgarituri,Ecran_Impecabil,Ecran_Urme_Fine,Ecran_Zgarit,Contact_Lichide_Da,Contact_Lichide_Nu
+Apple,iPhone 15 Pro Max,256GB,Negru Titanium,2800,2600,2300,0,-5,-10,-20,0,-3,-8,0,-5,-12,0,0
+Apple,iPhone 15 Pro Max,256GB,Albastru Titanium,2800,2600,2300,0,-5,-10,-20,0,-3,-8,0,-5,-12,0,0
+Apple,iPhone 15 Pro Max,512GB,Negru Titanium,3000,2800,2500,0,-5,-10,-20,0,-3,-8,0,-5,-12,0,0
+Apple,iPhone 15 Pro Max,512GB,Albastru Titanium,3000,2800,2500,0,-5,-10,-20,0,-3,-8,0,-5,-12,0,0
+Samsung,Galaxy S24 Ultra,256GB,Negru,2500,2500,2200,0,-5,-10,-20,0,-3,-8,0,-5,-12,0,0
+Samsung,Galaxy S24 Ultra,512GB,Negru,2500,2300,2200,0,-5,-10,-20,0,-3,-8,0,-5,-12,0,0
+Samsung,Galaxy S24 Ultra,256GB,Albastru,2500,2300,2200,0,-5,-10,-20,0,-3,-8,0,-5,-12,0,0
+
+
