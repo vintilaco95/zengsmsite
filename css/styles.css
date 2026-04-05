@@ -3937,6 +3937,57 @@ body {
     }
 }
 
+/* Desktop: calculator la lățimea containerului (ca grid-ul vechi), grid mai aerisit */
+@media (min-width: 1024px) {
+    .page-preturi .price-wizard-shell {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .page-preturi .price-wizard-progress-track {
+        max-width: none;
+        min-width: 100%;
+    }
+
+    .page-preturi .price-wizard-grid {
+        grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+        gap: 1rem;
+    }
+
+    .page-preturi .price-wizard-grid-models {
+        grid-template-columns: repeat(auto-fill, minmax(192px, 1fr));
+    }
+
+    .page-preturi .price-wizard-grid-repairs {
+        grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+    }
+
+    .page-preturi .price-wizard-body {
+        min-height: min(48vh, 400px);
+        max-height: min(68vh, 600px);
+    }
+
+    .page-preturi .price-wizard-panel {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .page-preturi .price-wizard-progress {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .page-preturi .price-wizard-chips {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .page-preturi .price-wizard-footer {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+}
+
 .calculator-header {
     text-align: center;
     margin-bottom: 3rem;

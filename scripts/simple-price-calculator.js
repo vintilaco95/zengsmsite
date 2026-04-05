@@ -180,7 +180,6 @@ function showRez(el, o) {
       </ul>
       <div class="result-total">Total: <strong>${t} ${moneda}</strong></div>
       <a href="${u}" target="_blank" rel="noopener" class="btn btn-primary btn-large calculator-whatsapp-btn">WhatsApp</a>
-      <p class="result-note" style="color:white;font-weight:800">Preț orientativ.</p>
     </div>`;
 }
 
