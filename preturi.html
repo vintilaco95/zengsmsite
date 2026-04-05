@@ -97,41 +97,65 @@
                 <p class="section-subtitle">Află rapid prețul estimat pentru reparația telefonului tău</p>
             </div>
             
-            <div class="calculator-container">
-                <div class="calculator-form">
-                    <div class="form-group">
-                        <label for="phone-brand">Marca telefonului:</label>
-                        <select id="phone-brand" class="form-control">
-                            <option value="">Se încarcă…</option>
-                        </select>
+            <div class="price-wizard-shell" id="price-wizard-root">
+                <div id="price-wizard-boot" class="price-wizard-boot" role="status"></div>
+
+                <div id="price-wizard-app" class="price-wizard-app" hidden>
+                    <div class="price-wizard-progress" role="navigation" aria-label="Pași calculator">
+                        <div class="price-wizard-progress-track">
+                            <div class="price-wizard-progress-step" data-wizard-step="1">
+                                <span class="price-wizard-progress-num">1</span>
+                                <span class="price-wizard-progress-label">Marcă</span>
+                            </div>
+                            <div class="price-wizard-progress-step" data-wizard-step="2">
+                                <span class="price-wizard-progress-num">2</span>
+                                <span class="price-wizard-progress-label">Model</span>
+                            </div>
+                            <div class="price-wizard-progress-step" data-wizard-step="3">
+                                <span class="price-wizard-progress-num">3</span>
+                                <span class="price-wizard-progress-label">Reparație</span>
+                            </div>
+                            <div class="price-wizard-progress-step" data-wizard-step="4">
+                                <span class="price-wizard-progress-num">4</span>
+                                <span class="price-wizard-progress-label">Rezultat</span>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="phone-model">Modelul telefonului:</label>
-                        <select id="phone-model" class="form-control" disabled>
-                            <option value="">Selectează mai întâi marca</option>
-                        </select>
+
+                    <div class="price-wizard-chips" id="price-wizard-chips" aria-live="polite"></div>
+
+                    <div class="price-wizard-body">
+                        <div class="price-wizard-panel" data-wizard-panel="1" id="price-panel-brand" role="tabpanel" aria-labelledby="price-wizard-title-brand">
+                            <h3 class="price-wizard-panel-title" id="price-wizard-title-brand">Alege marca</h3>
+                            <div class="price-wizard-scroll">
+                                <div class="price-wizard-grid" id="price-brands-grid"></div>
+                            </div>
+                        </div>
+                        <div class="price-wizard-panel" data-wizard-panel="2" id="price-panel-model" role="tabpanel" aria-labelledby="price-wizard-title-model" hidden>
+                            <h3 class="price-wizard-panel-title" id="price-wizard-title-model">Alege modelul</h3>
+                            <div class="price-wizard-scroll">
+                                <div class="price-wizard-grid price-wizard-grid-models" id="price-models-grid"></div>
+                            </div>
+                        </div>
+                        <div class="price-wizard-panel" data-wizard-panel="3" id="price-panel-repair" role="tabpanel" aria-labelledby="price-wizard-title-repair" hidden>
+                            <h3 class="price-wizard-panel-title" id="price-wizard-title-repair">Alege tipul reparației</h3>
+                            <div class="price-wizard-scroll">
+                                <div class="price-wizard-grid price-wizard-grid-repairs" id="price-repairs-grid"></div>
+                            </div>
+                        </div>
+                        <div class="price-wizard-panel price-wizard-panel-result" data-wizard-panel="4" id="price-panel-result" role="tabpanel" aria-labelledby="price-wizard-title-result" hidden>
+                            <h3 class="price-wizard-panel-title price-wizard-sr-only" id="price-wizard-title-result">Estimare preț</h3>
+                            <div class="calculator-result price-wizard-result-wrap" id="calculator-result"></div>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="repair-type">Tipul reparației:</label>
-                        <select id="repair-type" class="form-control" disabled>
-                            <option value="">Selectează mai întâi modelul</option>
-                        </select>
-                    </div>
-                    
-                    
-                    
-                    <button id="calculate-price" class="btn btn-primary btn-large">
-                        <span>Calculează Prețul</span>
-                    </button>
-                </div>
-                
-                <div class="calculator-result" id="calculator-result">
-                    <div class="result-placeholder">
-                        <div class="placeholder-icon">💰</div>
-                        <h3>Prețul va apărea aici</h3>
-                        <p>Completează formularul de mai sus pentru a obține o estimare</p>
+
+                    <div class="price-wizard-footer">
+                        <button type="button" class="btn btn-secondary price-wizard-back-btn" id="price-wizard-back">
+                            <i class="fa fa-arrow-left" aria-hidden="true"></i> Înapoi
+                        </button>
+                        <button type="button" class="btn btn-primary price-wizard-restart-btn" id="price-wizard-restart" hidden>
+                            <i class="fa fa-refresh" aria-hidden="true"></i> Calculator nou
+                        </button>
                     </div>
                 </div>
             </div>
