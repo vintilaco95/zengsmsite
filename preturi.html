@@ -41,12 +41,13 @@
         <meta name="description" content="Listă prețuri transparentă pentru reparații telefoane: display, baterie, cameră, software. Prețuri competitive, piese originale, garanție.">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     </head>
-<body>
+<body class="page-preturi">
     <div class="background-animation">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
@@ -82,19 +83,14 @@
         </div>
     </nav>
 
-    <section class="page-hero">
+    <!-- Price Calculator — primul conținut sub nav (fără scroll pentru calculator) -->
+    <section class="price-calculator-section price-calculator-section--lead">
         <div class="container">
-            <h1 class="page-title gradient-text">Listă Prețuri</h1>
-            <p class="page-subtitle">Prețuri transparente, fără costuri ascunse. Garanție inclusă!</p>
-        </div>
-    </section>
-
-    <!-- Price Calculator -->
-    <section class="price-calculator-section">
-        <div class="container">
-            <div class="calculator-header">
-                <h2 class="section-title">🧮 Calculator Preț Reparație</h2>
-                <p class="section-subtitle">Află rapid prețul estimat pentru reparația telefonului tău</p>
+            <div class="calculator-header calculator-header--lead">
+                <h1 class="page-title gradient-text pricing-lead-title">Prețuri reparații</h1>
+                <p class="pricing-lead-line">Transparent, fără costuri ascunse · garanție inclusă</p>
+                <h2 class="section-title pricing-wizard-title">Calculator preț reparație</h2>
+                <p class="section-subtitle pricing-wizard-sub">Alege marca, modelul și tipul reparației — vezi estimarea instant</p>
             </div>
             
             <div class="price-wizard-shell" id="price-wizard-root">

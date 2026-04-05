@@ -8,26 +8,41 @@ const TOKEN = "gsmos_pl_NDiBuubCpqJHtqWe2LIoc8EMsSAnPMW4yQIyUhbj8PM";
 let rows = [];
 let moneda = "RON";
 
-const BRAND_LOGO = {
-  apple: "images/brands/apple.svg",
-  samsung: "images/brands/samsung.svg",
-  xiaomi: "images/brands/xiaomi.svg",
-  huawei: "images/brands/huawei.svg",
-  google: "images/brands/google.svg",
-  oneplus: "images/brands/oneplus.svg",
-  oppo: "images/brands/oppo.svg",
-  motorola: "images/brands/motorola.svg",
-  sony: "images/brands/sony.svg",
-  nokia: "images/brands/nokia.svg",
-  lg: "images/brands/lg.svg",
-  nothing: "images/brands/nothing.svg",
-  realme: "images/brands/realme.svg",
-  vivo: "images/brands/vivo.svg",
-  honor: "images/brands/honor.svg",
-  asus: "images/brands/asus.svg",
-  lenovo: "images/brands/lenovo.svg",
-  "poco": "images/brands/xiaomi.svg",
-  "redmi": "images/brands/xiaomi.svg",
+/** Logo-uri brand: Simple Icons CDN (ca pe telefoanebeius — cdn.simpleicons.org) */
+const SIMPLE_ICONS_CDN = "https://cdn.simpleicons.org";
+
+/** Slug Simple Icons: cheie = brand normalizat (fără spații diacritice) */
+const SIMPLE_ICONS_SLUGS = {
+  apple: "apple",
+  samsung: "samsung",
+  xiaomi: "xiaomi",
+  huawei: "huawei",
+  oppo: "oppo",
+  vivo: "vivo",
+  honor: "honor",
+  motorola: "motorola",
+  google: "google",
+  "google pixel": "google",
+  pixel: "google",
+  oneplus: "oneplus",
+  realme: "realme",
+  nokia: "nokia",
+  sony: "sony",
+  lg: "lg",
+  nothing: "nothing",
+  infinix: "infinix",
+  tecno: "tecno",
+  asus: "asus",
+  lenovo: "lenovo",
+  dell: "dell",
+  hp: "hp",
+  acer: "acer",
+  msi: "msi",
+  razer: "razer",
+  blackberry: "blackberry",
+  android: "android",
+  poco: "xiaomi",
+  redmi: "xiaomi",
 };
 
 const state = {
@@ -173,18 +188,39 @@ function ph() {
   return `<div class="result-placeholder"><div class="placeholder-icon">💰</div><h3>Prețul apare aici</h3><p>Alege marca, modelul și reparația.</p></div>`;
 }
 
-function brandLogoPath(brandKey) {
-  const k = norm(brandKey);
-  if (BRAND_LOGO[k]) return BRAND_LOGO[k];
-  const tokens = k.split(/[\s\-_./]+/).filter(Boolean);
-  for (const t of tokens) {
-    if (BRAND_LOGO[t]) return BRAND_LOGO[t];
-  }
-  for (const [key, path] of Object.entries(BRAND_LOGO)) {
-    if (key.length < 3) continue;
-    if (k.includes(key)) return path;
+function normalizeBrandForLogo(brandName) {
+  return String(brandName || "")
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ")
+    .replace(/[ăâ]/g, "a")
+    .replace(/[î]/g, "i")
+    .replace(/[șş]/g, "s")
+    .replace(/[țţ]/g, "t");
+}
+
+function findBrandLogoKey(normalized) {
+  if (SIMPLE_ICONS_SLUGS[normalized]) return normalized;
+  const noSpaces = normalized.replace(/\s+/g, "");
+  if (SIMPLE_ICONS_SLUGS[noSpaces]) return noSpaces;
+  for (const key of Object.keys(SIMPLE_ICONS_SLUGS)) {
+    if (normalized.includes(key) || key.includes(normalized)) return key;
   }
   return null;
+}
+
+/**
+ * URL logo Simple Icons (fundal închis → icon alb)
+ * @param {string} brandLabel
+ * @param {string} colorHex fără #
+ */
+function brandCdnLogoUrl(brandLabel, colorHex = "ffffff") {
+  const n = normalizeBrandForLogo(brandLabel);
+  if (!n) return null;
+  const key = findBrandLogoKey(n);
+  const slug = key ? SIMPLE_ICONS_SLUGS[key] : null;
+  if (!slug) return null;
+  return `${SIMPLE_ICONS_CDN}/${slug}/${colorHex}`;
 }
 
 function brandInitial(label) {
@@ -288,13 +324,6 @@ function goStep(step) {
   updateChips();
   updatePanels();
   updateFooter();
-  requestAnimationFrame(() => {
-    const root = $("price-wizard-root");
-    if (root) {
-      const y = root.getBoundingClientRect().top + window.scrollY - 16;
-      window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
-    }
-  });
 }
 
 function resetFromBrand() {
@@ -311,7 +340,7 @@ function renderBrands() {
   if (!grid) return;
   grid.innerHTML = "";
   for (const [k, lab] of listBrands()) {
-    const logo = brandLogoPath(lab) || brandLogoPath(k);
+    const logoUrl = brandCdnLogoUrl(lab) || brandCdnLogoUrl(k);
     const initial = brandInitial(lab);
     const btn = document.createElement("button");
     btn.type = "button";
@@ -319,12 +348,20 @@ function renderBrands() {
     btn.dataset.brandKey = k;
     btn.setAttribute("aria-label", `Marcă ${lab}`);
     btn.style.setProperty("--stagger", String(grid.children.length));
-    if (logo) {
+    if (logoUrl) {
       btn.innerHTML = `
         <div class="price-wizard-card-visual">
-          <img src="${esc(logo)}" alt="" class="price-wizard-brand-logo" width="48" height="48" loading="lazy" decoding="async" />
+          <img src="${esc(logoUrl)}" alt="" class="price-wizard-brand-logo" width="48" height="48" loading="lazy" decoding="async" />
         </div>
         <div class="price-wizard-card-footer"><span class="price-wizard-card-title">${esc(lab)}</span></div>`;
+      const img = btn.querySelector("img");
+      if (img) {
+        img.addEventListener("error", () => {
+          const wrap = btn.querySelector(".price-wizard-card-visual");
+          if (wrap)
+            wrap.innerHTML = `<span class="price-wizard-brand-fallback" aria-hidden="true">${esc(initial)}</span>`;
+        });
+      }
     } else {
       btn.innerHTML = `
         <div class="price-wizard-card-visual">
@@ -347,7 +384,8 @@ function renderModels() {
   const grid = $("price-models-grid");
   if (!grid || !state.brandKey) return;
   grid.innerHTML = "";
-  const logo = brandLogoPath(state.brandLabel) || brandLogoPath(state.brandKey);
+  const logoUrl =
+    brandCdnLogoUrl(state.brandLabel) || brandCdnLogoUrl(state.brandKey);
   const list = listModels(state.brandKey);
   if (!list.length) {
     grid.innerHTML =
@@ -363,8 +401,8 @@ function renderModels() {
     btn.dataset.modelEnc = enc;
     btn.setAttribute("aria-label", `Model ${display}`);
     btn.style.setProperty("--stagger", String(grid.children.length));
-    const logoHtml = logo
-      ? `<img src="${esc(logo)}" alt="" class="price-wizard-model-brand-bg" loading="lazy" decoding="async" />`
+    const logoHtml = logoUrl
+      ? `<img src="${esc(logoUrl)}" alt="" class="price-wizard-model-brand-bg" loading="lazy" decoding="async" />`
       : "";
     btn.innerHTML = `
       ${logoHtml}
@@ -375,6 +413,10 @@ function renderModels() {
         <span class="price-wizard-card-sub">${esc(state.brandLabel)}</span>
         <span class="price-wizard-card-title">${esc(display)}</span>
       </div>`;
+    const bg = btn.querySelector(".price-wizard-model-brand-bg");
+    if (bg) {
+      bg.addEventListener("error", () => bg.remove());
+    }
     btn.addEventListener("click", () => {
       state.model = decModel(enc);
       resetFromModel();

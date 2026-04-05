@@ -3781,6 +3781,55 @@ body {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(20, 184, 166, 0.05) 100%);
 }
 
+/* Pagina prețuri: calculator imediat sub navbar, fără hero înalt */
+.page-preturi .price-calculator-section--lead {
+    padding: 5.5rem 0 2rem;
+}
+
+.page-preturi .calculator-header--lead {
+    margin-bottom: 1rem;
+}
+
+.page-preturi .pricing-lead-title {
+    font-size: clamp(1.65rem, 4.2vw, 2.35rem);
+    font-weight: 800;
+    margin-bottom: 0.25rem;
+    line-height: 1.15;
+}
+
+.page-preturi .pricing-lead-line {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin: 0 auto 0.65rem;
+    max-width: 36rem;
+    line-height: 1.35;
+}
+
+.page-preturi .pricing-wizard-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.2rem;
+}
+
+.page-preturi .pricing-wizard-sub {
+    font-size: 0.88rem;
+    margin: 0 auto 0.5rem;
+    max-width: 28rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+    .page-preturi .price-calculator-section--lead {
+        padding-top: 5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .page-preturi .price-wizard-body {
+        min-height: 220px;
+        max-height: min(48vh, 400px);
+    }
+}
+
 .calculator-header {
     text-align: center;
     margin-bottom: 3rem;
