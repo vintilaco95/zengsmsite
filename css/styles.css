@@ -3781,15 +3781,26 @@ body {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(20, 184, 166, 0.05) 100%);
 }
 
-/* Pagina prețuri: navbar → titlu compact → calculator, fără goluri inutile */
+/* Pagina prețuri: aer clar sub navbar fix (~93px + safe area), titlu → calculator fără gol fals */
 .page-preturi .price-calculator-section--lead {
-    padding: calc(5.5rem + env(safe-area-inset-top, 0px)) 0 1rem;
+    padding-top: calc(6.125rem + env(safe-area-inset-top, 0px));
+    padding-bottom: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.page-preturi .container--preturi-calc {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
 }
 
 .page-preturi .preturi-calc-head {
     text-align: center;
-    margin: 0 0 0.4rem;
-    padding: 0;
+    margin: 0;
+    padding: 0 0 0.15rem;
+    flex-shrink: 0;
 }
 
 .page-preturi .preturi-calc-heading {
@@ -3797,19 +3808,19 @@ body {
     font-size: clamp(1.35rem, 4vw, 1.85rem);
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1.15;
+    line-height: 1.2;
     margin: 0;
 }
 
 .page-preturi .preturi-calc-head::after {
     content: '';
     display: block;
-    width: 2.75rem;
-    height: 3px;
-    margin: 0.45rem auto 0;
+    width: 2.5rem;
+    height: 2px;
+    margin: 0.35rem auto 0;
     border-radius: var(--radius-full);
     background: var(--gradient-primary);
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 .page-preturi .price-wizard-panel-title--preturi {
@@ -3842,33 +3853,87 @@ body {
     display: none;
 }
 
-.page-preturi .price-wizard-body {
-    min-height: min(46vh, 360px);
-    max-height: min(58vh, 520px);
+/* Același rând grid: boot și app nu se mai stivuiesc în înălțime (fără „gol” între ele) */
+.page-preturi .price-wizard-shell {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: start;
 }
 
-.page-preturi .price-wizard-boot {
-    min-height: 140px;
-    padding: 1rem 0.75rem;
+.page-preturi .price-wizard-shell > .price-wizard-boot,
+.page-preturi .price-wizard-shell > #price-wizard-app.price-wizard-app {
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+}
+
+.page-preturi .price-wizard-shell > #price-wizard-app.price-wizard-app {
+    position: relative;
+    z-index: 1;
+}
+
+.page-preturi .price-wizard-shell > .price-wizard-boot {
+    position: relative;
+    z-index: 2;
+    min-height: 0 !important;
+    padding: 0.85rem 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Când boot e vizibil, arată ca același card ca wizard-ul */
+.page-preturi .price-wizard-shell > .price-wizard-boot:not([hidden]) {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    backdrop-filter: blur(20px);
+}
+
+.page-preturi .price-wizard-boot[hidden] {
+    display: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: 0 !important;
+    pointer-events: none;
+}
+
+.page-preturi .price-wizard-boot .result-placeholder {
+    margin: 0;
+    padding: 0.25rem 0;
+}
+
+.page-preturi .price-wizard-boot .placeholder-icon {
+    font-size: 2rem;
+    margin-bottom: 0.35rem;
+}
+
+.page-preturi .price-wizard-body {
+    min-height: min(36vh, 240px);
+    max-height: min(52vh, 480px);
 }
 
 @media (max-width: 640px) {
     .page-preturi .price-calculator-section--lead {
-        padding-top: calc(5.15rem + env(safe-area-inset-top, 0px));
+        padding-top: calc(5.95rem + env(safe-area-inset-top, 0px));
         padding-bottom: 0.75rem;
     }
 
-    .page-preturi .preturi-calc-head {
-        margin-bottom: 0.3rem;
+    .page-preturi .container--preturi-calc {
+        gap: 0.4rem;
     }
 
     .page-preturi .preturi-calc-head::after {
-        margin-top: 0.35rem;
+        margin-top: 0.3rem;
     }
 
     .page-preturi .price-wizard-body {
-        min-height: min(44vh, 320px);
-        max-height: min(54vh, 440px);
+        min-height: min(34vh, 220px);
+        max-height: min(48vh, 420px);
     }
 }
 
