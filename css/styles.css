@@ -3781,20 +3781,35 @@ body {
     background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(20, 184, 166, 0.05) 100%);
 }
 
-/* Pagina prețuri: clearance navbar fix, fără bloc mare de text — wizard imediat dedesubt */
+/* Pagina prețuri: navbar → titlu compact → calculator, fără goluri inutile */
 .page-preturi .price-calculator-section--lead {
-    padding: max(5.35rem, calc(4.5rem + env(safe-area-inset-top, 0px))) 0 1rem;
+    padding: calc(5.5rem + env(safe-area-inset-top, 0px)) 0 1rem;
+}
+
+.page-preturi .preturi-calc-head {
+    text-align: center;
+    margin: 0 0 0.4rem;
+    padding: 0;
 }
 
 .page-preturi .preturi-calc-heading {
     font-family: var(--font-display);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
-    margin: 0 0 0.3rem;
-    line-height: 1.2;
+    font-size: clamp(1.35rem, 4vw, 1.85rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 0;
+}
+
+.page-preturi .preturi-calc-head::after {
+    content: '';
+    display: block;
+    width: 2.75rem;
+    height: 3px;
+    margin: 0.45rem auto 0;
+    border-radius: var(--radius-full);
+    background: var(--gradient-primary);
+    opacity: 0.9;
 }
 
 .page-preturi .price-wizard-panel-title--preturi {
@@ -3837,16 +3852,18 @@ body {
     padding: 1rem 0.75rem;
 }
 
-@media (min-width: 900px) {
-    .page-preturi .price-calculator-section--lead {
-        padding-top: max(5.5rem, calc(4.65rem + env(safe-area-inset-top, 0px)));
-    }
-}
-
 @media (max-width: 640px) {
     .page-preturi .price-calculator-section--lead {
-        padding-top: max(5.1rem, calc(4.25rem + env(safe-area-inset-top, 0px)));
+        padding-top: calc(5.15rem + env(safe-area-inset-top, 0px));
         padding-bottom: 0.75rem;
+    }
+
+    .page-preturi .preturi-calc-head {
+        margin-bottom: 0.3rem;
+    }
+
+    .page-preturi .preturi-calc-head::after {
+        margin-top: 0.35rem;
     }
 
     .page-preturi .price-wizard-body {
