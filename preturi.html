@@ -83,16 +83,10 @@
         </div>
     </nav>
 
-    <!-- Price Calculator — primul conținut sub nav (fără scroll pentru calculator) -->
+    <!-- Calculator primul; titlu discret (SEO), fără bloc de marketing -->
     <section class="price-calculator-section price-calculator-section--lead">
-        <div class="container">
-            <div class="calculator-header calculator-header--lead">
-                <h1 class="page-title gradient-text pricing-lead-title">Prețuri reparații</h1>
-                <p class="pricing-lead-line">Transparent, fără costuri ascunse · garanție inclusă</p>
-                <h2 class="section-title pricing-wizard-title">Calculator preț reparație</h2>
-                <p class="section-subtitle pricing-wizard-sub">Alege marca, modelul și tipul reparației — vezi estimarea instant</p>
-            </div>
-            
+        <div class="container container--preturi-calc">
+            <h1 class="preturi-calc-heading">Prețuri reparații</h1>
             <div class="price-wizard-shell" id="price-wizard-root">
                 <div id="price-wizard-boot" class="price-wizard-boot" role="status"></div>
 
@@ -122,19 +116,19 @@
 
                     <div class="price-wizard-body">
                         <div class="price-wizard-panel" data-wizard-panel="1" id="price-panel-brand" role="tabpanel" aria-labelledby="price-wizard-title-brand">
-                            <h3 class="price-wizard-panel-title" id="price-wizard-title-brand">Alege marca</h3>
+                            <h3 class="price-wizard-panel-title price-wizard-panel-title--preturi" id="price-wizard-title-brand">Alege marca</h3>
                             <div class="price-wizard-scroll">
                                 <div class="price-wizard-grid" id="price-brands-grid"></div>
                             </div>
                         </div>
                         <div class="price-wizard-panel" data-wizard-panel="2" id="price-panel-model" role="tabpanel" aria-labelledby="price-wizard-title-model" hidden>
-                            <h3 class="price-wizard-panel-title" id="price-wizard-title-model">Alege modelul</h3>
+                            <h3 class="price-wizard-panel-title price-wizard-panel-title--preturi" id="price-wizard-title-model">Alege modelul</h3>
                             <div class="price-wizard-scroll">
                                 <div class="price-wizard-grid price-wizard-grid-models" id="price-models-grid"></div>
                             </div>
                         </div>
                         <div class="price-wizard-panel" data-wizard-panel="3" id="price-panel-repair" role="tabpanel" aria-labelledby="price-wizard-title-repair" hidden>
-                            <h3 class="price-wizard-panel-title" id="price-wizard-title-repair">Alege tipul reparației</h3>
+                            <h3 class="price-wizard-panel-title price-wizard-panel-title--preturi" id="price-wizard-title-repair">Alege tipul reparației</h3>
                             <div class="price-wizard-scroll">
                                 <div class="price-wizard-grid price-wizard-grid-repairs" id="price-repairs-grid"></div>
                             </div>
