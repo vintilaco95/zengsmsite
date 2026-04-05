@@ -1304,6 +1304,33 @@ body {
     color: var(--text-secondary);
 }
 
+.footer-sites-network {
+    margin: 0.9rem 0 0;
+    padding: 0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.footer-sites-network a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-sites-network a:hover,
+.footer-sites-network a:focus-visible {
+    color: var(--primary-light);
+    outline: none;
+}
+
+.footer-sites-sep {
+    margin: 0 0.55rem;
+    color: rgba(255, 255, 255, 0.25);
+    user-select: none;
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
     .nav-menu {
