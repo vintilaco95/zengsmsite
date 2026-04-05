@@ -2,7 +2,7 @@
  * Calculator — API GSM OS. Completează TOKEN mai jos. Fără .env.
  */
 const API_URL = "https://gsmos.ro/api/public/price-list";
-const TOKEN = "gsmos_pl_7cQkYpHBybz8okCF9AS84cW71cqWCh7h";
+const TOKEN = "gsmos_pl_NDiBuubCpqJHtqWe2LIoc8EMsSAnPMW4yQIyUhbj8PM";
 
 let rows = [];
 let moneda = "RON";
