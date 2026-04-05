@@ -1,0 +1,7 @@
+Site static (HTML la rădăcină, fără npm build).
+
+Pe Render → Static Site:
+- Build Command: (lăsați gol)
+- Publish directory: .   (punct = rădăcina repo-ului)
+
+Dacă aveți încă setat „dist” sau „npm run build”, ștergeți — nu există Eleventy în acest repo.
