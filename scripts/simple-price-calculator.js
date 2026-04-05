@@ -1,277 +1,280 @@
-// Simple Price Calculator - CSV-based approach
+/**
+ * Calculator — API GSM OS. Completează TOKEN mai jos. Fără .env.
+ */
+const API_URL = "https://gsmos.ro/api/public/price-list";
+const TOKEN = "";
 
-// Global price data loaded from CSV
-let PRICE_DATA = [];
+let rows = [];
+let moneda = "RON";
 
-// Load prices from CSV file
-async function loadPricesFromCSV() {
-  try {
-    const response = await fetch('csv/prices.csv');
-    const csvText = await response.text();
-    const lines = csvText.split('\n').filter(line => line.trim());
-    
-    // Skip header row
-    const dataLines = lines.slice(1);
-    
-    PRICE_DATA = dataLines.map(line => {
-      const [brand, model, repairType, partsCost, labourCost] = line.split(',');
-      return {
-        brand: brand.trim(),
-        model: model.trim(),
-        repairType: repairType.trim(),
-        partsCost: parseInt(partsCost.trim()) || 0,
-        labourCost: parseInt(labourCost.trim()) || 0
-      };
-    });
-    
-    console.log('✅ Prices loaded from CSV:', PRICE_DATA.length, 'entries');
-  } catch (error) {
-    console.error('❌ Error loading prices from CSV:', error);
-    // Fallback to empty array
-    PRICE_DATA = [];
+function norm(s) {
+  return String(s || "").trim().toLowerCase();
+}
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function encModel(m) {
+  return m === "" ? "__E__" : m;
+}
+function decModel(v) {
+  return v === "__E__" ? "" : v;
+}
+
+function flat(json) {
+  if (!json || typeof json !== "object") return [];
+  moneda = String(json.currency || "RON").trim().toUpperCase() || "RON";
+  const out = [];
+  for (const g of json.groups || []) {
+    const b = String(g.brand || "").trim() || String(g.deviceType || "").trim() || "—";
+    const model = String(g.model || "").trim();
+    for (const it of g.items || []) {
+      if (it && it.isActive === false) continue;
+      const r = String(it.serviceOperation || "").trim();
+      if (!r) continue;
+      out.push({
+        brand: b,
+        model,
+        repair: r,
+        p: Number(it.partsCost) || 0,
+        m: Number(it.labourCost) || 0,
+      });
+    }
   }
+  return out;
 }
 
-function normalizeBrand(value) {
-  return String(value || '').toLowerCase();
+async function load() {
+  if (!TOKEN.trim()) return false;
+  const r = await fetch(API_URL, {
+    headers: { Authorization: "Bearer " + TOKEN.trim() },
+  });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  rows = flat(await r.json());
+  return rows.length > 0;
 }
 
-function getModelsForBrand(brandKey) {
-  const brandData = PRICE_DATA.filter(item => 
-    normalizeBrand(item.brand) === brandKey
+function listBrands() {
+  const map = new Map();
+  for (const x of rows) {
+    const k = norm(x.brand);
+    if (k && !map.has(k)) map.set(k, x.brand.trim());
+  }
+  return [...map.entries()].sort((a, b) =>
+    a[1].localeCompare(b[1], "ro", { sensitivity: "base" })
   );
-  
-  // Get unique models for this brand
-  const models = [...new Set(brandData.map(item => item.model))];
-  return models.sort();
 }
 
-function getRepairsFor(brandKey, model) {
-  const repairs = PRICE_DATA.filter(item => 
-    normalizeBrand(item.brand) === brandKey && 
-    item.model === model
+function listModels(brandKey) {
+  const s = new Set();
+  for (const x of rows) {
+    if (norm(x.brand) === brandKey) s.add(x.model);
+  }
+  return [...s].sort((a, b) =>
+    String(a).localeCompare(String(b), "ro", { sensitivity: "base" })
   );
-  
-  // Get unique repair types for this model
-  const repairTypes = [...new Set(repairs.map(item => item.repairType))];
-  return repairTypes.sort();
 }
 
-function calculatePrice(brandKey, model, repairType) {
-  const item = PRICE_DATA.find(entry => 
-    normalizeBrand(entry.brand) === brandKey && 
-    entry.model === model && 
-    entry.repairType === repairType
+function listRepairs(brandKey, model) {
+  const s = new Set();
+  for (const x of rows) {
+    if (norm(x.brand) === brandKey && x.model === model) s.add(x.repair);
+  }
+  return [...s].sort((a, b) =>
+    String(a).localeCompare(String(b), "ro", { sensitivity: "base" })
   );
-  
-  if (!item) return null;
-  
-  const parts = Number(item.partsCost) || 0;
-  const labour = Number(item.labourCost) || 0;
-  
-  return {
-    parts,
-    labour,
-    total: parts + labour
-  };
 }
 
-// Funcție pentru generare mesaj WhatsApp
-function generateWhatsAppMessage(brandLabel, model, repairLabel, parts, labour, total) {
-  const message = `Bună ziua! 
-
-Am folosit calculatorul de prețuri de pe site-ul zengsm.ro și aș dori să discut despre următoarea reparație:
-
-📱 *Detalii reparație:*
-• Marca: ${brandLabel}
-• Model: ${model}
-• Tip reparație: ${repairLabel}
-
-💰 *Estimare preț:*
-• Cost componentă originală: ${parts} RON
-• Manoperă: ${labour} RON
-• *Total estimat: ${total} RON*
-
-Aș dori să programez o consultație sau să obțin mai multe informații.
-
-Mulțumesc!`;
-
-  return message;
+function calc(brandKey, model, repair) {
+  const x = rows.find(
+    (q) => norm(q.brand) === brandKey && q.model === model && q.repair === repair
+  );
+  if (!x) return null;
+  return { p: x.p, m: x.m, t: x.p + x.m };
 }
 
-function renderResult(container, payload) {
-  if (!payload) {
-    container.innerHTML = `
-      <div class="result-placeholder">
-        <div class="placeholder-icon">ℹ️</div>
-        <h3>Nu avem încă preț pentru această combinație</h3>
-        <p>Contactează-ne pentru o ofertă exactă sau alege altă opțiune.</p>
-      </div>
-    `;
+function waMsg(bl, ml, rl, p, m, t) {
+  return `Bună ziua! 
+
+Am folosit calculatorul de pe zengsm.ro:
+
+📱 ${bl} / ${ml} — ${rl}
+💰 ${p} + ${m} = ${t} ${moneda}
+
+Aș dori detalii. Mulțumesc!`;
+}
+
+function showRez(el, o) {
+  if (!o) {
+    el.innerHTML = `<div class="result-placeholder"><div class="placeholder-icon">ℹ️</div><h3>Fără preț pentru combinația aleasă</h3><p>Contactează-ne.</p></div>`;
     return;
   }
-
-  const { brandLabel, model, repairLabel, parts, labour, total } = payload;
-  
-  // Generare mesaj WhatsApp
-  const whatsappMessage = generateWhatsAppMessage(brandLabel, model, repairLabel, parts, labour, total);
-  const whatsappUrl = `https://wa.me/40758060072?text=${encodeURIComponent(whatsappMessage)}`;
-  
-  container.innerHTML = `
+  const { bl, ml, rl, p, m, t } = o;
+  const u = `https://wa.me/40758060072?text=${encodeURIComponent(waMsg(bl, ml, rl, p, m, t))}`;
+  el.innerHTML = `
     <div class="result-card">
-      <h3 style="color: white; font-weight: 800 ;">Estimare Preț</h3>
+      <h3 style="color:white;font-weight:800">Estimare</h3>
       <ul class="result-list">
-        <li><strong>Marcă:</strong> ${brandLabel}</li>
-        <li><strong>Model:</strong> ${model}</li>
-        <li><strong>Reparație:</strong> ${repairLabel}</li>
-        <li><strong>Cost componenta Originala:</strong> ${parts} RON</li>
-        <li><strong>Manoperă:</strong> ${labour} RON</li>
+        <li><strong>Marcă:</strong> ${esc(bl)}</li>
+        <li><strong>Model:</strong> ${esc(ml)}</li>
+        <li><strong>Reparație:</strong> ${esc(rl)}</li>
+        <li><strong>Componentă:</strong> ${p} ${moneda}</li>
+        <li><strong>Manoperă:</strong> ${m} ${moneda}</li>
       </ul>
-      <div class="result-total">Total: <strong>${total} RON</strong></div>
-      <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-large calculator-whatsapp-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.98 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .96 4.495.96 10.025c0 1.79.464 3.47 1.28 4.935L.06 24l9.26-2.46a9.94 9.94 0 002.73.379c5.554 0 10.089-4.495 10.089-10.026 0-2.736-1.093-5.322-3.074-7.24"/>
-        </svg>
-        <span>Trimite pe WhatsApp</span>
-      </a>
-      <p class="result-note" style="color: white; font-weight: 800 ;">Prețul este orientativ și poate varia în funcție de disponibilitatea in stoc si de dificultatea suplimentara a reparatiei ce poate surveni din defectiuni constatate de tehnician.</p>
-    </div>
-  `;
+      <div class="result-total">Total: <strong>${t} ${moneda}</strong></div>
+      <a href="${u}" target="_blank" rel="noopener" class="btn btn-primary btn-large calculator-whatsapp-btn">WhatsApp</a>
+      <p class="result-note" style="color:white;font-weight:800">Preț orientativ.</p>
+    </div>`;
 }
 
-function initSimpleCalculator() {
-  const brandSelect = document.getElementById('phone-brand');
-  const modelSelect = document.getElementById('phone-model');
-  const repairSelect = document.getElementById('repair-type');
-  const calcBtn = document.getElementById('calculate-price');
-  const resultEl = document.getElementById('calculator-result');
-
-  if (!brandSelect || !modelSelect || !repairSelect || !calcBtn || !resultEl) return;
-
-  // Populate model select based on brand
-  function populateModels() {
-    const brandKey = normalizeBrand(brandSelect.value);
-    const models = getModelsForBrand(brandKey);
-
-    modelSelect.innerHTML = '';
-    if (!brandKey || models.length === 0) {
-      modelSelect.disabled = true;
-      const opt = document.createElement('option');
-      opt.value = '';
-      opt.textContent = 'Selectează mai întâi marca';
-      modelSelect.appendChild(opt);
-      return;
-    }
-
-    modelSelect.disabled = false;
-    const placeholder = document.createElement('option');
-    placeholder.value = '';
-    placeholder.textContent = 'Selectează modelul';
-    modelSelect.appendChild(placeholder);
-
-    models.forEach(model => {
-      const opt = document.createElement('option');
-      opt.value = model;
-      opt.textContent = model;
-      modelSelect.appendChild(opt);
-    });
-  }
-
-  // Populate repair types based on model
-  function populateRepairs() {
-    const brandKey = normalizeBrand(brandSelect.value);
-    const model = modelSelect.value;
-    const repairs = getRepairsFor(brandKey, model);
-
-    repairSelect.innerHTML = '';
-    if (!model || repairs.length === 0) {
-      repairSelect.disabled = true;
-      const opt = document.createElement('option');
-      opt.value = '';
-      opt.textContent = 'Selectează mai întâi modelul';
-      repairSelect.appendChild(opt);
-      return;
-    }
-
-    repairSelect.disabled = false;
-    const placeholder = document.createElement('option');
-    placeholder.value = '';
-    placeholder.textContent = 'Selectează tipul reparației';
-    repairSelect.appendChild(placeholder);
-
-    repairs.forEach(repair => {
-      const opt = document.createElement('option');
-      opt.value = repair;
-      opt.textContent = repair;
-      repairSelect.appendChild(opt);
-    });
-  }
-
-  brandSelect.addEventListener('change', () => {
-    populateModels();
-    repairSelect.innerHTML = '<option value="">Selectează mai întâi modelul</option>';
-    repairSelect.disabled = true;
-    resultEl.innerHTML = `
-      <div class="result-placeholder">
-        <div class="placeholder-icon">💰</div>
-        <h3>Prețul va apărea aici</h3>
-        <p>Completează formularul de mai sus pentru a obține o estimare</p>
-      </div>
-    `;
-  });
-
-  modelSelect.addEventListener('change', () => {
-    populateRepairs();
-    resultEl.innerHTML = `
-      <div class="result-placeholder">
-        <div class="placeholder-icon">💰</div>
-        <h3>Prețul va apărea aici</h3>
-        <p>Completează formularul de mai sus pentru a obține o estimare</p>
-      </div>
-    `;
-  });
-
-  calcBtn.addEventListener('click', () => {
-    const brandKey = normalizeBrand(brandSelect.value);
-    const brandLabel = brandSelect.options[brandSelect.selectedIndex]?.text || '';
-    const model = modelSelect.value;
-    const repairKey = repairSelect.value;
-    const repairLabel = repairSelect.options[repairSelect.selectedIndex]?.text || '';
-
-    if (!brandKey || !model || !repairKey) {
-      renderResult(resultEl, null);
-      return;
-    }
-
-    const breakdown = calculatePrice(brandKey, model, repairKey);
-    if (!breakdown) {
-      renderResult(resultEl, null);
-      return;
-    }
-
-    renderResult(resultEl, {
-      brandLabel,
-      model,
-      repairLabel,
-      parts: breakdown.parts,
-      labour: breakdown.labour,
-      total: breakdown.total
-    });
-  });
-
-  // Initial state
-  populateModels();
+function ph() {
+  return `<div class="result-placeholder"><div class="placeholder-icon">💰</div><h3>Prețul apare aici</h3><p>Completează formularul.</p></div>`;
 }
 
-// Initialize calculator after loading CSV data
+function startCalc() {
+  const bEl = document.getElementById("phone-brand");
+  const mEl = document.getElementById("phone-model");
+  const rEl = document.getElementById("repair-type");
+  const btn = document.getElementById("calculate-price");
+  const out = document.getElementById("calculator-result");
+  if (!bEl || !mEl || !rEl || !btn || !out) return;
+
+  function fillBrands() {
+    bEl.innerHTML = "";
+    const pho = document.createElement("option");
+    pho.value = "";
+    pho.textContent = "Selectează marca";
+    bEl.appendChild(pho);
+    for (const [k, lab] of listBrands()) {
+      const o = document.createElement("option");
+      o.value = k;
+      o.textContent = lab;
+      bEl.appendChild(o);
+    }
+  }
+
+  function fillModels() {
+    const bk = bEl.value;
+    const list = listModels(bk);
+    mEl.innerHTML = "";
+    if (!bk || !list.length) {
+      mEl.disabled = true;
+      const o = document.createElement("option");
+      o.value = "";
+      o.textContent = "Selectează mai întâi marca";
+      mEl.appendChild(o);
+      return;
+    }
+    mEl.disabled = false;
+    const p = document.createElement("option");
+    p.value = "";
+    p.textContent = "Selectează modelul";
+    mEl.appendChild(p);
+    for (const mod of list) {
+      const o = document.createElement("option");
+      o.value = encModel(mod);
+      o.textContent = mod === "" ? "(fără model)" : mod;
+      mEl.appendChild(o);
+    }
+  }
+
+  function fillRepairs() {
+    const bk = bEl.value;
+    const mod = decModel(mEl.value);
+    const list = listRepairs(bk, mod);
+    rEl.innerHTML = "";
+    if (!mEl.value || !list.length) {
+      rEl.disabled = true;
+      const o = document.createElement("option");
+      o.value = "";
+      o.textContent = "Selectează mai întâi modelul";
+      rEl.appendChild(o);
+      return;
+    }
+    rEl.disabled = false;
+    const p = document.createElement("option");
+    p.value = "";
+    p.textContent = "Tip reparație";
+    rEl.appendChild(p);
+    for (const rep of list) {
+      const o = document.createElement("option");
+      o.value = rep;
+      o.textContent = rep;
+      rEl.appendChild(o);
+    }
+  }
+
+  fillBrands();
+  fillModels();
+  fillRepairs();
+
+  bEl.addEventListener("change", () => {
+    fillModels();
+    rEl.innerHTML = '<option value="">Selectează mai întâi modelul</option>';
+    rEl.disabled = true;
+    out.innerHTML = ph();
+  });
+  mEl.addEventListener("change", () => {
+    fillRepairs();
+    out.innerHTML = ph();
+  });
+  btn.addEventListener("click", () => {
+    const bk = bEl.value;
+    const bl = bEl.options[bEl.selectedIndex]?.text || "";
+    const mod = decModel(mEl.value);
+    const rk = rEl.value;
+    const rl = rEl.options[rEl.selectedIndex]?.text || "";
+    if (!bk || !mEl.value || !rk) {
+      showRez(out, null);
+      return;
+    }
+    const z = calc(bk, mod, rk);
+    if (!z) {
+      showRez(out, null);
+      return;
+    }
+    showRez(out, {
+      bl,
+      ml: mod === "" ? "—" : mod,
+      rl,
+      p: z.p,
+      m: z.m,
+      t: z.t,
+    });
+  });
+}
+
 async function init() {
-  await loadPricesFromCSV();
-  initSimpleCalculator();
+  const out = document.getElementById("calculator-result");
+  if (out) {
+    out.innerHTML = `<div class="result-placeholder" role="status"><div class="placeholder-icon">⏳</div><h3>Se încarcă…</h3><p>GSM OS</p></div>`;
+  }
+  let ok = false;
+  try {
+    if (TOKEN.trim()) ok = await load();
+  } catch (e) {
+    console.error(e);
+    rows = [];
+  }
+  if (out) {
+    if (!TOKEN.trim()) {
+      out.innerHTML = `<div class="result-placeholder" role="alert"><div class="placeholder-icon">⚠️</div><h3>Lipsește token</h3><p>Deschide <code>scripts/simple-price-calculator.js</code> și pune valoarea în <code>TOKEN</code>.</p></div>`;
+    } else if (!ok) {
+      out.innerHTML = `<div class="result-placeholder" role="alert"><div class="placeholder-icon">⚠️</div><h3>Nu s-a încărcat lista</h3><p>Verifică token, CORS în GSM OS, reîncearcă.</p></div>`;
+    } else {
+      out.innerHTML = ph();
+    }
+  }
+  if (ok) startCalc();
 }
 
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
 } else {
   init();
 }
