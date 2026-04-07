@@ -2,7 +2,7 @@
  * Calculator preț reparații — API GSM OS. Wizard card-based (ZENGSM).
  */
 const API_URL = "https://gsmos.ro/api/public/price-list";
-const TOKEN = "gsmos_pl_NDiBuubCpqJHtqWe2LIoc8EMsSAnPMW4yQIyUhbj8PM";
+const TOKEN = "gsmos_pl_Hr6McQfzQCTohjdMrZWNA2KtAMWszKup8Ul3uuXkeAU";
 
 /** @type {{ brand: string, model: string, repair: string, p: number, m: number }[]} */
 let rows = [];
