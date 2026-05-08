@@ -1,0 +1,18 @@
+# ZEN GSM — Render Blueprint (site static, HTML la rădăcină).
+# Dacă ai deja serviciul în Dashboard, pune același `name` ca acolo ca să nu se creeze unul nou.
+# Alternativ: rulează fără Blueprint și adaugă manual aceleași rute la Static Site → Redirects/Rewrites.
+#
+# Docs: https://render.com/docs/redirects-rewrites
+services:
+  - type: web
+    name: zengsm
+    runtime: static
+    buildCommand: "true"
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /blog/:slug/
+        destination: /blog-articol.html?slug=:slug
+      - type: rewrite
+        source: /blog/:slug
+        destination: /blog-articol.html?slug=:slug

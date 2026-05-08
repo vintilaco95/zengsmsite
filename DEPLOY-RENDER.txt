@@ -1,7 +1,15 @@
 Site static (HTML la rădăcină, fără npm build).
 
 Pe Render → Static Site:
-- Build Command: (lăsați gol)
+- Build Command: (lăsați gol) sau `true` dacă folosiți Blueprint
 - Publish directory: .   (punct = rădăcina repo-ului)
 
 Dacă aveți încă setat „dist” sau „npm run build”, ștergeți — nu există Eleventy în acest repo.
+
+URL-uri blog (/blog/slug) — fără .htaccess pe CDN:
+- Opțiune A: conectați Blueprint din render.yaml (vezi `routes` acolo).
+- Opțiune B: în Dashboard → serviciul static → Redirects/Rewrites, adăugați două Rewrite:
+  - Source /blog/:slug/  → Destination /blog-articol.html?slug=:slug
+  - Source /blog/:slug   → Destination /blog-articol.html?slug=:slug
+Render aplică regulile doar dacă NU există deja fișier la acea cale (articolele vechi în /blog/*.html rămân servite direct).
+Formularul vechi blog-articol.html?slug=… e redirecționat în browser spre /blog/slug (script în blog-articol.html), fiindcă Render nu poate face 301 pe baza query string.

@@ -3,14 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+    (function () {
+      try {
+        var path = window.location.pathname || '';
+        if (path.indexOf('blog-articol.html') === -1) return;
+        var q = new URLSearchParams(window.location.search);
+        var slug = (q.get('slug') || '').trim();
+        if (!slug) return;
+        var seg = slug.split('/').filter(Boolean).map(encodeURIComponent).join('/');
+        var url = '/blog/' + seg;
+        var b = q.get('blogger');
+        if (b) url += '?blogger=' + encodeURIComponent(b);
+        if (window.location.hash) url += window.location.hash;
+        window.location.replace(url);
+      } catch (e) {}
+    })();
+    </script>
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/IMG_7712.PNG">
-    <link rel="apple-touch-icon" sizes="180x180" href="images/IMG_7712.PNG">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/IMG_7712.PNG">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/IMG_7712.PNG">
     <link rel="shortcut icon" href="/favicon.ico">
     <title>Articol | Blog ZEN GSM Timișoara</title>
-    <meta name="description" id="techblog-article-meta-desc" content="Articol din blogul ZEN GSM Timișoara.">
+    <meta name="description" id="techblog-article-meta-desc" content="Articol din blogul ZEN GSM Timișoara — service GSM, reparații telefoane și sfaturi practice.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <link rel="canonical" id="techblog-article-canonical" href="https://www.zengsm.ro/blog-articol.html">
+    <link rel="canonical" id="techblog-article-canonical" href="https://zengsm.ro/blog.html">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:site_name" content="ZEN GSM Timișoara">
+    <meta property="og:title" id="techblog-og-title" content="Blog ZEN GSM Timișoara">
+    <meta property="og:description" id="techblog-og-desc" content="Articol din blogul ZEN GSM — service GSM și reparații telefoane în Timișoara.">
+    <meta property="og:url" id="techblog-og-url" content="https://zengsm.ro/blog.html">
+    <meta property="og:image" id="techblog-og-image" content="https://zengsm.ro/images/IMG_7712.PNG">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="techblog-tw-title" content="Blog ZEN GSM Timișoara">
+    <meta name="twitter:description" id="techblog-tw-desc" content="Articol din blogul ZEN GSM Timișoara.">
+    <meta name="twitter:image" id="techblog-tw-image" content="https://zengsm.ro/images/IMG_7712.PNG">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DJT9VFKRS1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -19,7 +47,8 @@
   gtag('config', 'G-DJT9VFKRS1');
 </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://www.e-gsm.ro" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -32,26 +61,26 @@
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
-                <a href="index.html" class="logo">
-                    <img src="images/IMG_7712.PNG" alt="ZEN GSM Logo" class="logo-image">
+                <a href="/index.html" class="logo">
+                    <img src="/images/IMG_7712.PNG" alt="ZEN GSM Logo" class="logo-image">
                     <span class="logo-text">ZEN GSM</span>
                 </a>
-                <a class="nav-special-button" href="formulare.html">Verifică status!</a>
+                <a class="nav-special-button" href="/formulare.html">Verifică status!</a>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">🏠 Acasă</a></li>
-                    <li><a href="servicii.html" class="nav-link">🔧 Servicii</a></li>
-                    <li><a href="preturi.html" class="nav-link">💰 Prețuri</a></li>
-                    <li><a href="formulare.html" class="nav-link">✅ Verifică</a></li>
-                    <li><a href="vanzare-telefon.html" class="nav-link">💵 Vinde</a></li>
-                    <li><a href="galerie.html" class="nav-link">📸 Galerie</a></li>
-                    <li><a href="despre.html" class="nav-link">ℹ️ Despre</a></li>
-                    <li><a href="blog.html" class="nav-link active">📝 Blog</a></li>
-                    <li><a href="intrebari-frecvente.html" class="nav-link">❓ FAQ</a></li>
-                    <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
+                    <li><a href="/index.html" class="nav-link">🏠 Acasă</a></li>
+                    <li><a href="/servicii.html" class="nav-link">🔧 Servicii</a></li>
+                    <li><a href="/preturi.html" class="nav-link">💰 Prețuri</a></li>
+                    <li><a href="/formulare.html" class="nav-link">✅ Verifică</a></li>
+                    <li><a href="/vanzare-telefon.html" class="nav-link">💵 Vinde</a></li>
+                    <li><a href="/galerie.html" class="nav-link">📸 Galerie</a></li>
+                    <li><a href="/despre.html" class="nav-link">ℹ️ Despre</a></li>
+                    <li><a href="/blog.html" class="nav-link active">📝 Blog</a></li>
+                    <li><a href="/intrebari-frecvente.html" class="nav-link">❓ FAQ</a></li>
+                    <li><a href="/contact.html" class="nav-link">📞 Contact</a></li>
                 </ul>
                 <div class="nav-quick-actions">
-                    <a href="preturi.html#price-wizard-root" class="nav-quick-btn nav-quick-btn--prices" aria-label="Prețuri și calculator reparații">Prețuri</a>
-                    <a href="formulare.html" class="nav-quick-btn nav-quick-btn--status" aria-label="Verifică status reparație">Status</a>
+                    <a href="/preturi.html#price-wizard-root" class="nav-quick-btn nav-quick-btn--prices" aria-label="Prețuri și calculator reparații">Prețuri</a>
+                    <a href="/formulare.html" class="nav-quick-btn nav-quick-btn--status" aria-label="Verifică status reparație">Status</a>
                     <a href="https://licitatii-gsm.ro" class="nav-quick-btn nav-quick-btn--licitatii" target="_blank" rel="noopener noreferrer" aria-label="Licitații GSM"><span class="nav-quick-btn__licitatii-long">Licitații GSM</span><span class="nav-quick-btn__licitatii-short" aria-hidden="true">Licitații</span></a>
                 </div>
                 <button class="menu-toggle"><span></span><span></span><span></span></button>
@@ -61,13 +90,14 @@
 
     <section class="blog-article-section" style="padding-top: 2rem;">
         <div class="container">
-            <a href="blog.html" class="blog-back-link">← Înapoi la blog</a>
+            <a href="/blog.html" class="blog-back-link">← Înapoi la blog</a>
 
             <div
                 id="techblog-article-config"
                 hidden
                 data-techblog-api-base="https://www.e-gsm.ro"
                 data-techblog-blogger-slug="andreea"
+                data-zengsm-public-base="https://zengsm.ro"
             ></div>
 
             <p id="techblog-article-loading" class="blog-feed-hint">Se încarcă articolul…</p>
@@ -77,13 +107,13 @@
                 <img id="techblog-article-cover" alt="" class="techblog-article-cover-img" width="1200" height="630" loading="eager" decoding="async">
             </div>
 
-            <article id="techblog-article-main" class="blog-article" hidden>
+            <article id="techblog-article-main" class="blog-article" hidden itemscope itemtype="https://schema.org/BlogPosting">
                 <header class="blog-article-header">
                     <p class="blog-article-meta" id="techblog-article-meta"></p>
-                    <h1 class="blog-article-title" id="techblog-article-title"></h1>
-                    <p class="blog-article-excerpt" id="techblog-article-excerpt" hidden></p>
+                    <h1 class="blog-article-title" id="techblog-article-title" itemprop="headline"></h1>
+                    <p class="blog-article-excerpt" id="techblog-article-excerpt" itemprop="description" hidden></p>
                 </header>
-                <div class="blog-article-content techblog-article-prose" id="techblog-article-body"></div>
+                <div class="blog-article-content techblog-article-prose" id="techblog-article-body" itemprop="articleBody"></div>
             </article>
         </div>
     </section>
@@ -107,23 +137,23 @@
                 <div class="footer-col">
                     <h4>Servicii Populare</h4>
                     <ul>
-                        <li><a href="servicii.html#display">Schimb Display iPhone</a></li>
-                        <li><a href="servicii.html#display">Schimb Display Samsung</a></li>
-                        <li><a href="servicii.html#baterie">Înlocuire Baterie</a></li>
-                        <li><a href="servicii.html#apa">Reparație Contact Apă</a></li>
-                        <li><a href="servicii.html#camera">Reparație Cameră</a></li>
-                        <li><a href="servicii.html#software">Deblocare Telefon</a></li>
+                        <li><a href="/servicii.html#display">Schimb Display iPhone</a></li>
+                        <li><a href="/servicii.html#display">Schimb Display Samsung</a></li>
+                        <li><a href="/servicii.html#baterie">Înlocuire Baterie</a></li>
+                        <li><a href="/servicii.html#apa">Reparație Contact Apă</a></li>
+                        <li><a href="/servicii.html#camera">Reparație Cameră</a></li>
+                        <li><a href="/servicii.html#software">Deblocare Telefon</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Informații Utile</h4>
                     <ul>
-                        <li><a href="despre.html">Despre Noi</a></li>
-                        <li><a href="preturi.html">Listă Prețuri</a></li>
-                        <li><a href="intrebari-frecvente.html">Întrebări Frecvente</a></li>
-                        <li><a href="blog.html">Blog & Sfaturi</a></li>
-                        <li><a href="formulare.html">Verifică Status Service</a></li>
-                        <li><a href="contact.html">Contact & Locație</a></li>
+                        <li><a href="/despre.html">Despre Noi</a></li>
+                        <li><a href="/preturi.html">Listă Prețuri</a></li>
+                        <li><a href="/intrebari-frecvente.html">Întrebări Frecvente</a></li>
+                        <li><a href="/blog.html">Blog & Sfaturi</a></li>
+                        <li><a href="/formulare.html">Verifică Status Service</a></li>
+                        <li><a href="/contact.html">Contact & Locație</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -137,7 +167,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Zen GSM - SC Ajutor Technologia SRL. Toate drepturile rezervate. | <a href="termeni-conditii.html" style="text-decoration: none; color: aliceblue;">Termeni</a> | <a href="politica-confidentialitate.html" style="text-decoration: none; color: aliceblue;">Confidențialitate</a> | <a href="gdpr.html" style="text-decoration: none; color: aliceblue;">GDPR</a></p>
+                <p>&copy; 2025 Zen GSM - SC Ajutor Technologia SRL. Toate drepturile rezervate. | <a href="/termeni-conditii.html" style="text-decoration: none; color: aliceblue;">Termeni</a> | <a href="/politica-confidentialitate.html" style="text-decoration: none; color: aliceblue;">Confidențialitate</a> | <a href="/gdpr.html" style="text-decoration: none; color: aliceblue;">GDPR</a></p>
                 <p class="footer-sites-network">
                     <a href="https://gsmos.ro" target="_blank" rel="noopener noreferrer">GSM OS</a><span class="footer-sites-sep" aria-hidden="true">·</span><a href="https://ajutortechnologia.ro" target="_blank" rel="noopener noreferrer">Ajutor Technologia</a><span class="footer-sites-sep" aria-hidden="true">·</span><a href="https://licitatii-gsm.ro" target="_blank" rel="noopener noreferrer">Licitații GSM</a>
                 </p>
@@ -149,13 +179,13 @@
 <i class="fa fa-whatsapp my-float"></i>
 </a>
 
-    <script src="scripts/script.js"></script>
-    <script src="scripts/techblog-article.js"></script>
+    <script src="/scripts/script.js"></script>
+    <script src="/scripts/techblog-article.js"></script>
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-content">
             <div class="cookie-text">
                 <h4>🍪 Utilizăm Cookie-uri</h4>
-                <p>Acest site folosește cookie-uri. Continuând, acceptați utilizarea conform <a href="politica-confidentialitate.html">Politicii de Confidențialitate</a>.</p>
+                <p>Acest site folosește cookie-uri. Continuând, acceptați utilizarea conform <a href="/politica-confidentialitate.html">Politicii de Confidențialitate</a>.</p>
             </div>
             <div class="cookie-buttons">
                 <button id="accept-cookies" class="btn-cookie btn-accept">Accept</button>
@@ -163,6 +193,6 @@
             </div>
         </div>
     </div>
-    <script src="scripts/cookie-banner.js"></script>
+    <script src="/scripts/cookie-banner.js"></script>
 </body>
 </html>

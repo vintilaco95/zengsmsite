@@ -101,11 +101,18 @@
 
     var link = document.createElement('a');
     link.className = 'blog-read-more';
-    var artPath = 'blog-articol.html?slug=' + encodeURIComponent(a.slug);
-    if (cfg.bloggerSlug) {
-      artPath += '&blogger=' + encodeURIComponent(cfg.bloggerSlug);
-    }
-    link.href = artPath;
+    var origin =
+      typeof location !== 'undefined' && location.origin
+        ? location.origin.replace(/\/+$/, '')
+        : 'https://zengsm.ro';
+    var artPath =
+      '/blog/' +
+      String(a.slug || '')
+        .split('/')
+        .filter(Boolean)
+        .map(encodeURIComponent)
+        .join('/');
+    link.href = origin + artPath;
     link.textContent = 'Citește articolul →';
     link.setAttribute('itemprop', 'url');
     body.appendChild(link);

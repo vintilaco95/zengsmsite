@@ -1,16 +1,27 @@
+# ZEN GSM — URL-uri SEO pentru articole blog (Apache + mod_rewrite)
+# Render (site static): vezi render.yaml → routes (rewrite), nu .htaccess.
+# Altfel, vezi comentariul Nginx de la final.
 
-# BEGIN WordPress
-# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
-# dynamically generated, and should only be modified via WordPress filters.
-# Any changes to the directives between these markers will be overwritten.
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /
-RewriteRule ^index\.php$ - [L]
+
+# 301: formular vechi ?slug= → URL canonic /blog/slug (agregă semnale SEO pe un singur URL)
+RewriteCond %{THE_REQUEST} \s/+blog-articol\.html\?slug=([^\s&]+)\S*\s [NC]
+RewriteRule ^blog-articol\.html$ /blog/%1? [R=301,L]
+
+# Intern: /blog/slug → același HTML shell; slug din query pentru script (blogger din data-* în pagină)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
+RewriteRule ^blog/([^/]+)/?$ blog-articol.html?slug=$1 [L,QSA]
 </IfModule>
 
-# END WordPress
+# ---
+# Nginx (echivalent aproximativ):
+# location ~ ^/blog-articol\.html$ {
+#   if ($args ~* slug=([^&]+)) { return 301 /blog/$1; }
+# }
+# location ~ ^/blog/([^/]+)/?$ {
+#   rewrite ^ /blog-articol.html?slug=$1 break;
+#   ...
+# }
