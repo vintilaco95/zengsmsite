@@ -475,7 +475,11 @@ document.addEventListener('visibilitychange', () => {
     document.body.addEventListener('click', (e) => {
         const calcEl = e.target && (e.target instanceof Element) ? e.target.closest('[data-open-calc]') : null;
         if (calcEl) {
-            if (pathNorm() === '/preturi') {
+            // Link pe pagina /preturi: salt la calculator (fără modal). Butonul „fereastră” deschide mereu modalul.
+            if (
+                calcEl.tagName === 'A' &&
+                pathNorm() === '/preturi'
+            ) {
                 e.preventDefault();
                 document.getElementById('preturi-calculator')?.scrollIntoView({
                     behavior: 'smooth',

@@ -26,45 +26,36 @@ function linkMatches(pathnameNorm: string, href: string): boolean {
   return h === pathnameNorm;
 }
 
-function PreturiNavLink({
-  className,
+function ModalPopBtn({
+  kind,
+  className = "",
   onAfterClick,
-  children = "Prețuri",
 }: {
-  className: string;
+  kind: "calc" | "status";
+  className?: string;
   onAfterClick?: () => void;
-  children?: React.ReactNode;
 }) {
+  const isCalc = kind === "calc";
   return (
-    <a
-      href="/preturi/"
-      className={className}
-      data-open-calc=""
+    <button
+      type="button"
+      className={`zgs-header__modal-pop${className ? ` ${className}` : ""}`}
+      {...(isCalc
+        ? { "data-open-calc": "" as const }
+        : { "data-open-status": "" as const })}
+      aria-label={
+        isCalc
+          ? "Deschide calculatorul de prețuri într-o fereastră"
+          : "Deschide verificarea status într-o fereastră"
+      }
+      title={isCalc ? "Calculator (fereastră)" : "Status (fereastră)"}
       onClick={() => onAfterClick?.()}
     >
-      {children}
-    </a>
-  );
-}
-
-function StatusNavLink({
-  className,
-  onAfterClick,
-  children = "Status",
-}: {
-  className: string;
-  onAfterClick?: () => void;
-  children?: React.ReactNode;
-}) {
-  return (
-    <a
-      href="/formulare/"
-      className={className}
-      data-open-status=""
-      onClick={() => onAfterClick?.()}
-    >
-      {children}
-    </a>
+      <i
+        className={`fa ${isCalc ? "fa-calculator" : "fa-search"}`}
+        aria-hidden
+      />
+    </button>
   );
 }
 
@@ -128,43 +119,56 @@ export function SiteNav() {
           </Link>
 
           <div className="zgs-header__mobile-quick">
-            <StatusNavLink
-              className="zgs-header__pill zgs-header__pill--solid"
-              onAfterClick={close}
-            >
-              Status
-            </StatusNavLink>
-            <PreturiNavLink
-              className="zgs-header__pill zgs-header__pill--ghost"
-              onAfterClick={close}
-            />
+            <div className="zgs-header__action-pair">
+              <Link
+                href="/formulare/"
+                className="zgs-header__pill zgs-header__pill--solid"
+                onClick={close}
+              >
+                Verifică
+              </Link>
+              <ModalPopBtn kind="status" onAfterClick={close} />
+            </div>
+            <div className="zgs-header__action-pair">
+              <Link
+                href="/preturi/"
+                className="zgs-header__pill zgs-header__pill--ghost"
+                onClick={close}
+              >
+                Prețuri
+              </Link>
+              <ModalPopBtn kind="calc" onAfterClick={close} />
+            </div>
           </div>
 
           <nav className="zgs-header__nav" aria-label="Pagini site">
             <ul className="zgs-header__list">
               {LINKS.map(({ href, label }) => (
                 <li key={href}>
-                  {href === "/preturi/" ? (
-                    <PreturiNavLink className={linkCls(href)} />
-                  ) : href === "/formulare/" ? (
-                    <StatusNavLink className={linkCls(href)}>
-                      {label}
-                    </StatusNavLink>
-                  ) : (
-                    <Link href={href} className={linkCls(href)}>
-                      {label}
-                    </Link>
-                  )}
+                  <Link href={href} className={linkCls(href)}>
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
           <div className="zgs-header__actions">
-            <StatusNavLink className="zgs-header__pill zgs-header__pill--solid">
-              Verifică status
-            </StatusNavLink>
-            <PreturiNavLink className="zgs-header__pill zgs-header__pill--ghost" />
+            <div className="zgs-header__action-pair">
+              <Link
+                href="/formulare/"
+                className="zgs-header__pill zgs-header__pill--solid"
+              >
+                Verifică status
+              </Link>
+              <ModalPopBtn kind="status" />
+            </div>
+            <div className="zgs-header__action-pair">
+              <Link href="/preturi/" className="zgs-header__pill zgs-header__pill--ghost">
+                Prețuri
+              </Link>
+              <ModalPopBtn kind="calc" />
+            </div>
             <a
               href="https://licitatii-gsm.ro"
               className="zgs-header__chip zgs-header__chip--auction"
@@ -210,37 +214,37 @@ export function SiteNav() {
         <ul className="zgs-header__sheet-list">
           {LINKS.map(({ href, label }) => (
             <li key={href}>
-              {href === "/preturi/" ? (
-                <PreturiNavLink
-                  className={linkCls(href, true)}
-                  onAfterClick={close}
-                />
-              ) : href === "/formulare/" ? (
-                <StatusNavLink
-                  className={linkCls(href, true)}
-                  onAfterClick={close}
-                >
-                  {label}
-                </StatusNavLink>
-              ) : (
-                <Link href={href} className={linkCls(href, true)} onClick={close}>
-                  {label}
-                </Link>
-              )}
+              <Link
+                href={href}
+                className={linkCls(href, true)}
+                onClick={close}
+              >
+                {label}
+              </Link>
             </li>
           ))}
         </ul>
         <div className="zgs-header__sheet-actions">
-          <StatusNavLink
-            className="zgs-header__pill zgs-header__pill--solid"
-            onAfterClick={close}
-          >
-            Verifică status
-          </StatusNavLink>
-          <PreturiNavLink
-            className="zgs-header__pill zgs-header__pill--ghost"
-            onAfterClick={close}
-          />
+          <div className="zgs-header__action-pair">
+            <Link
+              href="/formulare/"
+              className="zgs-header__pill zgs-header__pill--solid"
+              onClick={close}
+            >
+              Verifică status
+            </Link>
+            <ModalPopBtn kind="status" onAfterClick={close} />
+          </div>
+          <div className="zgs-header__action-pair">
+            <Link
+              href="/preturi/"
+              className="zgs-header__pill zgs-header__pill--ghost"
+              onClick={close}
+            >
+              Prețuri
+            </Link>
+            <ModalPopBtn kind="calc" onAfterClick={close} />
+          </div>
           <a
             href="https://licitatii-gsm.ro"
             className="zgs-header__chip zgs-header__chip--auction"
