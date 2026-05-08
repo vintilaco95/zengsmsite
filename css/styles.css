@@ -3927,6 +3927,26 @@ body {
     min-height: 100vh;
 }
 
+.techblog-article-cover-wrap {
+    margin: 0 0 2rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.techblog-article-cover-img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+.blog-article-section .techblog-article-prose {
+    max-width: 100%;
+}
+
 .blog-article-wrapper {
     max-width: 900px;
     margin: 0 auto;

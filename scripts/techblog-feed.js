@@ -101,10 +101,12 @@
 
     var link = document.createElement('a');
     link.className = 'blog-read-more';
-    link.href = a.url;
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = 'Citește pe TechBlog →';
+    var artPath = 'blog-articol.html?slug=' + encodeURIComponent(a.slug);
+    if (cfg.bloggerSlug) {
+      artPath += '&blogger=' + encodeURIComponent(cfg.bloggerSlug);
+    }
+    link.href = artPath;
+    link.textContent = 'Citește articolul →';
     link.setAttribute('itemprop', 'url');
     body.appendChild(link);
 
@@ -112,25 +114,18 @@
     return art;
   }
 
-  function setSubtitle(blogger, siteName) {
+  function setSubtitle(blogger) {
     var el = document.getElementById('techblog-feed-subtitle');
     if (!el || !blogger || !blogger.name) return;
-    var site = siteName || 'TechBlog';
     el.textContent =
-      'Articole de ' + blogger.name + ' — publicate pe ' + site + ' (deschizi articolul într-o filă nouă).';
+      'Articole de ' + blogger.name + ' — afișate integral pe site-ul ZEN GSM Timișoara.';
   }
 
-  function setAttribution(blogger, site) {
+  function setAttribution(blogger) {
     var el = document.getElementById('techblog-feed-attribution');
-    if (!el || !blogger || !blogger.pageUrl) return;
+    if (!el || !blogger || !blogger.name) return;
     el.hidden = false;
-    var name = site && site.name ? site.name : 'TechBlog';
-    el.innerHTML =
-      'Sursă: <a href="' +
-      esc(blogger.pageUrl) +
-      '" target="_blank" rel="noopener noreferrer">Pagina bloggerului pe ' +
-      esc(name) +
-      '</a>';
+    el.textContent = 'Autor articole: ' + blogger.name + '.';
   }
 
   var root = document.getElementById('techblog-feed-root');
@@ -208,8 +203,8 @@
         if (page === 1) {
           root.className = 'blog-grid';
           root.innerHTML = '';
-          setSubtitle(body.blogger, body.site && body.site.name);
-          setAttribution(body.blogger, body.site);
+          setSubtitle(body.blogger);
+          setAttribution(body.blogger);
         }
 
         state.page = body.page || page;
