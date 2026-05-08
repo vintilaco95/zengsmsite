@@ -1,7 +1,6 @@
 import { JsonLdScripts } from "@/components/JsonLdScripts";
 import { HomeBlogCarouselPortal } from "@/components/HomeBlogCarouselPortal";
 import { LegacyMain } from "@/components/LegacyMain";
-import { PageScripts } from "@/components/PageScripts";
 import { loadTechblogManifest, techblogArticleHref } from "@/lib/techblog-data";
 import { extractJsonLdBlocks } from "@/lib/legacy-html";
 
@@ -27,7 +26,6 @@ export default function HomePage() {
       <JsonLdScripts blocks={jsonLd} />
       <LegacyMain legacyFile="index.html" />
       <HomeBlogCarouselPortal items={carouselItems} />
-      <PageScripts />
     </>
   );
 }

@@ -29,7 +29,7 @@ function linkMatches(pathnameNorm: string, href: string): boolean {
 /**
  * Doar pe pill-uri / CTA-uri din header: click = modal iframe.
  * Linkurile din meniul principal (listă) rămân navigare normală către /preturi/ și /formulare/.
- * Ctrl/Cmd+click pe pill = navigare în filă nouă. Pe pagina curentă, script.js face scroll la anchor.
+ * Ctrl/Cmd+click pe pill = navigare în filă nouă. Modalele folosesc mereu nodurile curente din DOM (vezi script.js).
  */
 function modalPillProps(href: string): {
   "data-open-calc"?: "";

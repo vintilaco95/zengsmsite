@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { BaseSiteScripts } from "./PageScripts";
 import { SiteNav } from "./SiteNav";
 
 type Props = {
@@ -49,6 +50,7 @@ export function SiteGate({ children, backgroundHtml, footerHtml }: Props) {
       {footerHtml ? (
         <div dangerouslySetInnerHTML={{ __html: footerHtml }} />
       ) : null}
+      <BaseSiteScripts />
     </>
   );
 }

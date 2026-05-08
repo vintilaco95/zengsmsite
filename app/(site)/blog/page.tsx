@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLdScripts } from "@/components/JsonLdScripts";
-import { PageScripts } from "@/components/PageScripts";
 import {
   loadTechblogManifest,
   techblogArticleHref,
@@ -171,8 +170,6 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-
-      <PageScripts />
     </>
   );
 }

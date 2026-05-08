@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegacyMain } from "@/components/LegacyMain";
-import { PageScripts } from "@/components/PageScripts";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
@@ -15,7 +14,6 @@ export default function TermeniPage() {
   return (
     <>
       <LegacyMain legacyFile="termeni-conditii.html" />
-      <PageScripts />
     </>
   );
 }

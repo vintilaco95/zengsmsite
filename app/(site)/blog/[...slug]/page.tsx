@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLdScripts } from "@/components/JsonLdScripts";
-import { PageScripts } from "@/components/PageScripts";
 import { rewriteArticleHtmlInner } from "@/lib/html-rewrite";
 import {
   loadTechblogArticle,
@@ -144,7 +143,6 @@ export default async function TechblogArticlePage({ params }: Props) {
           </article>
         </div>
       </section>
-      <PageScripts />
     </>
   );
 }

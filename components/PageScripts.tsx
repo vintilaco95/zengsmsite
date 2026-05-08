@@ -3,11 +3,21 @@
 import Script from "next/script";
 
 type Props = {
-  /** În plus față de script.js și cookie-banner (ex: /scripts/gallery.js) */
+  /** Scripturi suplimentare (ex: /scripts/gallery.js) — fără script.js de bază. */
   extra?: string[];
   /** Încarcă jQuery înainte de scripturile extra (formulare) */
   jquery?: boolean;
 };
+
+/** Încă o dată în layout (SiteGate), ca navigarea către /preturi etc. să aibă mereu modale + restul site-ului. */
+export function BaseSiteScripts() {
+  return (
+    <>
+      <Script src="/scripts/script.js" strategy="afterInteractive" />
+      <Script src="/scripts/cookie-banner.js" strategy="afterInteractive" />
+    </>
+  );
+}
 
 export function PageScripts({ extra = [], jquery = false }: Props) {
   return (
@@ -22,8 +32,6 @@ export function PageScripts({ extra = [], jquery = false }: Props) {
       {extra.map((src) => (
         <Script key={src} src={src} strategy="afterInteractive" />
       ))}
-      <Script src="/scripts/script.js" strategy="afterInteractive" />
-      <Script src="/scripts/cookie-banner.js" strategy="afterInteractive" />
     </>
   );
 }

@@ -427,15 +427,27 @@ document.addEventListener('visibilitychange', () => {
 
 // ===============================
 // Modale calculator + status (model TrustGSM: backdrop HTML static)
+// Re-query DOM la fiecare acțiune: React/Next poate recrea nodurile la navigare;
+// nu ținem referințe vechi către backdrops închise.
 // ===============================
 (function () {
-    const calcBackdrop = document.getElementById('zgs-trust-calc-backdrop');
-    const statusBackdrop = document.getElementById('zgs-trust-status-backdrop');
+    if (window.__zengsmTrustModalInit) return;
+    window.__zengsmTrustModalInit = true;
+
+    function calcBackdrop() {
+        return document.getElementById('zgs-trust-calc-backdrop');
+    }
+
+    function statusBackdrop() {
+        return document.getElementById('zgs-trust-status-backdrop');
+    }
 
     function openModalsCount() {
         let n = 0;
-        if (calcBackdrop && calcBackdrop.classList.contains('is-open')) n += 1;
-        if (statusBackdrop && statusBackdrop.classList.contains('is-open')) n += 1;
+        const c = calcBackdrop();
+        const s = statusBackdrop();
+        if (c && c.classList.contains('is-open')) n += 1;
+        if (s && s.classList.contains('is-open')) n += 1;
         return n;
     }
 
@@ -444,88 +456,79 @@ document.addEventListener('visibilitychange', () => {
     }
 
     function openCalcModal() {
-        if (!calcBackdrop) return;
-        calcBackdrop.classList.add('is-open');
+        const el = calcBackdrop();
+        if (!el) return;
+        el.classList.add('is-open');
         syncBodyModalLock();
     }
 
     function closeCalcModal() {
-        if (!calcBackdrop) return;
-        calcBackdrop.classList.remove('is-open');
+        const el = calcBackdrop();
+        if (!el) return;
+        el.classList.remove('is-open');
         syncBodyModalLock();
     }
 
     function openStatusModal() {
-        if (!statusBackdrop) return;
-        statusBackdrop.classList.add('is-open');
+        const el = statusBackdrop();
+        if (!el) return;
+        el.classList.add('is-open');
         syncBodyModalLock();
     }
 
     function closeStatusModal() {
-        if (!statusBackdrop) return;
-        statusBackdrop.classList.remove('is-open');
+        const el = statusBackdrop();
+        if (!el) return;
+        el.classList.remove('is-open');
         syncBodyModalLock();
     }
 
-
-    function pathNorm() {
-        const p = window.location.pathname || '/';
-        return (p.replace(/\/$/, '') || '/').split('?')[0];
-    }
-
     document.body.addEventListener('click', (e) => {
-        const calcEl = e.target && (e.target instanceof Element) ? e.target.closest('[data-open-calc]') : null;
+        const t = e.target instanceof Element ? e.target : null;
+        if (!t) return;
+
+        if (t.closest('.zgs-trust-calc-close')) {
+            e.preventDefault();
+            closeCalcModal();
+            return;
+        }
+        if (t.closest('.zgs-trust-status-close')) {
+            e.preventDefault();
+            closeStatusModal();
+            return;
+        }
+
+        const c = calcBackdrop();
+        if (c && e.target === c) {
+            closeCalcModal();
+            return;
+        }
+        const s = statusBackdrop();
+        if (s && e.target === s) {
+            closeStatusModal();
+            return;
+        }
+
+        const calcEl = t.closest('[data-open-calc]');
         if (calcEl) {
             if (e.ctrlKey || e.metaKey) return;
-            if (calcEl.tagName === 'A' && pathNorm() === '/preturi') {
-                e.preventDefault();
-                document.getElementById('preturi-calculator')?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-                return;
-            }
             e.preventDefault();
             openCalcModal();
             return;
         }
-        const stEl = e.target && (e.target instanceof Element) ? e.target.closest('[data-open-status]') : null;
+        const stEl = t.closest('[data-open-status]');
         if (stEl) {
             if (e.ctrlKey || e.metaKey) return;
-            if (stEl.tagName === 'A' && pathNorm() === '/formulare') {
-                e.preventDefault();
-                document.getElementById('status-form')?.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start',
-                });
-                return;
-            }
             e.preventDefault();
             openStatusModal();
         }
     });
 
-    if (calcBackdrop) {
-        calcBackdrop.addEventListener('click', (e) => {
-            if (e.target === calcBackdrop) closeCalcModal();
-        });
-        calcBackdrop
-            .querySelector('.zgs-trust-calc-close')
-            ?.addEventListener('click', closeCalcModal);
-    }
-
-    if (statusBackdrop) {
-        statusBackdrop.addEventListener('click', (e) => {
-            if (e.target === statusBackdrop) closeStatusModal();
-        });
-        statusBackdrop
-            .querySelector('.zgs-trust-status-close')
-            ?.addEventListener('click', closeStatusModal);
-    }
-
     document.addEventListener('keydown', (e) => {
         if (e.key !== 'Escape') return;
-        if (calcBackdrop && calcBackdrop.classList.contains('is-open')) closeCalcModal();
-        if (statusBackdrop && statusBackdrop.classList.contains('is-open')) closeStatusModal();
+        const c = calcBackdrop();
+        const st = statusBackdrop();
+        if (c && c.classList.contains('is-open')) closeCalcModal();
+        if (st && st.classList.contains('is-open')) closeStatusModal();
     });
 })();

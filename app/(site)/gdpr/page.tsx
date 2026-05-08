@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { LegacyMain } from "@/components/LegacyMain";
-import { PageScripts } from "@/components/PageScripts";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
@@ -16,7 +15,6 @@ export default function GdprPage() {
   return (
     <>
       <LegacyMain legacyFile="gdpr.html" />
-      <PageScripts />
     </>
   );
 }
