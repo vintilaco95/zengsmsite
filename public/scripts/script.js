@@ -3,20 +3,21 @@
 // ===============================
 // Navigation Scroll Effect
 // ===============================
-const navbar = document.querySelector('.navbar');
+// Header fix (.zgs-header) e gestionat în React (SiteNav). Legacy .navbar doar dacă există.
+const legacyNavbar = document.querySelector('.navbar');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
-});
+if (legacyNavbar) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        if (currentScroll > 100) {
+            legacyNavbar.classList.add('scrolled');
+        } else {
+            legacyNavbar.classList.remove('scrolled');
+        }
+        lastScroll = currentScroll;
+    });
+}
 
 // ===============================
 // Mobile Menu Toggle

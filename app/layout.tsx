@@ -54,6 +54,8 @@ export default function RootLayout({
         {/* Site-ul vechi folosește /public/css/styles.css — menținem același fișier. */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/css/styles.css" />
+        {/* eslint-disable-next-line @next/next/no-css-tags -- CSS legacy + navbar dedicat */}
+        <link rel="stylesheet" href="/css/site-nav.css" />
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"

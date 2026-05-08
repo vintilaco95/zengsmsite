@@ -22,14 +22,6 @@ export function getBackgroundHtml(): string {
   return rewriteLegacyHtml(raw.slice(s, navStart).trim());
 }
 
-export function getNavHtml(): string {
-  const raw = indexHtml();
-  const s = raw.indexOf('<nav class="navbar">');
-  const e = raw.indexOf("</nav>", s);
-  if (s === -1 || e === -1) return "";
-  return rewriteLegacyHtml(raw.slice(s, e + "</nav>".length));
-}
-
 export function getFooterAndUiHtml(): string {
   const raw = indexHtml();
   const s = raw.indexOf('<footer class="footer">');
