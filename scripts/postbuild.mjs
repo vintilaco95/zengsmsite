@@ -1,6 +1,7 @@
 /**
- * După `next build`, generează `out/blog-articol/index.html` din legacy (HTML pur + techblog-article.js).
- * Astfel /blog/:slug poate fi servit prin rewrite pe CDN fără hidratare Next pe URL „greșit”.
+ * După `next build`:
+ * 1) Fișiere *.html minime în `out/` care fac redirect la rutele curate (fără dependență de Render).
+ * 2) `out/blog-articol/index.html` pentru articole TechBlog (fetch live).
  */
 import fs from "fs";
 import path from "path";
@@ -25,6 +26,23 @@ const FILE_TO_ROUTE = {
   "vanzare-telefon": "/vanzare-telefon",
   "blog-articol": "/blog",
 };
+
+/** Pagini vechi „pagina.html” → redirect la ruta Next cu slash final. */
+const LEGACY_HTML_FILES = [
+  "blog",
+  "contact",
+  "despre",
+  "formulare",
+  "galerie",
+  "gdpr",
+  "intrebari-frecvente",
+  "politica-confidentialitate",
+  "preturi",
+  "servicii",
+  "termeni-conditii",
+  "vanzare-telefon",
+  "blog-articol",
+];
 
 function escRe(s) {
   return s.replace(/-/g, "\\-");
@@ -77,23 +95,50 @@ function rewriteBlogArticHtml(html, base) {
   return h;
 }
 
+function redirectStubHtml(targetPath) {
+  const t = JSON.stringify(targetPath);
+  return `<!DOCTYPE html><html lang="ro"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="${targetPath.replace(/"/g, "&quot;")}">
+<meta http-equiv="refresh" content="0;url=${targetPath.replace(/"/g, "&quot;")}">
+<script>location.replace(${t});</script>
+<title>Redirect…</title>
+</head><body style="font-family:system-ui,sans-serif;padding:2rem">
+<p>Actualizare URL. Dacă nu te redirecționează automat: <a href="${targetPath.replace(/"/g, "&quot;")}">apasă aici</a>.</p>
+</body></html>`;
+}
+
 const base = (process.env.NEXT_PUBLIC_SITE_URL || "https://zengsm.ro").replace(
   /\/+$/,
   "",
 );
 const outRoot = path.join(root, "out");
-const src = path.join(root, "legacy-pages/blog-articol.html");
-const outDir = path.join(outRoot, "blog-articol");
-const dest = path.join(outDir, "index.html");
 
 if (!fs.existsSync(outRoot)) {
-  console.warn(
-    "postbuild-blog-articol: lipsește out/ — săr peste (rulează next build mai întâi).",
-  );
+  console.warn("postbuild: lipsește out/ — rulează mai întâi next build.");
   process.exit(0);
 }
 
-fs.mkdirSync(outDir, { recursive: true });
-const raw = fs.readFileSync(src, "utf8");
-fs.writeFileSync(dest, rewriteBlogArticHtml(raw, base), "utf8");
-console.log("postbuild-blog-articol:", dest);
+for (const name of LEGACY_HTML_FILES) {
+  const clean =
+    name === "blog-articol"
+      ? "/blog-articol/"
+      : name === "blog"
+        ? "/blog/"
+        : `/${name}/`;
+  const filePath = path.join(outRoot, `${name}.html`);
+  fs.writeFileSync(filePath, redirectStubHtml(clean), "utf8");
+  console.log("postbuild: alias redirect", filePath, "→", clean);
+}
+
+const artSrc = path.join(root, "legacy-pages/blog-articol.html");
+const artDir = path.join(outRoot, "blog-articol");
+const artDest = path.join(artDir, "index.html");
+fs.mkdirSync(artDir, { recursive: true });
+fs.writeFileSync(
+  artDest,
+  rewriteBlogArticHtml(fs.readFileSync(artSrc, "utf8"), base),
+  "utf8",
+);
+console.log("postbuild: articol shell", artDest);

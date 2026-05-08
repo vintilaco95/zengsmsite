@@ -154,7 +154,7 @@ if (repairForm) {
                     <div class="error-icon">❌</div>
                     <h3>Eroare la Trimitere</h3>
                     <p>Ne pare rău, a apărut o eroare. Te rugăm să încerci din nou sau să ne contactezi telefonic.</p>
-                    <a href="contact.html" class="btn btn-secondary">Contactează-ne Direct</a>
+                    <a href="/contact/" class="btn btn-secondary">Contactează-ne Direct</a>
                 </div>
             `;
             
@@ -268,7 +268,7 @@ if (statusForm) {
                             <h3>📋 Status Reparație: <span class="code-highlight">${cod}</span></h3>
                             ${data}
                             <div class="result-actions">
-                                <a href="contact.html" class="btn btn-secondary">Contactează-ne</a>
+                                <a href="/contact/" class="btn btn-secondary">Contactează-ne</a>
                                 <button onclick="location.reload()" class="btn btn-outline">Verifică Alt Cod</button>
                             </div>
                         </div>
@@ -280,7 +280,7 @@ if (statusForm) {
                             <p>Nu am găsit nicio reparație cu codul <strong>${cod}</strong></p>
                             <p>Verifică dacă ai introdus corect codul sau contactează-ne pentru asistență.</p>
                             <div class="result-actions">
-                                <a href="contact.html" class="btn btn-primary">Contactează-ne</a>
+                                <a href="/contact/" class="btn btn-primary">Contactează-ne</a>
                             </div>
                         </div>
                     `;
@@ -293,7 +293,7 @@ if (statusForm) {
                     <p>Nu am putut verifica statusul în acest moment. Te rugăm să încerci din nou sau să ne contactezi telefonic.</p>
                     <div class="result-actions">
                         <button onclick="verifica(${id_client})" class="btn btn-primary">Încearcă Din Nou</button>
-                        <a href="contact.html" class="btn btn-secondary">Contactează-ne</a>
+                        <a href="/contact/" class="btn btn-secondary">Contactează-ne</a>
                     </div>
                 </div>
             `;
@@ -404,7 +404,7 @@ if (imeiForm) {
                         </div>
                         
                         <div class="result-actions">
-                            <a href="formulare.html" class="btn btn-primary">Trimite în Service</a>
+                            <a href="/formulare/" class="btn btn-primary">Trimite în Service</a>
                             <button onclick="location.reload()" class="btn btn-outline">Verifică Alt IMEI</button>
                         </div>
                     </div>
@@ -419,7 +419,7 @@ if (imeiForm) {
                     <p>Nu am putut verifica IMEI-ul în acest moment. Te rugăm să încerci din nou mai târziu.</p>
                     <p>Pentru verificări urgente, te rugăm să ne contactezi telefonic.</p>
                     <div class="result-actions">
-                        <a href="contact.html" class="btn btn-primary">Contactează-ne</a>
+                        <a href="/contact/" class="btn btn-primary">Contactează-ne</a>
                     </div>
                 </div>
             `;
