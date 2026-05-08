@@ -48,8 +48,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ro">
+    <html lang="ro" data-zengsm-engine="next-export-out">
       <head>
+        {/* Dacă în „View source” nu vezi data-zengsm-engine și fișiere /_next/static/..., Render încă servește build-ul vechi (publish dir greșit sau fără npm run build). */}
         {/* Site-ul vechi folosește /public/css/styles.css — menținem același fișier. */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/css/styles.css" />
