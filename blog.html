@@ -97,7 +97,7 @@
                 <div class="nav-quick-actions">
                     <a href="preturi.html#price-wizard-root" class="nav-quick-btn nav-quick-btn--prices" aria-label="Prețuri și calculator reparații">Prețuri</a>
                     <a href="formulare.html" class="nav-quick-btn nav-quick-btn--status" aria-label="Verifică status reparație">Status</a>
-                    <a href="https://licitatie-gsm.ro" class="nav-quick-btn nav-quick-btn--licitatii" target="_blank" rel="noopener noreferrer" aria-label="Licitații GSM — licitatie-gsm.ro">Licitații GSM</a>
+                    <a href="https://licitatii-gsm.ro" class="nav-quick-btn nav-quick-btn--licitatii" target="_blank" rel="noopener noreferrer" aria-label="Licitații GSM — licitatii-gsm.ro" title="Licitații GSM"><span class="nav-quick-btn__licitatii-long">Licitații GSM</span><span class="nav-quick-btn__licitatii-short" aria-hidden="true">Licitații</span></a>
                 </div>
                 <button class="menu-toggle"><span></span><span></span><span></span></button>
             </div>
@@ -107,88 +107,29 @@
     <section class="page-hero">
         <div class="container">
             <h1 class="page-title gradient-text">Blog & Sfaturi</h1>
-            <p class="page-subtitle">Ghiduri utile și sfaturi de la experți</p>
+            <p class="page-subtitle" id="techblog-feed-subtitle">Ghiduri utile — actualizate din TechBlog pentru comunitatea GSM.</p>
         </div>
     </section>
 
     <section class="blog-section">
         <div class="container">
-            <div class="blog-grid"><article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">📱</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>🕒 5 minute</span>
-                            <span>📅 02 Nov 2025</span>
-                        </div>
-                        <h3>Când trebuie schimbată bateria telefonului și cum îți dai seama că e timpul</h3>
-                        <p>Tot ce trebuie să știi despre durata de viață a bateriei, semnele de uzură și greșelile frecvente care duc la defectarea prematură a acumulatorului.</p>
-                        <a href="blog/blog-cand-trebuie-schimbata-bateria-telefonului-si-cum-iti-dai-seama-ca-e-timpul.html" class="blog-read-more">Citește →</a>
-                    </div>
-                </article>
-
-                                                                <article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">📱</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>🕒 5 minute</span>
-                            <span>📅 03 Nov 2025</span>
-                        </div>
-                        <h3>Ce trebuie să știi despre componentele interne ale smartphone-ului tău</h3>
-                        <p>Un articol educativ despre piesele interne ale telefoanelor moderne și cum întreținerea lor influențează performanța și durata de viață.</p>
-                        <a href="blog/blog-ce-trebuie-sa-stii-despre-componentele-interne-ale-smartphone-ului-tau.html" class="blog-read-more">Citește →</a>
-                    </div>
-                </article>
-
-<article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">📱</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>🕒 3 minute</span>
-                            <span>📅 03 Nov 2025</span>
-                        </div>
-                        <h3>Cum să pregătești un telefon second-hand pentru vânzare</h3>
-                        <p>Un ghid complet pentru cei care vând telefoane second-hand sau fac recondiționări, ideal pentru magazine și ateliere din județul Timiș.</p>
-                        <a href="blog/blog-cum-sa-pregatesti-un-telefon-second-hand-pentru-vanzare.html" class="blog-read-more">Citește →</a>
-                    </div>
-                </article>
-
-<article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">📱</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>🕒 5 minute</span>
-                            <span>📅 03 Nov 2025</span>
-                        </div>
-                        <h3>Cele mai frecvente 5 reparații de telefoane la ZEN GSM Timișoara</h3>
-                        <p>O privire realistă în culisele unui service GSM profesionist din Timișoara: ce se strică cel mai des, cât costă și cum poți preveni problemele.</p>
-                        <a href="blog/blog-cele-mai-frecvente-5-reparatii-de-telefoane-la-zen-gsm-timisoara.html" class="blog-read-more">Citește →</a>
-                    </div>
-                </article>
-
-<article class="blog-card">
-                    <div class="blog-image">
-                        <div class="blog-placeholder">📱</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span>🕒 3 minute</span>
-                            <span>📅 03 Nov 2025</span>
-                        </div>
-                        <h3>Cum să prelungești viața telefonului tău – Ghid practic de întreținere</h3>
-                        <p>Află cum să-ți menții smartphone-ul în stare excelentă ani la rând, cu sfaturi practice de la un service GSM din Timișoara care repară zilnic zeci de telefoane. Ideal pentru clienții din județul Timiș care vor să evite costuri inutile.</p>
-                        <a href="blog/blog-cum-sa-prelungesti-viata-telefonului-tau-ghid-practic-de-intretinere.html" class="blog-read-more">Citește →</a>
-                    </div>
-                </article>
-
-</div>
+            <p id="techblog-feed-attribution" class="techblog-feed-attribution" hidden></p>
+            <!--
+              TechBlog (e-gsm.ro): în Admin → editează bloggerul → „Feed extern”: bifează + origini CORS.
+              Aici: slug-ul aceluiași blogger.
+            -->
+            <div
+                id="techblog-feed-root"
+                class="blog-grid"
+                data-techblog-api-base="https://e-gsm.ro"
+                data-techblog-blogger-slug="andreea"
+            ></div>
+            <div class="blog-feed-more-wrap">
+                <button type="button" id="techblog-feed-more" class="btn btn-primary techblog-feed-more-btn" hidden>
+                    Încarcă mai multe
+                </button>
+            </div>
+        </div>
     </section>
 
     <section class="tips-section">
@@ -287,7 +228,7 @@
             <div class="footer-bottom">
                 <p>&copy; 2025 Zen GSM - SC Ajutor Technologia SRL. Toate drepturile rezervate. | <a href="termeni-conditii.html" style="text-decoration: none; color: aliceblue;">Termeni și Condiții</a> | <a href="politica-confidentialitate.html" style="text-decoration: none; color: aliceblue;">Politică Confidențialitate</a> | <a href="gdpr.html" style="text-decoration: none; color: aliceblue;">GDPR</a></p>
                 <p class="footer-sites-network">
-                    <a href="https://gsmos.ro" target="_blank" rel="noopener noreferrer">GSM OS</a><span class="footer-sites-sep" aria-hidden="true">·</span><a href="https://ajutortechnologia.ro" target="_blank" rel="noopener noreferrer">Ajutor Technologia</a><span class="footer-sites-sep" aria-hidden="true">·</span><a href="https://licitatie-gsm.ro" target="_blank" rel="noopener noreferrer">Licitații GSM</a>
+                    <a href="https://gsmos.ro" target="_blank" rel="noopener noreferrer">GSM OS</a><span class="footer-sites-sep" aria-hidden="true">·</span><a href="https://ajutortechnologia.ro" target="_blank" rel="noopener noreferrer">Ajutor Technologia</a><span class="footer-sites-sep" aria-hidden="true">·</span><a href="https://licitatii-gsm.ro" target="_blank" rel="noopener noreferrer">Licitații GSM</a>
                 </p>
 
             </div>
@@ -301,6 +242,7 @@
 </a>
 
     <script src="scripts/script.js"></script>
+    <script src="scripts/techblog-feed.js"></script>
     <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-content">
@@ -315,7 +257,6 @@
         </div>
     </div>
 
-    <script src="scripts/script.js"></script>
     <script src="scripts/cookie-banner.js"></script>
 </body>
 </html>
