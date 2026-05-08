@@ -1,15 +1,22 @@
-Site static (HTML la rădăcină, fără npm build).
+ZEN GSM — deploy static (Next.js, ca ajutortechnologia)
 
-Pe Render → Static Site:
-- Build Command: (lăsați gol) sau `true` dacă folosiți Blueprint
-- Publish directory: .   (punct = rădăcina repo-ului)
+Build local:
+  npm install
+  npm run build
+  → output în directorul `out/`
+  npm run start  (serve local pe port 3000)
 
-Dacă aveți încă setat „dist” sau „npm run build”, ștergeți — nu există Eleventy în acest repo.
+Render.com → Static Site:
+  Build Command:  npm ci && npm run build
+  Publish directory:  out
 
-URL-uri blog (/blog/slug) — fără .htaccess pe CDN:
-- Opțiune A: conectați Blueprint din render.yaml (vezi `routes` acolo).
-- Opțiune B: în Dashboard → serviciul static → Redirects/Rewrites, adăugați două Rewrite:
-  - Source /blog/:slug/  → Destination /blog-articol.html?slug=:slug
-  - Source /blog/:slug   → Destination /blog-articol.html?slug=:slug
-Render aplică regulile doar dacă NU există deja fișier la acea cale (articolele vechi în /blog/*.html rămân servite direct).
-Formularul vechi blog-articol.html?slug=… e redirecționat în browser spre /blog/slug (script în blog-articol.html), fiindcă Render nu poate face 301 pe baza query string.
+Variabile de mediu (opțional, în Dashboard):
+  NEXT_PUBLIC_SITE_URL=https://zengsm.ro
+  TECHBLOG_API_BASE=https://www.e-gsm.ro
+  TECHBLOG_BLOGGER_SLUG=andreea
+
+Articolele TechBlog sunt pre-randate la build (`/blog/[slug]`). După articole noi pe e-gsm.ro, rulează un redeploy ZEN GSM ca să apară în site.
+
+Blueprint: `render.yaml` (redirecționări de la vechile URL-uri *.html către rute fără .html).
+
+Fișiere HTML vechi pentru extracție la build: `legacy-pages/`. Nu se publică; conținutul este înglobat în paginile Next.

@@ -1,18 +1,59 @@
-# ZEN GSM — Render Blueprint (site static, HTML la rădăcină).
-# Dacă ai deja serviciul în Dashboard, pune același `name` ca acolo ca să nu se creeze unul nou.
-# Alternativ: rulează fără Blueprint și adaugă manual aceleași rute la Static Site → Redirects/Rewrites.
+# ZEN GSM — Render Static Site (Next.js export)
 #
-# Docs: https://render.com/docs/redirects-rewrites
+# Build: npm ci && npm run build → folder `out/`
+# Pe Render: Static Site, Publish directory: out
+#
+# Variabile utile în Dashboard (Build + Environment):
+#   NEXT_PUBLIC_SITE_URL=https://zengsm.ro
+#   TECHBLOG_API_BASE=https://www.e-gsm.ro
+#   TECHBLOG_BLOGGER_SLUG=andreea
+#
+# Redirecțiile .html → rute curate (vezi și next.config.ts redirects — nu se aplică la export;
+# de aceea le ținem aici pe CDN).
+
 services:
   - type: web
     name: zengsm
     runtime: static
-    buildCommand: "true"
-    staticPublishPath: .
+    buildCommand: npm ci && npm run build
+    staticPublishPath: out
     routes:
-      - type: rewrite
-        source: /blog/:slug/
-        destination: /blog-articol.html?slug=:slug
-      - type: rewrite
-        source: /blog/:slug
-        destination: /blog-articol.html?slug=:slug
+      - type: redirect
+        source: /index.html
+        destination: /
+      - type: redirect
+        source: /blog.html
+        destination: /blog
+      - type: redirect
+        source: /contact.html
+        destination: /contact
+      - type: redirect
+        source: /despre.html
+        destination: /despre
+      - type: redirect
+        source: /formulare.html
+        destination: /formulare
+      - type: redirect
+        source: /galerie.html
+        destination: /galerie
+      - type: redirect
+        source: /gdpr.html
+        destination: /gdpr
+      - type: redirect
+        source: /intrebari-frecvente.html
+        destination: /intrebari-frecvente
+      - type: redirect
+        source: /politica-confidentialitate.html
+        destination: /politica-confidentialitate
+      - type: redirect
+        source: /preturi.html
+        destination: /preturi
+      - type: redirect
+        source: /servicii.html
+        destination: /servicii
+      - type: redirect
+        source: /termeni-conditii.html
+        destination: /termeni-conditii
+      - type: redirect
+        source: /vanzare-telefon.html
+        destination: /vanzare-telefon

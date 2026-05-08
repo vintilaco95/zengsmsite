@@ -110,6 +110,7 @@
       );
   }
 
+  function upsertMetaProperty(prop, content) {
     if (!content) return;
     var el = document.querySelector('meta[property="' + prop.replace(/"/g, '\\"') + '"]');
     if (!el) {
