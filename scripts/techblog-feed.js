@@ -27,8 +27,16 @@
     var perPage = (w && w.perPage) || parseInt(root.getAttribute('data-techblog-per-page') || '12', 10);
     if (Number.isNaN(perPage) || perPage < 1) perPage = 12;
     if (perPage > 30) perPage = 30;
+    var apiBaseRaw = String(apiBase).trim().replace(/\/+$/, '');
+    try {
+      var u = new URL(apiBaseRaw.indexOf('//') === -1 ? 'https://' + apiBaseRaw : apiBaseRaw);
+      if (u.hostname.toLowerCase() === 'e-gsm.ro') {
+        u.hostname = 'www.e-gsm.ro';
+        apiBaseRaw = u.origin;
+      }
+    } catch (e) {}
     return {
-      apiBase: String(apiBase).trim().replace(/\/+$/, ''),
+      apiBase: apiBaseRaw,
       bloggerSlug: String(bloggerSlug).trim(),
       perPage: perPage,
     };
