@@ -26,8 +26,12 @@ function linkMatches(pathnameNorm: string, href: string): boolean {
   return h === pathnameNorm;
 }
 
-/** Fără butoane extra: click normal = pagină; Shift+click = modal (vezi script.js). */
-function shiftModalProps(href: string): {
+/**
+ * Doar pe pill-uri / CTA-uri din header: click = modal iframe.
+ * Linkurile din meniul principal (listă) rămân navigare normală către /preturi/ și /formulare/.
+ * Ctrl/Cmd+click pe pill = navigare în filă nouă. Pe pagina curentă, script.js face scroll la anchor.
+ */
+function modalPillProps(href: string): {
   "data-open-calc"?: "";
   "data-open-status"?: "";
   title?: string;
@@ -35,12 +39,12 @@ function shiftModalProps(href: string): {
   if (href === "/preturi/")
     return {
       "data-open-calc": "",
-      title: "Shift+click: calculator în fereastră",
+      title: "Ctrl+click sau click dreapta: pagina Prețuri",
     };
   if (href === "/formulare/")
     return {
       "data-open-status": "",
-      title: "Shift+click: status în fereastră",
+      title: "Ctrl+click sau click dreapta: pagina Verifică",
     };
   return {};
 }
@@ -109,7 +113,7 @@ export function SiteNav() {
               href="/formulare/"
               className="zgs-header__pill zgs-header__pill--solid"
               onClick={close}
-              {...shiftModalProps("/formulare/")}
+              {...modalPillProps("/formulare/")}
             >
               Status
             </Link>
@@ -117,7 +121,7 @@ export function SiteNav() {
               href="/preturi/"
               className="zgs-header__pill zgs-header__pill--ghost"
               onClick={close}
-              {...shiftModalProps("/preturi/")}
+              {...modalPillProps("/preturi/")}
             >
               Prețuri
             </Link>
@@ -130,7 +134,6 @@ export function SiteNav() {
                   <Link
                     href={href}
                     className={linkCls(href)}
-                    {...shiftModalProps(href)}
                   >
                     {label}
                   </Link>
@@ -143,14 +146,14 @@ export function SiteNav() {
             <Link
               href="/formulare/"
               className="zgs-header__pill zgs-header__pill--solid"
-              {...shiftModalProps("/formulare/")}
+              {...modalPillProps("/formulare/")}
             >
               Verifică status
             </Link>
             <Link
               href="/preturi/"
               className="zgs-header__pill zgs-header__pill--ghost"
-              {...shiftModalProps("/preturi/")}
+              {...modalPillProps("/preturi/")}
             >
               Prețuri
             </Link>
@@ -203,7 +206,6 @@ export function SiteNav() {
                 href={href}
                 className={linkCls(href, true)}
                 onClick={close}
-                {...shiftModalProps(href)}
               >
                 {label}
               </Link>
@@ -215,7 +217,7 @@ export function SiteNav() {
             href="/formulare/"
             className="zgs-header__pill zgs-header__pill--solid"
             onClick={close}
-            {...shiftModalProps("/formulare/")}
+            {...modalPillProps("/formulare/")}
           >
             Verifică status
           </Link>
@@ -223,7 +225,7 @@ export function SiteNav() {
             href="/preturi/"
             className="zgs-header__pill zgs-header__pill--ghost"
             onClick={close}
-            {...shiftModalProps("/preturi/")}
+            {...modalPillProps("/preturi/")}
           >
             Prețuri
           </Link>

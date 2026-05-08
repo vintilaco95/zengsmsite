@@ -468,10 +468,21 @@ document.addEventListener('visibilitychange', () => {
     }
 
 
+    function pathNorm() {
+        const p = window.location.pathname || '/';
+        return (p.replace(/\/$/, '') || '/').split('?')[0];
+    }
+
     document.body.addEventListener('click', (e) => {
         const calcEl = e.target && (e.target instanceof Element) ? e.target.closest('[data-open-calc]') : null;
         if (calcEl) {
-            if (calcEl.tagName === "A" && !e.shiftKey) {
+            if (e.ctrlKey || e.metaKey) return;
+            if (calcEl.tagName === 'A' && pathNorm() === '/preturi') {
+                e.preventDefault();
+                document.getElementById('preturi-calculator')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
                 return;
             }
             e.preventDefault();
@@ -480,7 +491,13 @@ document.addEventListener('visibilitychange', () => {
         }
         const stEl = e.target && (e.target instanceof Element) ? e.target.closest('[data-open-status]') : null;
         if (stEl) {
-            if (stEl.tagName === "A" && !e.shiftKey) {
+            if (e.ctrlKey || e.metaKey) return;
+            if (stEl.tagName === 'A' && pathNorm() === '/formulare') {
+                e.preventDefault();
+                document.getElementById('status-form')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
                 return;
             }
             e.preventDefault();
