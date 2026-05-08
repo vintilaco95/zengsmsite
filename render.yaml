@@ -7,6 +7,7 @@
 #   NEXT_PUBLIC_SITE_URL=https://zengsm.ro
 #   TECHBLOG_API_BASE=https://www.e-gsm.ro
 #   TECHBLOG_BLOGGER_SLUG=andreea
+#   TECHBLOG_SKIP_SYNC=1 — sare fetch (doar dacă există deja data/techblog/)
 #
 # Redirecțiile .html → rute curate (vezi și next.config.ts redirects — nu se aplică la export;
 # de aceea le ținem aici pe CDN).
@@ -59,10 +60,4 @@ services:
         destination: /vanzare-telefon/
       - type: redirect
         source: /blog-articol.html
-        destination: /blog-articol/
-      - type: rewrite
-        source: /blog/:slug/
-        destination: /blog-articol/
-      - type: rewrite
-        source: /blog/:slug
         destination: /blog-articol/

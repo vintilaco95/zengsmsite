@@ -2,5 +2,7 @@ node_modules
 .next
 out
 .env*.local
+data/techblog/*
+!data/techblog/.gitkeep
 .DS_Store
 npm-debug.log*
