@@ -502,13 +502,23 @@ body.zgs-embed-fill {
   min-height: 100dvh;
 }
 
-/* În iframe-ul calculatorului: fără scroll pe document — doar în zona grid (.price-wizard-scroll) */
+/* În iframe: fără scroll pe body — scroll în interiorul calculatorului React */
 .zgs-embed-bare-layout[data-zgs-embed="preturi"] {
   overflow: hidden;
   height: 100%;
 }
 
-/* Host LegacyMain în embed: ocupă tot spațiul flex; altfel conținutul rămâne îngust / aliniat stânga */
+.zgs-embed-bare-layout[data-zgs-embed="preturi"] > section#preturi-calculator {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+/* Host LegacyMain în embed (formulare etc.) */
 .zgs-embed-bare-layout[data-zgs-embed="preturi"] > .zgs-embed-legacy-host,
 .zgs-embed-bare-layout[data-zgs-embed="formulare"] > .zgs-embed-legacy-host {
   flex: 1 1 auto;
@@ -526,170 +536,6 @@ html.zgs-embed-fill body.zgs-embed-fill .zgs-embed-bare-layout[data-zgs-embed="p
   width: 100%;
   max-width: none;
   align-self: stretch;
-}
-
-html.zgs-embed-fill body.zgs-embed-fill .zgs-embed-price-wizard.page-preturi {
-  width: 100%;
-  max-width: none;
-}
-
-/* Coloană wizard: întreaga lățime a iframe-ului (nu doar după hidratare) */
-.zgs-embed-price-wizard.page-preturi {
-  width: 100%;
-  max-width: none;
-  box-sizing: border-box;
-  flex: 1 1 auto;
-  min-height: 0;
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-self: stretch;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-calculator-section--lead,
-.zgs-embed-price-wizard.page-preturi #price-wizard-root {
-  width: 100%;
-  max-width: none;
-  align-self: stretch;
-}
-
-.zgs-embed-price-wizard.page-preturi .container.container--preturi-calc {
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.zgs-embed-price-wizard.page-preturi #price-wizard-root {
-  scroll-margin-top: 0 !important;
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-calculator-section,
-.zgs-embed-price-wizard.page-preturi .price-calculator-section--lead {
-  padding-top: 0 !important;
-  padding-bottom: 0.25rem !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  margin: 0 !important;
-  background: transparent !important;
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.zgs-embed-price-wizard.page-preturi .container--preturi-calc {
-  gap: 0 !important;
-  padding-top: 0 !important;
-  flex: 1 1 auto;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  max-width: none !important;
-  width: 100% !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-shell {
-  margin-top: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  flex: 1 1 auto !important;
-  min-height: 0 !important;
-  max-width: none !important;
-  width: 100% !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-shell > #price-wizard-app.price-wizard-app {
-  flex: 1 1 auto !important;
-  min-height: 0 !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-app {
-  flex: 1 1 auto !important;
-  min-height: 0 !important;
-  min-width: 0 !important;
-  width: 100% !important;
-  max-width: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  border-radius: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  backdrop-filter: none !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-progress {
-  flex-shrink: 0;
-  padding: 0.65rem 0.75rem 0.55rem !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-chips {
-  flex-shrink: 0;
-  padding: 0.45rem 0.75rem 0 !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-boot:not([hidden]) {
-  min-height: 0 !important;
-  padding: 0.55rem 0.85rem !important;
-  flex: 1 1 auto;
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-boot .result-placeholder {
-  padding: 0;
-  margin: 0;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-boot .placeholder-icon {
-  font-size: 1.35rem;
-  margin-bottom: 0.12rem;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-boot h3 {
-  font-size: 0.92rem;
-  margin: 0.12rem 0;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-boot p {
-  margin: 0;
-  font-size: 0.78rem;
-  opacity: 0.9;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-progress-track {
-  max-width: none !important;
-  min-width: 100% !important;
-  width: 100% !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-body {
-  flex: 1 1 auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
-  overflow: hidden !important;
-  display: flex !important;
-  flex-direction: column !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-panel {
-  padding: 0.5rem 0.65rem 0.35rem !important;
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(52, 211, 153, 0.45) rgba(15, 23, 42, 0.5);
-}
-
-.zgs-embed-price-wizard.page-preturi .price-wizard-footer {
-  flex-shrink: 0;
-  padding: 0.5rem 0.75rem 0.65rem !important;
 }
 
 .zgs-embed-formulare-status.formulare-status-embed .forms-section {

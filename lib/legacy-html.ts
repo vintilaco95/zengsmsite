@@ -36,6 +36,11 @@ export function getTrustModalsHtml(): string {
   return rewriteLegacyHtml(raw.trim());
 }
 
+/** Fragment HTML (fără nav/footer) din `legacy-pages/`. */
+export function getLegacyFragmentHtml(legacyFile: string): string {
+  return rewriteLegacyHtml(read(legacyFile).trim());
+}
+
 /** Conținut principal între </nav> și <footer> dintr-o pagină veche. */
 export function getMainHtml(legacyFile: string): string {
   const raw = read(legacyFile);

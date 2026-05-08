@@ -74,7 +74,7 @@
                     <li><a href="contact.html" class="nav-link">📞 Contact</a></li>
                 </ul>
                 <div class="nav-quick-actions">
-                    <a href="preturi.html#price-wizard-root" class="nav-quick-btn nav-quick-btn--prices" aria-label="Prețuri și calculator reparații">Prețuri</a>
+                    <a href="preturi.html#preturi-calculator" class="nav-quick-btn nav-quick-btn--prices" aria-label="Prețuri și calculator reparații">Prețuri</a>
                     <a href="formulare.html" class="nav-quick-btn nav-quick-btn--status" aria-label="Verifică status reparație">Status</a>
                     <a href="https://licitatii-gsm.ro" class="nav-quick-btn nav-quick-btn--licitatii" target="_blank" rel="noopener noreferrer" aria-label="Licitații GSM — licitatii-gsm.ro" title="Licitații GSM"><span class="nav-quick-btn__licitatii-long">Licitații GSM</span><span class="nav-quick-btn__licitatii-short" aria-hidden="true">Licitații</span></a>
                 </div>
@@ -87,297 +87,202 @@
         </div>
     </nav>
 
-    <section class="price-calculator-section price-calculator-section--lead" id="price-wizard-root">
-        <div class="container container--preturi-calc">
-            <header class="preturi-calc-head">
-                <h1 class="preturi-calc-heading gradient-text">Prețuri reparații</h1>
-            </header>
-            <div class="price-wizard-shell">
-                <div id="price-wizard-boot" class="price-wizard-boot" role="status"></div>
+    <section class="price-calculator-section preturi-static-lists">
+  <div class="container container--preturi-calc">
+    <div class="price-table">
+      <h3>🛡️ Accesorii & Protecție</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Produs</th>
+            <th>Preț de la</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Folie de protecție Super-Strong din sticlă 99D</td>
+            <td class="price">60 RON</td>
+          </tr>
+          <tr>
+            <td>Folie de protecție Mega-Strong din sticlă cu GARANȚIE 12 luni</td>
+            <td class="price">80 RON</td>
+          </tr>
+          <tr>
+            <td>Folie de protecție din sticlă Privacy Protection</td>
+            <td class="price">80 RON</td>
+          </tr>
+          <tr>
+            <td>Folie de protecție din Silicon HydroGel Standard 150 microni</td>
+            <td class="price">40 RON</td>
+          </tr>
+          <tr>
+            <td>Folie de protecție din Silicon HydroGel SmartCover 190 microni</td>
+            <td class="price">60 RON</td>
+          </tr>
+          <tr>
+            <td>Folie de protecție Premium din Silicon Gros SmartCover 210 microni</td>
+            <td class="price">60 RON</td>
+          </tr>
+          <tr>
+            <td>Folie de protecție Silicon Privacy MAT sau Glossy Premium de 190 microni</td>
+            <td class="price">80 RON</td>
+          </tr>
+          <tr>
+            <td>Skin-uri de protecție pentru carcasă în diferite texturi și personalizate cu fotografie</td>
+            <td class="price">70 RON</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-                <div id="price-wizard-app" class="price-wizard-app" hidden>
-                    <div class="price-wizard-progress" role="navigation" aria-label="Pași calculator">
-                        <div class="price-wizard-progress-track">
-                            <div class="price-wizard-progress-step" data-wizard-step="1">
-                                <span class="price-wizard-progress-num">1</span>
-                                <span class="price-wizard-progress-label">Marcă</span>
-                            </div>
-                            <div class="price-wizard-progress-step" data-wizard-step="2">
-                                <span class="price-wizard-progress-num">2</span>
-                                <span class="price-wizard-progress-label">Model</span>
-                            </div>
-                            <div class="price-wizard-progress-step" data-wizard-step="3">
-                                <span class="price-wizard-progress-num">3</span>
-                                <span class="price-wizard-progress-label">Reparație</span>
-                            </div>
-                            <div class="price-wizard-progress-step" data-wizard-step="4">
-                                <span class="price-wizard-progress-num">4</span>
-                                <span class="price-wizard-progress-label">Rezultat</span>
-                            </div>
-                        </div>
-                    </div>
+    <br /><br /><br /><br />
 
-                    <div class="price-wizard-chips" id="price-wizard-chips" aria-live="polite"></div>
+    <div class="price-table">
+      <h3>Preturi manopere Software !</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Produs</th>
+            <th>Preț de la</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resetare / Reinstalare software telefon</td>
+            <td class="price">100 RON</td>
+          </tr>
+          <tr>
+            <td>Transfer de date de pe un telefon pe altul</td>
+            <td class="price">80 RON</td>
+          </tr>
+          <tr>
+            <td>Transfer de date de pe un telefon cu ecranul nefunctional</td>
+            <td class="price">150 RON</td>
+          </tr>
+          <tr>
+            <td>Instalare / Reinstalare Windows</td>
+            <td class="price">150 RON</td>
+          </tr>
+          <tr>
+            <td>Resetare parola / recuperare cont</td>
+            <td class="price">80 RON</td>
+          </tr>
+          <tr>
+            <td>Eliminare cont Google - FRP</td>
+            <td class="price">150 RON</td>
+          </tr>
+          <tr>
+            <td>Curatare Software de virusi , aplicatii daunatoare , si date CACHE</td>
+            <td class="price">100 RON</td>
+          </tr>
+          <tr>
+            <td>Instalari si configurari de Aplicatii</td>
+            <td class="price">50 RON</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-                    <div class="price-wizard-body">
-                        <div class="price-wizard-panel" data-wizard-panel="1" id="price-panel-brand" role="tabpanel" aria-labelledby="price-wizard-title-brand">
-                            <h3 class="price-wizard-panel-title price-wizard-panel-title--preturi" id="price-wizard-title-brand">Alege marca</h3>
-                            <div class="price-wizard-scroll">
-                                <div class="price-wizard-grid" id="price-brands-grid"></div>
-                            </div>
-                        </div>
-                        <div class="price-wizard-panel" data-wizard-panel="2" id="price-panel-model" role="tabpanel" aria-labelledby="price-wizard-title-model" hidden>
-                            <h3 class="price-wizard-panel-title price-wizard-panel-title--preturi" id="price-wizard-title-model">Alege modelul</h3>
-                            <div class="price-wizard-scroll">
-                                <div class="price-wizard-grid price-wizard-grid-models" id="price-models-grid"></div>
-                            </div>
-                        </div>
-                        <div class="price-wizard-panel" data-wizard-panel="3" id="price-panel-repair" role="tabpanel" aria-labelledby="price-wizard-title-repair" hidden>
-                            <h3 class="price-wizard-panel-title price-wizard-panel-title--preturi" id="price-wizard-title-repair">Alege tipul reparației</h3>
-                            <div class="price-wizard-scroll">
-                                <div class="price-wizard-grid price-wizard-grid-repairs" id="price-repairs-grid"></div>
-                            </div>
-                        </div>
-                        <div class="price-wizard-panel price-wizard-panel-result" data-wizard-panel="4" id="price-panel-result" role="tabpanel" aria-labelledby="price-wizard-title-result" hidden>
-                            <h3 class="price-wizard-panel-title price-wizard-sr-only" id="price-wizard-title-result">Estimare preț</h3>
-                            <div class="calculator-result price-wizard-result-wrap" id="calculator-result"></div>
-                        </div>
-                    </div>
+    <br /><br /><br /><br />
 
-                    <div class="price-wizard-footer">
-                        <button type="button" class="btn btn-secondary price-wizard-back-btn" id="price-wizard-back">
-                            <i class="fa fa-arrow-left" aria-hidden="true"></i> Înapoi
-                        </button>
-                        <button type="button" class="btn btn-primary price-wizard-restart-btn" id="price-wizard-restart" hidden aria-label="Resetează calculatorul">
-                            <i class="fa fa-refresh" aria-hidden="true"></i> Resetează
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <div class="price-table">
+      <h3>Preturi manopere generale</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Produs</th>
+            <th>Preț de la</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Curatare difuzoare / Microfoane / Mufa de Incarcare</td>
+            <td class="price">80 RON</td>
+          </tr>
+          <tr>
+            <td>Relipire Ecran / Capac telefon</td>
+            <td class="price">50 RON</td>
+          </tr>
+          <tr>
+            <td>Curatare / Schimbare pasta termoconductoare Laptop</td>
+            <td class="price">150 RON</td>
+          </tr>
+          <tr>
+            <td>Manopera standard Inlocuire componente aduse de client (fara garantie)</td>
+            <td class="price">200 RON</td>
+          </tr>
+          <tr>
+            <td>Taxa de constatare Standard (Daca nu se alege efectuarea reparatiei in service)</td>
+            <td class="price">100 RON</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="price-notes">
+      <h3>📋 Note Importante</h3>
+      <div class="notes-grid">
+        <div class="note-card">
+          <h4>💰 Prețuri</h4>
+          <ul>
+            <li>Toate prețurile includ manoperă de montaj</li>
+            <li>Prețurile sunt valabile pentru piese în stoc</li>
+            <li>Prețurile sunt orientative dacă piesa nu se află în stoc si trebuie comandată</li>
+            <li>Pentru modele mai vechi, contactați-ne pentru preț</li>
+            <li>Primiți reduceri pentru mai multe servicii</li>
+            <li>Se achita doar manopera cea mai mare în cazul în care se înlocuiesc mai multe componente</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- Price Filter -->
-   
-
-    <!-- Prices Section -->
-    
-
-                    <div class="price-table">
-                        <h3>🛡️ Accesorii & Protecție</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Produs</th>
-                                    <th>Preț de la</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Folie de protecție Super-Strong din sticlă 99D </td>
-                                    <td class="price">60 RON</td>
-                                </tr>
-                                <tr>
-                                    <td>Folie de protecție Mega-Strong din sticlă cu GARANȚIE 12 luni</td>
-                                    <td class="price">80 RON</td>
-                                </tr>
-                                <tr>
-                                    <td>Folie de protecție din sticlă Privacy Protection</td>
-                                    <td class="price">80 RON</td>
-                                </tr>
-                                <tr>
-                                    <td>Folie de protecție din Silicon HydroGel Standard 150 microni</td>
-                                    <td class="price">40 RON</td>
-                                </tr>
-                                <tr>
-                                    <td>Folie de protecție din Silicon HydroGel SmartCover 190 microni</td>
-                                    <td class="price">60 RON</td>
-                                </tr>
-                                <tr>
-                                    <td>Folie de protecție Premium din Silicon Gros SmartCover 210 microni</td>
-                                    <td class="price">60 RON</td>
-                                </tr>
-                                <tr>
-                                    <td>Folie de protecție Silicon Privacy MAT sau Glossy Premium de 190 microni</td>
-                                    <td class="price">80 RON</td>
-                                </tr>
-                                <tr>
-                                    <td>Skin-uri de protecție pentru carcasă în diferite texturi și personalizate cu fotografie</td>
-                                    <td class="price">70 RON</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-<br>
-<br>
-<br>
-<br>
-            <div class="price-table">
-                        <h3>Preturi manopere Software !</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Produs</th>
-                                    <th>Preț de la</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Resetare / Reinstalare software telefon</td>
-                                        <td class="price">100 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Transfer de date de pe un telefon pe altul</td>
-                                        <td class="price">80 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Transfer de date de pe un telefon cu ecranul nefunctional</td>
-                                        <td class="price">150 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Instalare / Reinstalare Windows</td>
-                                        <td class="price">150 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Resetare parola / recuperare cont</td>
-                                        <td class="price">80 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Eliminare cont Google  -  FRP</td>
-                                        <td class="price">150 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Curatare Software de virusi , aplicatii daunatoare , si date CACHE</td>
-                                        <td class="price">100 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Instalari si configurari de Aplicatii</td>
-                                        <td class="price">50 RON</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
-                <br>
-<br>
-<br>
-<br>
-            <div class="price-table">
-                        <h3>Preturi manopere generale</h3>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Produs</th>
-                                    <th>Preț de la</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Curatare difuzoare / Microfoane / Mufa de Incarcare</td>
-                                        <td class="price">80 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Relipire Ecran / Capac telefon</td>
-                                        <td class="price">50 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Curatare / Schimbare pasta termoconductoare Laptop</td>
-                                        <td class="price">150 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Manopera standard Inlocuire componente aduse de client (fara garantie) </td>
-                                        <td class="price">200 RON</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Taxa de constatare Standard (Daca nu se alege efectuarea reparatiei in service)</td>
-                                        <td class="price">100 RON</td>
-                                    </tr>
-                                    
-        
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            <!-- Price Notes -->
-            <div class="price-notes">
-                <h3>📋 Note Importante</h3>
-                <div class="notes-grid">
-                    <div class="note-card">
-                        <h4>💰 Prețuri</h4>
-                        <ul>
-                            <li>Toate prețurile includ manoperă de montaj</li>
-                            <li>Prețurile sunt valabile pentru piese în stoc</li>
-                            <li>Prețurile sunt orientative dacă piesa nu se află în stoc si trebuie comandată</li>
-                            <li>Pentru modele mai vechi, contactați-ne pentru preț</li>
-                            <li>Primiți reduceri pentru mai multe servicii </li>
-                            <li>Se achita doar manopera cea mai mare în cazul în care se înlocuiesc mai multe componente</li>
-                        </ul>
-                    </div>
-                    <div class="note-card">
-                        <h4>⏱️ Durata</h4>
-                        <ul>
-                            <li>Service rapid: 24-48h pentru majoritatea reparațiilor</li>
-                            <li>Display și baterii: în aceeași zi (dacă este în stoc)</li>
-                            <li>Service urgent disponibil (+50 RON prioritizare)</li>
-                            <li>Termenul maxim de reparație se poate extinde pana la maxim 15 zile în cazuri exceptionale</li>
-                            <li>Diagnostic gratuit în 15-30 minute</li>
-                        </ul>
-                    </div>
-                    <div class="note-card">
-                        <h4>🛡️ Garanție</h4>
-                        <ul>
-                            <li>3 luni la toate reparațiile hardware</li>
-                            <li>12 luni pentru baterii și display-uri originale</li>
-                            <li>Garanția acoperă piese și manoperă</li>
-                            <li>Nu acoperă defecțiuni cauzate de utilizator</li>
-                            <li>Nu acoperă daune cauzate de contact cu lichide</li>
-                            <li>Nu acoperă daune fizice ulterioare</li>
-                            <li>Nu acoperă defecțiuni ce nu au legatură cu defectul remediat inițial</li>
-                        </ul>
-                    </div>
-                    <div class="note-card">
-                        <h4>💳 Plată</h4>
-                        <ul>
-                            <li>Acceptăm numerar și card</li>
-                            <li>Plată la ridicare (după reparație)</li>
-                            <li>Factură la cerere și garanție inclusă la orice reparație</li>
-                            <li>Acceptăm plata cu cardul desigur !</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+        <div class="note-card">
+          <h4>⏱️ Durata</h4>
+          <ul>
+            <li>Service rapid: 24-48h pentru majoritatea reparațiilor</li>
+            <li>Display și baterii: în aceeași zi (dacă este în stoc)</li>
+            <li>Service urgent disponibil (+50 RON prioritizare)</li>
+            <li>Termenul maxim de reparație se poate extinde pana la maxim 15 zile în cazuri exceptionale</li>
+            <li>Diagnostic gratuit în 15-30 minute</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ai nevoie de o ofertă personalizată?</h2>
-                <p>Contactează-ne pentru un preț exact pentru modelul tău de telefon.</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary btn-large">
-                        <span>Contactează-ne</span>
-                    </a>
-                    <a href="formulare.html" class="btn btn-secondary btn-large">
-                        <span>Trimite în Service</span>
-                    </a>
-                </div>
-            </div>
+        <div class="note-card">
+          <h4>🛡️ Garanție</h4>
+          <ul>
+            <li>3 luni la toate reparațiile hardware</li>
+            <li>12 luni pentru baterii și display-uri originale</li>
+            <li>Garanția acoperă piese și manoperă</li>
+            <li>Nu acoperă defecțiuni cauzate de utilizator</li>
+            <li>Nu acoperă daune cauzate de contact cu lichide</li>
+            <li>Nu acoperă daune fizice ulterioare</li>
+            <li>Nu acoperă defecțiuni ce nu au legatură cu defectul remediat inițial</li>
+          </ul>
         </div>
-    </section>
+        <div class="note-card">
+          <h4>💳 Plată</h4>
+          <ul>
+            <li>Acceptăm numerar și card</li>
+            <li>Plată la ridicare (după reparație)</li>
+            <li>Factură la cerere și garanție inclusă la orice reparație</li>
+            <li>Acceptăm plata cu cardul desigur !</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-   <footer class="footer">
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Ai nevoie de o ofertă personalizată?</h2>
+      <p>Contactează-ne pentru un preț exact pentru modelul tău de telefon.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary btn-large"><span>Contactează-ne</span></a>
+        <a href="formulare.html" class="btn btn-secondary btn-large"><span>Trimite în Service</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+       <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
@@ -459,8 +364,7 @@
 </a>
 
     <script src="scripts/script.js"></script>
-    <script src="scripts/simple-price-calculator.js"></script>
-    <!-- Cookie Banner -->
+        <!-- Cookie Banner -->
     <div id="cookie-banner" class="cookie-banner" style="display: none;">
         <div class="cookie-content">
             <div class="cookie-text">

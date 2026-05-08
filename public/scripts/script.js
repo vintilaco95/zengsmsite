@@ -477,7 +477,7 @@ document.addEventListener('visibilitychange', () => {
         if (calcEl) {
             if (pathNorm() === '/preturi') {
                 e.preventDefault();
-                document.getElementById('price-wizard-root')?.scrollIntoView({
+                document.getElementById('preturi-calculator')?.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start',
                 });

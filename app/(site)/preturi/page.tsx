@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { LegacyMain } from "@/components/LegacyMain";
-import { PageScripts } from "@/components/PageScripts";
-import { PriceWizardBoot } from "@/components/PriceWizardBoot";
+import { PriceCalculatorApp } from "@/components/price-calculator/PriceCalculatorApp";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
@@ -15,10 +14,9 @@ export const metadata: Metadata = {
 
 export default function PreturiPage() {
   return (
-    <>
-      <LegacyMain legacyFile="preturi.html" />
-      <PriceWizardBoot />
-      <PageScripts extra={["/scripts/simple-price-calculator.js"]} />
-    </>
+    <div className="page-preturi">
+      <PriceCalculatorApp variant="page" />
+      <LegacyMain legacyFile="preturi-bottom.html" fragment />
+    </div>
   );
 }

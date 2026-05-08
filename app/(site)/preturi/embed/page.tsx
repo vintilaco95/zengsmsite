@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { LegacyMain } from "@/components/LegacyMain";
-import { PageScripts } from "@/components/PageScripts";
-import { PriceWizardBoot } from "@/components/PriceWizardBoot";
+import { PriceCalculatorApp } from "@/components/price-calculator/PriceCalculatorApp";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
@@ -13,14 +11,5 @@ export const metadata: Metadata = {
 };
 
 export default function PreturiEmbedPage() {
-  return (
-    <>
-      <LegacyMain
-        legacyFile="preturi-wizard-embed.html"
-        className="zgs-embed-legacy-host"
-      />
-      <PriceWizardBoot />
-      <PageScripts extra={["/scripts/simple-price-calculator.js"]} />
-    </>
-  );
+  return <PriceCalculatorApp variant="embed" />;
 }
