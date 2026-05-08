@@ -23,37 +23,46 @@ services:
         destination: /
       - type: redirect
         source: /blog.html
-        destination: /blog
+        destination: /blog/
       - type: redirect
         source: /contact.html
-        destination: /contact
+        destination: /contact/
       - type: redirect
         source: /despre.html
-        destination: /despre
+        destination: /despre/
       - type: redirect
         source: /formulare.html
-        destination: /formulare
+        destination: /formulare/
       - type: redirect
         source: /galerie.html
-        destination: /galerie
+        destination: /galerie/
       - type: redirect
         source: /gdpr.html
-        destination: /gdpr
+        destination: /gdpr/
       - type: redirect
         source: /intrebari-frecvente.html
-        destination: /intrebari-frecvente
+        destination: /intrebari-frecvente/
       - type: redirect
         source: /politica-confidentialitate.html
-        destination: /politica-confidentialitate
+        destination: /politica-confidentialitate/
       - type: redirect
         source: /preturi.html
-        destination: /preturi
+        destination: /preturi/
       - type: redirect
         source: /servicii.html
-        destination: /servicii
+        destination: /servicii/
       - type: redirect
         source: /termeni-conditii.html
-        destination: /termeni-conditii
+        destination: /termeni-conditii/
       - type: redirect
         source: /vanzare-telefon.html
-        destination: /vanzare-telefon
+        destination: /vanzare-telefon/
+      - type: redirect
+        source: /blog-articol.html
+        destination: /blog-articol/
+      - type: rewrite
+        source: /blog/:slug/
+        destination: /blog-articol/
+      - type: rewrite
+        source: /blog/:slug
+        destination: /blog-articol/

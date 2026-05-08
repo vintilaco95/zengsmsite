@@ -7,12 +7,15 @@
     (function () {
       try {
         var path = window.location.pathname || '';
-        if (path.indexOf('blog-articol.html') === -1) return;
+        var norm = path.replace(/\/+$/, '') || '/';
+        var isOldFile = path.indexOf('blog-articol.html') !== -1;
+        var isBlogArticRoute = norm === '/blog-articol';
+        if (!isOldFile && !isBlogArticRoute) return;
         var q = new URLSearchParams(window.location.search);
         var slug = (q.get('slug') || '').trim();
         if (!slug) return;
         var seg = slug.split('/').filter(Boolean).map(encodeURIComponent).join('/');
-        var url = '/blog/' + seg;
+        var url = '/blog/' + seg + '/';
         var b = q.get('blogger');
         if (b) url += '?blogger=' + encodeURIComponent(b);
         if (window.location.hash) url += window.location.hash;

@@ -111,7 +111,8 @@
         .split('/')
         .filter(Boolean)
         .map(encodeURIComponent)
-        .join('/');
+        .join('/') +
+      '/';
     link.href = origin + artPath;
     link.textContent = 'Citește articolul →';
     link.setAttribute('itemprop', 'url');

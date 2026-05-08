@@ -1,22 +1,22 @@
-ZEN GSM — deploy static (Next.js, ca ajutortechnologia)
+ZEN GSM — deploy static (Next.js export)
 
 Build local:
   npm install
   npm run build
-  → output în directorul `out/`
-  npm run start  (serve local pe port 3000)
+  → `next build` + pagina articol TechBlog în `out/blog-articol/index.html` (încărcare live din API la fiecare vizită).
+  npm run start  (serve `out/` pe port 3000)
 
 Render.com → Static Site:
   Build Command:  npm ci && npm run build
   Publish directory:  out
+  (Verifică că serviciul folosește **Blueprint** sau aceleași setări — dacă publish e încă „.”, vei vedea în continuare URL-uri .html vechi.)
 
-Variabile de mediu (opțional, în Dashboard):
-  NEXT_PUBLIC_SITE_URL=https://zengsm.ro
-  TECHBLOG_API_BASE=https://www.e-gsm.ro
-  TECHBLOG_BLOGGER_SLUG=andreea
+Variabile de mediu (Build + Runtime pentru postbuild):
+  NEXT_PUBLIC_SITE_URL=https://zengsm.ro   (sau https://www.zengsm.ro dacă așa e canonicul tău)
 
-Articolele TechBlog sunt pre-randate la build (`/blog/[slug]`). După articole noi pe e-gsm.ro, rulează un redeploy ZEN GSM ca să apară în site.
+Rute:
+  Paginile site (/, /servicii, …) sunt din Next.
+  /blog/lista → client fetch (techblog-feed.js).
+  /blog/<slug> → rewrite CDN → `blog-articol/index.html` → `techblog-article.js` citește mereu articolul de pe e-gsm (fără redeploy la articol nou).
 
-Blueprint: `render.yaml` (redirecționări de la vechile URL-uri *.html către rute fără .html).
-
-Fișiere HTML vechi pentru extracție la build: `legacy-pages/`. Nu se publică; conținutul este înglobat în paginile Next.
+Fișiere: `legacy-pages/` (sursă la build); `render.yaml` — redirect *.html → rute curate + rewrite articole.

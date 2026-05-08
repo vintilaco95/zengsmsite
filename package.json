@@ -6,7 +6,7 @@
     "clean": "rm -rf .next out",
     "dev": "next dev --turbopack",
     "dev:webpack": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/postbuild-blog-articol.mjs",
     "start": "npx --yes serve@14 out -l 3000",
     "lint": "eslint"
   },

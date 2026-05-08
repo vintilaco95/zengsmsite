@@ -56,7 +56,11 @@
   }
 
   function articleCanonicalPath(slug) {
-    return '/blog/' + String(slug || '').split('/').map(encodeURIComponent).join('/');
+    return (
+      '/blog/' +
+      String(slug || '').split('/').map(encodeURIComponent).join('/') +
+      '/'
+    );
   }
 
   function getConfig() {
@@ -85,26 +89,34 @@
 
   /** @param {string} html */
   function rewriteArticleHtmlInner(html) {
-    var toClean = function (slug) {
-      return '/blog/' + String(slug).split('/').map(encodeURIComponent).join('/');
+    var toPath = function (slug) {
+      return (
+        '/blog/' +
+        String(slug)
+          .split('/')
+          .filter(Boolean)
+          .map(encodeURIComponent)
+          .join('/') +
+        '/'
+      );
     };
     return String(html || '')
       .replace(/href=(["'])https?:\/\/(?:www\.)?e-gsm\.ro\/articol\/([^"']*)/gi, function (_m, q, rest) {
         var slug = String(rest).split(/[#?]/)[0].replace(/\/+$/, '');
-        return 'href=' + q + toClean(slug) + q;
+        return 'href=' + q + toPath(slug) + q;
       })
       .replace(/href=(["'])\/articol\/([^"']*)/gi, function (_m, q, rest) {
         var slug = String(rest).split(/[#?]/)[0].replace(/\/+$/, '');
-        return 'href=' + q + toClean(slug) + q;
+        return 'href=' + q + toPath(slug) + q;
       })
       .replace(
         /href=(["'])blog-articol\.html\?slug=([^&"'#]+)(?:&blogger=[^"'#]+)?/gi,
         function (_m, q, slugEnc) {
           try {
             var slug = decodeURIComponent(String(slugEnc));
-            return 'href=' + q + toClean(slug) + q;
+            return 'href=' + q + toPath(slug) + q;
           } catch (e) {
-            return 'href=' + q + '/blog/' + slugEnc + q;
+            return 'href=' + q + '/blog/' + slugEnc + '/' + q;
           }
         }
       );
