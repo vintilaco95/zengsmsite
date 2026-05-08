@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
+import { usePriceWizard } from "./PriceWizardContext";
 
 const LINKS: { href: string; label: string }[] = [
   { href: "/", label: "Acasă" },
@@ -25,6 +26,29 @@ function linkMatches(pathnameNorm: string, href: string): boolean {
   const h = normalizePath(href.split("#")[0] ?? href);
   if (h === "/blog") return pathnameNorm.startsWith("/blog");
   return h === pathnameNorm;
+}
+
+function PreturiNavLink({
+  className,
+  onAfterClick,
+}: {
+  className: string;
+  onAfterClick?: () => void;
+}) {
+  const { openPriceWizard } = usePriceWizard();
+  return (
+    <a
+      href="/preturi/"
+      className={className}
+      onClick={(e) => {
+        e.preventDefault();
+        onAfterClick?.();
+        openPriceWizard();
+      }}
+    >
+      Prețuri
+    </a>
+  );
 }
 
 export function SiteNav() {
@@ -71,64 +95,82 @@ export function SiteNav() {
     <header
       className={`zgs-header${scrolled ? " zgs-header--scrolled" : ""}`}
     >
-      <div className="zgs-header__inner">
-        <Link href="/" className="zgs-header__brand" onClick={close}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- asset static + export */}
-          <img
-            src="/images/IMG_7712.PNG"
-            alt=""
-            width={160}
-            height={40}
-            className="zgs-header__logo"
-            decoding="async"
-          />
-          <span className="zgs-header__title">ZEN GSM</span>
-        </Link>
-
-        <nav className="zgs-header__nav" aria-label="Pagini site">
-          <ul className="zgs-header__list">
-            {LINKS.map(({ href, label }) => (
-              <li key={href}>
-                <Link href={href} className={linkCls(href)}>
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div className="zgs-header__actions">
-          <Link href="/formulare/" className="zgs-header__cta">
-            Verifică status
+      <div className="zgs-header__bar">
+        <div className="zgs-header__inner">
+          <Link href="/" className="zgs-header__brand" onClick={close}>
+            {/* eslint-disable-next-line @next/next/no-img-element -- asset static + export */}
+            <img
+              src="/images/IMG_7712.PNG"
+              alt=""
+              width={160}
+              height={40}
+              className="zgs-header__logo"
+              decoding="async"
+            />
+            <span className="zgs-header__title">ZEN GSM</span>
           </Link>
-          <Link href="/preturi/#price-wizard-root" className="zgs-header__chip">
-            Prețuri
-          </Link>
-          <a
-            href="https://licitatii-gsm.ro"
-            className="zgs-header__chip zgs-header__chip--auction"
-            target="_blank"
-            rel="noopener noreferrer"
+
+          <div className="zgs-header__mobile-quick">
+            <Link
+              href="/formulare/"
+              className="zgs-header__cta zgs-header__cta--compact"
+              onClick={close}
+            >
+              Status
+            </Link>
+            <PreturiNavLink
+              className="zgs-header__chip"
+              onAfterClick={close}
+            />
+          </div>
+
+          <nav className="zgs-header__nav" aria-label="Pagini site">
+            <ul className="zgs-header__list">
+              {LINKS.map(({ href, label }) => (
+                <li key={href}>
+                  {href === "/preturi/" ? (
+                    <PreturiNavLink className={linkCls(href)} />
+                  ) : (
+                    <Link href={href} className={linkCls(href)}>
+                      {label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          <div className="zgs-header__actions">
+            <Link href="/formulare/" className="zgs-header__cta">
+              Verifică status
+            </Link>
+            <PreturiNavLink className="zgs-header__chip" />
+            <a
+              href="https://licitatii-gsm.ro"
+              className="zgs-header__chip zgs-header__chip--auction"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="zgs-header__chip-long">Licitații GSM</span>
+              <span className="zgs-header__chip-short" aria-hidden="true">
+                Licitații
+              </span>
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className={`zgs-header__burger${open ? " is-open" : ""}`}
+            aria-label={open ? "Închide meniul" : "Deschide meniul"}
+            aria-expanded={open}
+            aria-controls={sheetId}
+            onClick={() => setOpen((v) => !v)}
           >
-            <span className="zgs-header__chip-long">Licitații GSM</span>
-            <span className="zgs-header__chip-short" aria-hidden="true">
-              Licitații
-            </span>
-          </a>
+            <span />
+            <span />
+            <span />
+          </button>
         </div>
-
-        <button
-          type="button"
-          className={`zgs-header__burger${open ? " is-open" : ""}`}
-          aria-label={open ? "Închide meniul" : "Deschide meniul"}
-          aria-expanded={open}
-          aria-controls={sheetId}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
       </div>
 
       <div
@@ -148,9 +190,16 @@ export function SiteNav() {
         <ul className="zgs-header__sheet-list">
           {LINKS.map(({ href, label }) => (
             <li key={href}>
-              <Link href={href} className={linkCls(href, true)} onClick={close}>
-                {label}
-              </Link>
+              {href === "/preturi/" ? (
+                <PreturiNavLink
+                  className={linkCls(href, true)}
+                  onAfterClick={close}
+                />
+              ) : (
+                <Link href={href} className={linkCls(href, true)} onClick={close}>
+                  {label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
@@ -158,13 +207,10 @@ export function SiteNav() {
           <Link href="/formulare/" className="zgs-header__cta" onClick={close}>
             Verifică status
           </Link>
-          <Link
-            href="/preturi/#price-wizard-root"
+          <PreturiNavLink
             className="zgs-header__chip"
-            onClick={close}
-          >
-            Prețuri
-          </Link>
+            onAfterClick={close}
+          />
           <a
             href="https://licitatii-gsm.ro"
             className="zgs-header__chip zgs-header__chip--auction"

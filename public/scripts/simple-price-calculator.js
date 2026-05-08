@@ -517,8 +517,16 @@ function wizardRestart() {
 function bindWizardControls() {
   const back = $("price-wizard-back");
   const restart = $("price-wizard-restart");
-  if (back) back.addEventListener("click", () => wizardBack());
-  if (restart) restart.addEventListener("click", () => wizardRestart());
+  if (back) {
+    const el = back.cloneNode(true);
+    back.replaceWith(el);
+    el.addEventListener("click", () => wizardBack());
+  }
+  if (restart) {
+    const el = restart.cloneNode(true);
+    restart.replaceWith(el);
+    el.addEventListener("click", () => wizardRestart());
+  }
 }
 
 function showApp() {
@@ -538,39 +546,60 @@ function startWizard() {
   wizardRestart();
 }
 
+/** @type {Promise<void> | null} */
+let initPromise = null;
+
 async function init() {
-  const boot = $("price-wizard-boot");
-  const app = $("price-wizard-app");
+  if (!$("price-wizard-root")) return;
 
-  if (boot) {
-    boot.hidden = false;
-    boot.innerHTML = bootHtmlLoading();
-  }
-  if (app) app.hidden = true;
+  const run = async () => {
+    const boot = $("price-wizard-boot");
+    const app = $("price-wizard-app");
 
-  let ok = false;
-  try {
-    if (TOKEN.trim()) ok = await load();
-  } catch (e) {
-    console.error(e);
-    rows = [];
-  }
+    if (boot) {
+      boot.hidden = false;
+      boot.innerHTML = bootHtmlLoading();
+    }
+    if (app) app.hidden = true;
 
-  if (!TOKEN.trim()) {
-    if (boot) boot.innerHTML = bootHtmlNoToken();
-    return;
-  }
-  if (!ok) {
-    if (boot) boot.innerHTML = bootHtmlError();
-    return;
-  }
+    let ok = rows.length > 0;
+    if (!ok) {
+      try {
+        if (TOKEN.trim()) ok = await load();
+      } catch (e) {
+        console.error(e);
+        rows = [];
+      }
+    }
 
-  showApp();
-  startWizard();
+    if (!TOKEN.trim()) {
+      if (boot) boot.innerHTML = bootHtmlNoToken();
+      return;
+    }
+    if (!ok) {
+      if (boot) boot.innerHTML = bootHtmlError();
+      return;
+    }
+
+    showApp();
+    startWizard();
+  };
+
+  if (initPromise) return initPromise;
+  initPromise = run().finally(() => {
+    initPromise = null;
+  });
+  return initPromise;
+}
+
+window.__ZENGSM_BOOT_PRICE_WIZARD = init;
+
+function bootPriceWizardIfPresent() {
+  if ($("price-wizard-root")) void init();
 }
 
 if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", init);
+  document.addEventListener("DOMContentLoaded", bootPriceWizardIfPresent);
 } else {
-  init();
+  bootPriceWizardIfPresent();
 }
