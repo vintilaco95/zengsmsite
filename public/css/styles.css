@@ -59,7 +59,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: move;
 }
 
 html {
@@ -261,7 +260,8 @@ body {
 .nav-content {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     gap: 1.5rem;
     width: 100%;
     min-width: 0;
@@ -322,8 +322,8 @@ body {
     transition: all var(--transition-base);
     flex-shrink: 0;
     white-space: nowrap;
-    margin-left: auto;
-    margin-right: 1rem;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 @media (max-width: 968px) {
@@ -340,7 +340,8 @@ body {
     flex-wrap: nowrap;
     margin: 0;
     padding: 0;
-    flex: 1;
+    flex: 0 1 auto;
+    min-width: 0;
     justify-content: flex-end;
 }
 
@@ -435,10 +436,6 @@ body {
         display: none;
     }
 
-    .nav-content > .nav-menu {
-        order: 4;
-    }
-
     .nav-content > .menu-toggle {
         order: 5;
     }
@@ -517,10 +514,25 @@ body {
         box-shadow: 0 4px 16px rgba(245, 158, 11, 0.45);
     }
 
-    /* Pe ecrane mari bara laterală ocupă puțin spațiu — meniul poate să se micșoreze fără overflow */
     .nav-content > .nav-menu {
-        flex: 1 1 0;
+        order: 4;
+        margin-left: auto;
+        flex: 0 1 auto;
         min-width: 0;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-content > .nav-menu::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .nav-content > .nav-menu::-webkit-scrollbar-thumb {
+        background: rgba(16, 185, 129, 0.45);
+        border-radius: 999px;
     }
 }
 
@@ -1553,43 +1565,43 @@ body {
         animation: fadeInUp 0.4s ease-out backwards;
     }
     
-    .nav-menu .nav-link:nth-child(1) {
+    .nav-menu li:nth-child(1) .nav-link {
         animation-delay: 0.1s;
     }
     
-    .nav-menu .nav-link:nth-child(2) {
+    .nav-menu li:nth-child(2) .nav-link {
         animation-delay: 0.15s;
     }
     
-    .nav-menu .nav-link:nth-child(3) {
+    .nav-menu li:nth-child(3) .nav-link {
         animation-delay: 0.2s;
     }
     
-    .nav-menu .nav-link:nth-child(4) {
+    .nav-menu li:nth-child(4) .nav-link {
         animation-delay: 0.25s;
     }
     
-    .nav-menu .nav-link:nth-child(5) {
+    .nav-menu li:nth-child(5) .nav-link {
         animation-delay: 0.3s;
     }
     
-    .nav-menu .nav-link:nth-child(6) {
+    .nav-menu li:nth-child(6) .nav-link {
         animation-delay: 0.35s;
     }
     
-    .nav-menu .nav-link:nth-child(7) {
+    .nav-menu li:nth-child(7) .nav-link {
         animation-delay: 0.4s;
     }
     
-    .nav-menu .nav-link:nth-child(8) {
+    .nav-menu li:nth-child(8) .nav-link {
         animation-delay: 0.45s;
     }
     
-    .nav-menu .nav-link:nth-child(9) {
+    .nav-menu li:nth-child(9) .nav-link {
         animation-delay: 0.5s;
     }
     
-    .nav-menu .nav-link:nth-child(10) {
+    .nav-menu li:nth-child(10) .nav-link {
         animation-delay: 0.55s;
     }
     
