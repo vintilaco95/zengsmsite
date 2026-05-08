@@ -254,6 +254,11 @@
   display: none;
 }
 
+/* Pe desktop panelul mobil nu trebuie în flux — altfel apare ca a doua bară de navigare. */
+.zgs-header__sheet {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .zgs-header__inner {
     grid-template-columns: minmax(0, 1fr) auto;
