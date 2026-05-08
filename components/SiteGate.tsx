@@ -11,10 +11,12 @@ type Props = {
 
 export function SiteGate({ children, backgroundHtml, footerHtml }: Props) {
   const pathname = usePathname();
-  const bare = pathname.startsWith("/preturi/embed");
+  const bare =
+    pathname.startsWith("/preturi/embed") ||
+    pathname.startsWith("/formulare/embed");
 
   if (bare) {
-    return <div className="zgs-preturi-embed-layout">{children}</div>;
+    return <div className="zgs-embed-bare-layout">{children}</div>;
   }
 
   return (

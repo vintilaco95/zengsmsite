@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
-import { usePriceWizard } from "./PriceWizardContext";
+import { useSiteModals } from "./SiteModalsContext";
 
 const LINKS: { href: string; label: string }[] = [
   { href: "/", label: "Acasă" },
@@ -31,11 +31,13 @@ function linkMatches(pathnameNorm: string, href: string): boolean {
 function PreturiNavLink({
   className,
   onAfterClick,
+  children = "Prețuri",
 }: {
   className: string;
   onAfterClick?: () => void;
+  children?: React.ReactNode;
 }) {
-  const { openPriceWizard } = usePriceWizard();
+  const { openPriceWizard } = useSiteModals();
   return (
     <a
       href="/preturi/"
@@ -46,7 +48,32 @@ function PreturiNavLink({
         openPriceWizard();
       }}
     >
-      Prețuri
+      {children}
+    </a>
+  );
+}
+
+function StatusNavLink({
+  className,
+  onAfterClick,
+  children = "Status",
+}: {
+  className: string;
+  onAfterClick?: () => void;
+  children?: React.ReactNode;
+}) {
+  const { openStatusForm } = useSiteModals();
+  return (
+    <a
+      href="/formulare/"
+      className={className}
+      onClick={(e) => {
+        e.preventDefault();
+        onAfterClick?.();
+        openStatusForm();
+      }}
+    >
+      {children}
     </a>
   );
 }
@@ -111,15 +138,14 @@ export function SiteNav() {
           </Link>
 
           <div className="zgs-header__mobile-quick">
-            <Link
-              href="/formulare/"
-              className="zgs-header__cta zgs-header__cta--compact"
-              onClick={close}
+            <StatusNavLink
+              className="zgs-header__pill zgs-header__pill--solid"
+              onAfterClick={close}
             >
               Status
-            </Link>
+            </StatusNavLink>
             <PreturiNavLink
-              className="zgs-header__chip"
+              className="zgs-header__pill zgs-header__pill--ghost"
               onAfterClick={close}
             />
           </div>
@@ -130,6 +156,10 @@ export function SiteNav() {
                 <li key={href}>
                   {href === "/preturi/" ? (
                     <PreturiNavLink className={linkCls(href)} />
+                  ) : href === "/formulare/" ? (
+                    <StatusNavLink className={linkCls(href)}>
+                      {label}
+                    </StatusNavLink>
                   ) : (
                     <Link href={href} className={linkCls(href)}>
                       {label}
@@ -141,10 +171,10 @@ export function SiteNav() {
           </nav>
 
           <div className="zgs-header__actions">
-            <Link href="/formulare/" className="zgs-header__cta">
+            <StatusNavLink className="zgs-header__pill zgs-header__pill--solid">
               Verifică status
-            </Link>
-            <PreturiNavLink className="zgs-header__chip" />
+            </StatusNavLink>
+            <PreturiNavLink className="zgs-header__pill zgs-header__pill--ghost" />
             <a
               href="https://licitatii-gsm.ro"
               className="zgs-header__chip zgs-header__chip--auction"
@@ -195,6 +225,13 @@ export function SiteNav() {
                   className={linkCls(href, true)}
                   onAfterClick={close}
                 />
+              ) : href === "/formulare/" ? (
+                <StatusNavLink
+                  className={linkCls(href, true)}
+                  onAfterClick={close}
+                >
+                  {label}
+                </StatusNavLink>
               ) : (
                 <Link href={href} className={linkCls(href, true)} onClick={close}>
                   {label}
@@ -204,11 +241,14 @@ export function SiteNav() {
           ))}
         </ul>
         <div className="zgs-header__sheet-actions">
-          <Link href="/formulare/" className="zgs-header__cta" onClick={close}>
+          <StatusNavLink
+            className="zgs-header__pill zgs-header__pill--solid"
+            onAfterClick={close}
+          >
             Verifică status
-          </Link>
+          </StatusNavLink>
           <PreturiNavLink
-            className="zgs-header__chip"
+            className="zgs-header__pill zgs-header__pill--ghost"
             onAfterClick={close}
           />
           <a

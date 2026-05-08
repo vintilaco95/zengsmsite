@@ -6,16 +6,15 @@ import { getSiteUrl } from "@/lib/site-url";
 const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  title: "Verifică Status Service | ZEN GSM Timișoara",
-  description:
-    "Formulare verificare status reparație și solicitări service la ZEN GSM Timișoara.",
-  alternates: { canonical: `${siteUrl}/formulare/` },
+  title: "Formulare service & status | ZEN GSM",
+  robots: { index: false, follow: true },
+  alternates: { canonical: `${siteUrl}/formulare/embed/` },
 };
 
-export default function FormularePage() {
+export default function FormulareEmbedPage() {
   return (
     <>
-      <LegacyMain legacyFile="formulare.html" />
+      <LegacyMain legacyFile="formulare-embed.html" />
       <PageScripts jquery extra={["/scripts/forms.js"]} />
     </>
   );

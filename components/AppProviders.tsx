@@ -1,25 +1,24 @@
 "use client";
 
-import {
-  useCallback,
-  useMemo,
-  useState,
-} from "react";
-import { PriceWizardContext } from "./PriceWizardContext";
-import { PriceWizardModal } from "./PriceWizardModal";
+import { useCallback, useMemo, useState } from "react";
+import { EmbedModal, type EmbedModalVariant } from "./EmbedModal";
+import { SiteModalsContext } from "./SiteModalsContext";
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
-  const [open, setOpen] = useState(false);
-  const openPriceWizard = useCallback(() => setOpen(true), []);
+  const [embed, setEmbed] = useState<EmbedModalVariant | null>(null);
+
+  const openPriceWizard = useCallback(() => setEmbed("price"), []);
+  const openStatusForm = useCallback(() => setEmbed("status"), []);
+
   const value = useMemo(
-    () => ({ openPriceWizard }),
-    [openPriceWizard],
+    () => ({ openPriceWizard, openStatusForm }),
+    [openPriceWizard, openStatusForm],
   );
 
   return (
-    <PriceWizardContext.Provider value={value}>
+    <SiteModalsContext.Provider value={value}>
       {children}
-      <PriceWizardModal open={open} onClose={() => setOpen(false)} />
-    </PriceWizardContext.Provider>
+      <EmbedModal variant={embed} onClose={() => setEmbed(null)} />
+    </SiteModalsContext.Provider>
   );
 }
