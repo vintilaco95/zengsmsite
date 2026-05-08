@@ -14,7 +14,7 @@ const FILE_TO_ROUTE: Record<string, string> = {
   preturi: "/preturi",
   servicii: "/servicii",
   "termeni-conditii": "/termeni-conditii",
-  "vanzare-telefon": "/vanzare-telefon",
+  "vanzare-telefon": "/",
   "blog-articol": "/blog",
 };
 

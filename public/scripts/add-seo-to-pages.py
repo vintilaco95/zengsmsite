@@ -74,11 +74,6 @@ pages_config = {
         "description": "Sfaturi utile despre îngrijirea telefonului, cum să protejezi bateria, reparații și multe altele. Ghiduri de la experți în reparații GSM.",
         "url": f"{SITE_URL}/blog.html"
     },
-    "vanzare-telefon.html": {
-        "title": "Vinde Telefonul Tău | ZEN GSM Timișoara - Prețuri Corecte",
-        "description": "Vinde telefonul tău la prețuri corecte. Calculare preț instant, evaluare profesională. iPhone, Samsung, Huawei, Xiaomi. Plata imediată.",
-        "url": f"{SITE_URL}/vanzare-telefon.html"
-    },
     "formulare.html": {
         "title": "Verifică Status Service | ZEN GSM Timișoara",
         "description": "Verifică statusul reparației telefonului tău. Introdu codul de urmărire și vezi progresul în timp real. Service GSM profesional.",

@@ -3,108 +3,244 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-  
-  <!-- Homepage -->
   <url>
-    <loc>https://www.zengsm.ro/</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Servicii -->
   <url>
-    <loc>https://www.zengsm.ro/servicii.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/servicii/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Prețuri -->
   <url>
-    <loc>https://www.zengsm.ro/preturi.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/preturi/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
-  
-  <!-- Formulare / Verificare -->
   <url>
-    <loc>https://www.zengsm.ro/formulare.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/formulare/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.85</priority>
   </url>
-  
-  <!-- Vânzare Telefon -->
   <url>
-    <loc>https://www.zengsm.ro/vanzare-telefon.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/galerie/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.75</priority>
   </url>
-  
-  <!-- Galerie -->
   <url>
-    <loc>https://www.zengsm.ro/galerie.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/despre/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.75</priority>
   </url>
-  
-  <!-- Despre -->
   <url>
-    <loc>https://www.zengsm.ro/despre.html</loc>
-    <lastmod>2025-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- Blog -->
-  <url>
-    <loc>https://www.zengsm.ro/blog.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/blog/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
-  
-  <!-- FAQ -->
   <url>
-    <loc>https://www.zengsm.ro/intrebari-frecvente.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/intrebari-frecvente/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  
-  <!-- Contact -->
   <url>
-    <loc>https://www.zengsm.ro/contact.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/contact/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
-  
-  <!-- Legal Pages -->
   <url>
-    <loc>https://www.zengsm.ro/termeni-conditii.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/termeni-conditii/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.35</priority>
   </url>
-  
   <url>
-    <loc>https://www.zengsm.ro/politica-confidentialitate.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/politica-confidentialitate/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.35</priority>
   </url>
-  
   <url>
-    <loc>https://www.zengsm.ro/gdpr.html</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://zengsm.ro/gdpr/</loc>
+    <lastmod>2026-05-08</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <priority>0.35</priority>
   </url>
-
+  <url>
+    <loc>https://zengsm.ro/blog/acer-iconia-im11-5g-lansata-oficial-ce-conteaza-pentru-service-piese-si-diagnoza-mowqvn9k/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/spotify-dj-ajunge-in-mai-multe-limbi-si-regiuni-ce-inseamna-practic-pentru-utilizatorii-de-telefoane-mowpukdp/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/ce-inseamna-lineup-ul-amazon-luna-din-mai-pentru-telefoane-retea-si-service-mowkdhvn/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/steam-controller-la-100-de-dolari-prin-ochii-unui-service-merita-se-repara-are-sens-monyuiny/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/oppo-find-x9-ultra-la-marginea-spatiului-spectacol-de-marketing-sau-test-util-pentru-service-monyrxno/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/galaxy-s27-ultra-cu-o-camera-mai-putin-ce-inseamna-pentru-service-piese-si-client-momje1e5/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/motorola-razr-70-70-plus-si-70-ultra-ce-inseamna-pentru-service-uri-si-pentru-clientii-care-vor-un-pliabil-reparabil-mol3wf2i/</loc>
+    <lastmod>2026-04-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/escrocheriile-din-social-media-costa-miliarde-ce-poate-face-un-service-gsm-pentru-clienti-si-pentru-propriul-atelier-mojoha45/</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/ce-ar-insemna-pentru-service-uri-un-telefon-openai-cu-chipset-custom-moi91yjv/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/poco-x8-pro-max-place-publicului-dar-pentru-service-conteaza-altceva-decat-sondajul-mogtn2m4/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/ce-invata-un-service-gsm-din-cazul-scurgerii-the-legend-of-aang-mofe57hl/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/sony-xperia-1-viii-in-randari-cad-ce-spun-dimensiunile-despre-reparatii-piese-si-ergonomie-modypd33/</loc>
+    <lastmod>2026-04-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/star-city-si-paranoia-anilor-70-vazute-prin-ochii-unui-service-gsm-mocjbr6h/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/ecco-the-dolphin-complete-si-lectia-practica-pentru-gaming-pe-telefon-si-console-vechi-mob3vz8l/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/game-pass-se-ieftineste-dar-pierde-lansarile-call-of-duty-in-ziua-1-ce-inseamna-asta-pentru-clientii-care-joaca-pe-telefon-pc-si-consola-mo9oe95c/</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/huawei-watch-fit-5-si-fit-5-pro-vazute-din-atelier-ce-conteaza-pentru-service-si-pentru-client-mo88xx5t/</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/ce-invata-un-service-gsm-din-zborul-new-glenn-ratat-pe-jumatate-mo700u7f/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/android-17-beta-ajunge-pe-mai-multe-motorola-ce-inseamna-pentru-service-diagnoza-si-clienti-mo6ti4te/</loc>
+    <lastmod>2026-04-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/samsung-galaxy-tab-a11-kids-edition-vazut-prin-ochii-unui-service-gsm-mo5e2lh0/</loc>
+    <lastmod>2026-04-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/primele-24-de-ore-dupa-ce-ti-ai-stricat-telefonul-plan-clar-greseli-de-evitat-si-cand-mai-merita-reparat-mo3ynrtp/</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/cum-alegi-corect-un-service-gsm-in-timisoara-cand-ai-nevoie-de-reparatie-rapida-dar-fara-compromisuri-mo2j8mx9/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/surubelnitele-cele-mai-importante-unelte-ale-tehnicianului-gsm-mo1dhuq4/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/google-aduce-aplicatia-sa-pentru-windows-la-nivel-global-ce-inseamna-practic-pentru-un-service-gsm-si-pentru-clientii-care-lucreaza-intre-telefon-si-pc-mo13rdmy/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/motorola-razr-70-in-pantone-bright-white-ce-inseamna-noua-finisare-pentru-service-uzura-si-discutia-despre-piese-mnzoa1dh/</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/trump-mobile-t1-phone-apare-in-randari-noi-si-cu-specificatii-actualizate-ce-ar-trebui-sa-urmareasca-un-service-gsm-inainte-sa-l-ia-in-serios-mnytslzv/</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/infinix-note-60-pro-ajunge-in-india-ce-inseamna-lansarea-pentru-service-uri-piese-si-clientii-care-intreaba-merita-reparat-mnyr9n9i/</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/ce-spune-topul-telefoanelor-in-trend-din-saptamana-15-despre-munca-din-service-gsm-mny8wskn/</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/iphone-17e-si-inelul-magsafe-upgrade-ul-care-conteaza-mai-mult-in-service-decat-inca-un-plus-de-performanta-mny8p2zw/</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
 </urlset>
-

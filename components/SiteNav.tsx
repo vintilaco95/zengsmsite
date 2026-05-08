@@ -10,7 +10,6 @@ const LINKS: { href: string; label: string }[] = [
   { href: "/servicii/", label: "Servicii" },
   { href: "/preturi/", label: "Prețuri" },
   { href: "/formulare/", label: "Verifică" },
-  { href: "/vanzare-telefon/", label: "Vinde" },
   { href: "/galerie/", label: "Galerie" },
   { href: "/despre/", label: "Despre" },
   { href: "/blog/", label: "Blog" },

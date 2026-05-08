@@ -57,7 +57,7 @@ services:
         destination: /termeni-conditii/
       - type: redirect
         source: /vanzare-telefon.html
-        destination: /vanzare-telefon/
+        destination: /
       - type: redirect
         source: /blog-articol.html
         destination: /blog-articol/

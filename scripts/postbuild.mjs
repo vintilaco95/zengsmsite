@@ -2,10 +2,12 @@
  * După `next build`:
  * 1) Fișiere *.html minime în `out/` care fac redirect la rutele curate (fără dependență de Render).
  * 2) `out/blog-articol/index.html` pentru articole TechBlog (fetch live).
+ * 3) `out/sitemap.xml` + `public/sitemap.xml` (rute noi + articole din manifest).
  */
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
+import { generateSitemapFiles } from "./generate-sitemap.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -23,7 +25,7 @@ const FILE_TO_ROUTE = {
   preturi: "/preturi",
   servicii: "/servicii",
   "termeni-conditii": "/termeni-conditii",
-  "vanzare-telefon": "/vanzare-telefon",
+  "vanzare-telefon": "/",
   "blog-articol": "/blog",
 };
 
@@ -40,7 +42,6 @@ const LEGACY_HTML_FILES = [
   "preturi",
   "servicii",
   "termeni-conditii",
-  "vanzare-telefon",
   "blog-articol",
 ];
 
@@ -117,6 +118,7 @@ const outRoot = path.join(root, "out");
 
 if (!fs.existsSync(outRoot)) {
   console.warn("postbuild: lipsește out/ — rulează mai întâi next build.");
+  generateSitemapFiles(root);
   process.exit(0);
 }
 
@@ -132,6 +134,18 @@ for (const name of LEGACY_HTML_FILES) {
   console.log("postbuild: alias redirect", filePath, "→", clean);
 }
 
+fs.writeFileSync(
+  path.join(outRoot, "vanzare-telefon.html"),
+  redirectStubHtml("/"),
+  "utf8",
+);
+console.log(
+  "postbuild: alias redirect",
+  path.join(outRoot, "vanzare-telefon.html"),
+  "→",
+  "/",
+);
+
 const artSrc = path.join(root, "legacy-pages/blog-articol.html");
 const artDir = path.join(outRoot, "blog-articol");
 const artDest = path.join(artDir, "index.html");
@@ -142,3 +156,5 @@ fs.writeFileSync(
   "utf8",
 );
 console.log("postbuild: articol shell", artDest);
+
+generateSitemapFiles(root);

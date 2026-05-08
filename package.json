@@ -8,6 +8,7 @@
     "dev:webpack": "next dev",
     "prebuild": "node scripts/fetch-techblog.mjs",
     "build": "next build && node scripts/postbuild.mjs",
+    "sitemap": "node scripts/generate-sitemap.mjs",
     "start": "npx --yes serve@14 out -l 3000",
     "lint": "eslint"
   },

@@ -1,12 +1,13 @@
-# https://www.zengsm.ro/robots.txt
+# https://zengsm.ro/robots.txt
 User-agent: *
 Allow: /
 
-# Blog dinamic (listă + articole pe /blog/)
-Allow: /blog.html
+# Rute curate Next (trailing slash); redirecturi *.html rămân indexabile doar ca alias.
 Allow: /blog/
 
 Disallow: /cgi-bin/
+# iframe-uri modale (noindex în metadata)
+Disallow: /preturi/embed/
+Disallow: /formulare/embed/
 
-# Sitemap: rulează periodic: node scripts/generate-blog-sitemap.mjs
-Sitemap: https://zengsm.ro/sitemap-blog.xml
+Sitemap: https://zengsm.ro/sitemap.xml

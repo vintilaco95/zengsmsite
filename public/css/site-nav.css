@@ -485,17 +485,59 @@ body.preturi-wizard-embed-body .container--preturi-calc {
   padding-top: 0.25rem;
 }
 
-body.formulare-embed-body .page-hero {
-  padding: 1rem 0 0.65rem;
+body.preturi-wizard-embed-body .price-wizard-boot:not([hidden]) {
+  min-height: 0 !important;
+  padding: 0.5rem 0.75rem !important;
 }
 
-body.formulare-embed-body .page-title {
-  font-size: clamp(1.35rem, 4vw, 1.75rem);
+body.preturi-wizard-embed-body .price-wizard-boot .result-placeholder {
+  padding: 0;
+  margin: 0;
 }
 
-body.formulare-embed-body .forms-section {
-  padding-top: 0.35rem;
-  padding-bottom: 1rem;
+body.preturi-wizard-embed-body .price-wizard-boot .placeholder-icon {
+  font-size: 1.35rem;
+  margin-bottom: 0.12rem;
+}
+
+body.preturi-wizard-embed-body .price-wizard-boot h3 {
+  font-size: 0.92rem;
+  margin: 0.12rem 0;
+}
+
+body.preturi-wizard-embed-body .price-wizard-boot p {
+  margin: 0;
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+body.preturi-wizard-embed-body .price-wizard-body {
+  min-height: 0 !important;
+  max-height: min(68vh, 560px);
+}
+
+body.formulare-status-embed .forms-section {
+  padding: 0.35rem 0 0.75rem;
+}
+
+body.formulare-status-embed .form-container.active {
+  padding-top: 0;
+}
+
+body.formulare-status-embed .status-check-form .form-section {
+  margin-bottom: 0;
+}
+
+body.formulare-status-embed .info-box {
+  margin-top: 0.85rem;
+}
+
+body.formulare-status-embed .info-box h4 {
+  font-size: 0.95rem;
+}
+
+body.formulare-status-embed .info-box li {
+  font-size: 0.82rem;
 }
 
 body.zgs-embed-modal-open {

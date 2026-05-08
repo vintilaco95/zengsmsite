@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Verifică status — ZEN GSM</title>
+</head>
+<body class="formulare-embed-body formulare-status-embed">
+<nav></nav>
+<section class="forms-section">
+  <div class="container">
+    <div id="status-form" class="form-container active">
+      <form class="advanced-form status-check-form" id="statusCheckForm">
+        <div class="form-section">
+          <div class="form-group">
+            <label for="cod">Cod unic reparație *</label>
+            <input
+              type="text"
+              id="cod"
+              name="cod"
+              required
+              placeholder="Ex: JK24L"
+              autofocus
+              class="large-input"
+            >
+            <small>Codul îl găsești pe fișa de service sau în SMS-ul primit</small>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary btn-large">
+              <span>Verifică status</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M19 19L13 13M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </form>
+      <div id="rezultat" class="status-result"></div>
+      <div class="info-box">
+        <h4>ℹ️ Statusuri posibile</h4>
+        <ul>
+          <li><strong>📥 Primit:</strong> Înregistrat în sistem</li>
+          <li><strong>🔍 În diagnostic</strong></li>
+          <li><strong>⏳ Așteptare aprobare</strong></li>
+          <li><strong>🔧 În reparație</strong></li>
+          <li><strong>⏰ Așteptare piese</strong></li>
+          <li><strong>✅ Finalizat</strong></li>
+          <li><strong>📦 Pregătit expediere</strong></li>
+          <li><strong>🚚 Expediat</strong></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<footer></footer>
+</body>
+</html>

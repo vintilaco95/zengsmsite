@@ -260,7 +260,7 @@ function $(id) {
 }
 
 function bootHtmlLoading() {
-  return `<div class="price-wizard-boot-inner result-placeholder"><div class="placeholder-icon">⏳</div><h3>Se încarcă…</h3><p>Listă prețuri GSM OS</p></div>`;
+  return `<div class="price-wizard-boot-inner price-wizard-boot-loading" role="status"><span class="price-wizard-boot-spinner" aria-hidden="true"></span><span class="price-wizard-boot-loading-text">Se încarcă prețurile…</span></div>`;
 }
 
 function bootHtmlNoToken() {

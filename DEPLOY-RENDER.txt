@@ -23,8 +23,7 @@ VERIFICARE ÎN 20 SECUNDE (fără Render)
 
    Dacă NU apar: live-ul NU e build-ul Next din folderul „out”. Repetă pașii Render de mai jos.
 
-3. Cu build corect, „/vanzare-telefon.html” trebuie redirectat (în Dashboard/Blueprint)
-   către „/vanzare-telefon/” — vezi render.yaml.
+3. Cu build corect, „/vanzare-telefon.html” este redirectat către „/” (pagina a fost eliminată) — vezi render.yaml și postbuild.
 
 ================================================================================
 SETĂRI OBLIGATORII ÎN RENDER (Static Site)

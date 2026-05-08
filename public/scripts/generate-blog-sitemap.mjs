@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 /**
+ * @deprecated Folosește `npm run sitemap` sau postbuild (`scripts/generate-sitemap.mjs`),
+ * care include paginile statice + articolele din manifest (URL-uri /.../ fără .html).
+ *
  * Generează sitemap-blog.xml cu toate URL-urile canonic /blog/:slug
  *
  * Rulare (din rădăcina zengsm):
