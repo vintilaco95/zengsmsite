@@ -5,6 +5,7 @@
   "scripts": {
     "clean": "rm -rf .next out",
     "dev": "next dev --turbopack",
+    "dev:clear": "rm -rf .next && next dev --turbopack",
     "dev:webpack": "next dev",
     "prebuild": "node scripts/fetch-techblog.mjs",
     "build": "next build && node scripts/postbuild.mjs",

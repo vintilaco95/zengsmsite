@@ -30,6 +30,12 @@ export function getFooterAndUiHtml(): string {
   return rewriteLegacyHtml(raw.slice(s, script).trim());
 }
 
+/** Modale calculator + status (model TrustGSM: HTML static + script.js). */
+export function getTrustModalsHtml(): string {
+  const raw = read("zengsm-trust-modals.html");
+  return rewriteLegacyHtml(raw.trim());
+}
+
 /** Conținut principal între </nav> și <footer> dintr-o pagină veche. */
 export function getMainHtml(legacyFile: string): string {
   const raw = read(legacyFile);

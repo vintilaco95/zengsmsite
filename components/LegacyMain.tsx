@@ -1,6 +1,13 @@
 import { getMainHtml } from "@/lib/legacy-html";
 
-export function LegacyMain({ legacyFile }: { legacyFile: string }) {
+type Props = { legacyFile: string; className?: string };
+
+export function LegacyMain({ legacyFile, className }: Props) {
   const html = getMainHtml(legacyFile);
-  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+  return (
+    <div
+      className={className}
+      dangerouslySetInnerHTML={{ __html: html }}
+    />
+  );
 }

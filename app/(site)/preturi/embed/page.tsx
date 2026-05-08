@@ -15,7 +15,10 @@ export const metadata: Metadata = {
 export default function PreturiEmbedPage() {
   return (
     <>
-      <LegacyMain legacyFile="preturi-wizard-embed.html" />
+      <LegacyMain
+        legacyFile="preturi-wizard-embed.html"
+        className="zgs-embed-legacy-host"
+      />
       <PriceWizardBoot />
       <PageScripts extra={["/scripts/simple-price-calculator.js"]} />
     </>

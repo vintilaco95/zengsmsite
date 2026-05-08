@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 import { SiteNav } from "./SiteNav";
 
 type Props = {
@@ -15,8 +16,27 @@ export function SiteGate({ children, backgroundHtml, footerHtml }: Props) {
     pathname.startsWith("/preturi/embed") ||
     pathname.startsWith("/formulare/embed");
 
+  useEffect(() => {
+    if (!bare) return;
+    document.documentElement.classList.add("zgs-embed-fill");
+    document.body.classList.add("zgs-embed-fill");
+    return () => {
+      document.documentElement.classList.remove("zgs-embed-fill");
+      document.body.classList.remove("zgs-embed-fill");
+    };
+  }, [bare]);
+
   if (bare) {
-    return <div className="zgs-embed-bare-layout">{children}</div>;
+    const embedKind = pathname.startsWith("/preturi/embed")
+      ? "preturi"
+      : pathname.startsWith("/formulare/embed")
+        ? "formulare"
+        : undefined;
+    return (
+      <div className="zgs-embed-bare-layout" data-zgs-embed={embedKind}>
+        {children}
+      </div>
+    );
   }
 
   return (

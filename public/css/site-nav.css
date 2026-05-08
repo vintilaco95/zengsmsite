@@ -467,14 +467,103 @@ body.zgs-nav-open {
   overflow: hidden;
 }
 
-.zgs-embed-bare-layout {
-  min-height: 100vh;
-  padding: 0.15rem 0 0.75rem;
+/* Iframe full-height: SiteGate pune clasele pe html/body pentru rute /preturi/embed și /formulare/embed */
+html.zgs-embed-fill,
+body.zgs-embed-fill {
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
 }
 
-/* --- Embed în modal (fragment fără <body>: clasele sunt pe wrapper din legacy) --- */
+body.zgs-embed-fill {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.zgs-embed-bare-layout {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Rute embed: lățime completă din primul paint (fără a aștepta clasele html/body din useEffect) */
+.zgs-embed-bare-layout[data-zgs-embed="preturi"],
+.zgs-embed-bare-layout[data-zgs-embed="formulare"] {
+  width: 100%;
+  max-width: none;
+  align-self: stretch;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* În iframe-ul calculatorului: fără scroll pe document — doar în zona grid (.price-wizard-scroll) */
+.zgs-embed-bare-layout[data-zgs-embed="preturi"] {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* Host LegacyMain în embed: ocupă tot spațiul flex; altfel conținutul rămâne îngust / aliniat stânga */
+.zgs-embed-bare-layout[data-zgs-embed="preturi"] > .zgs-embed-legacy-host,
+.zgs-embed-bare-layout[data-zgs-embed="formulare"] > .zgs-embed-legacy-host {
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+/* /preturi/embed (și iframe): lățime plină în documentul „bare” */
+html.zgs-embed-fill body.zgs-embed-fill .zgs-embed-bare-layout[data-zgs-embed="preturi"] {
+  width: 100%;
+  max-width: none;
+  align-self: stretch;
+}
+
+html.zgs-embed-fill body.zgs-embed-fill .zgs-embed-price-wizard.page-preturi {
+  width: 100%;
+  max-width: none;
+}
+
+/* Coloană wizard: întreaga lățime a iframe-ului (nu doar după hidratare) */
+.zgs-embed-price-wizard.page-preturi {
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.zgs-embed-price-wizard.page-preturi .price-calculator-section--lead,
+.zgs-embed-price-wizard.page-preturi #price-wizard-root {
+  width: 100%;
+  max-width: none;
+  align-self: stretch;
+}
+
+.zgs-embed-price-wizard.page-preturi .container.container--preturi-calc {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .zgs-embed-price-wizard.page-preturi #price-wizard-root {
   scroll-margin-top: 0 !important;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .zgs-embed-price-wizard.page-preturi .price-calculator-section,
@@ -485,20 +574,70 @@ body.zgs-nav-open {
   padding-right: 0 !important;
   margin: 0 !important;
   background: transparent !important;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .zgs-embed-price-wizard.page-preturi .container--preturi-calc {
   gap: 0 !important;
   padding-top: 0 !important;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: none !important;
+  width: 100% !important;
 }
 
 .zgs-embed-price-wizard.page-preturi .price-wizard-shell {
   margin-top: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.zgs-embed-price-wizard.page-preturi .price-wizard-shell > #price-wizard-app.price-wizard-app {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+}
+
+.zgs-embed-price-wizard.page-preturi .price-wizard-app {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+.zgs-embed-price-wizard.page-preturi .price-wizard-progress {
+  flex-shrink: 0;
+  padding: 0.65rem 0.75rem 0.55rem !important;
+}
+
+.zgs-embed-price-wizard.page-preturi .price-wizard-chips {
+  flex-shrink: 0;
+  padding: 0.45rem 0.75rem 0 !important;
 }
 
 .zgs-embed-price-wizard.page-preturi .price-wizard-boot:not([hidden]) {
   min-height: 0 !important;
-  padding: 0.45rem 0.65rem !important;
+  padding: 0.55rem 0.85rem !important;
+  flex: 1 1 auto;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .zgs-embed-price-wizard.page-preturi .price-wizard-boot .result-placeholder {
@@ -522,9 +661,35 @@ body.zgs-nav-open {
   opacity: 0.9;
 }
 
+.zgs-embed-price-wizard.page-preturi .price-wizard-progress-track {
+  max-width: none !important;
+  min-width: 100% !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 .zgs-embed-price-wizard.page-preturi .price-wizard-body {
+  flex: 1 1 auto !important;
   min-height: 0 !important;
-  max-height: min(72vh, 620px);
+  max-height: none !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.zgs-embed-price-wizard.page-preturi .price-wizard-panel {
+  padding: 0.5rem 0.65rem 0.35rem !important;
+}
+
+.zgs-embed-price-wizard.page-preturi .price-wizard-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(52, 211, 153, 0.45) rgba(15, 23, 42, 0.5);
+}
+
+.zgs-embed-price-wizard.page-preturi .price-wizard-footer {
+  flex-shrink: 0;
+  padding: 0.5rem 0.75rem 0.65rem !important;
 }
 
 .zgs-embed-formulare-status.formulare-status-embed .forms-section {
@@ -551,66 +716,230 @@ body.zgs-nav-open {
   font-size: 0.82rem;
 }
 
-body.zgs-embed-modal-open {
+body.zgs-trust-modal-open {
   overflow: hidden;
 }
 
-.zgs-embed-modal-backdrop {
+/* ===== Modale calculator + status — model TrustGSM (backdrop centrat, animație, închidere) ===== */
+.zgs-trust-calc-backdrop {
   position: fixed;
   inset: 0;
-  z-index: 8000;
-  background: rgba(0, 0, 0, 0.55);
-  display: flex;
+  z-index: 8500;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
   align-items: center;
   justify-content: center;
-  padding: clamp(0.5rem, 3vw, 1.25rem);
+  padding: max(0.75rem, env(safe-area-inset-top, 0px))
+    max(0.75rem, env(safe-area-inset-right, 0px))
+    max(0.75rem, env(safe-area-inset-bottom, 0px))
+    max(0.75rem, env(safe-area-inset-left, 0px));
+  box-sizing: border-box;
+  animation: zgsTrustFadeIn 0.3s ease both;
 }
 
-.zgs-embed-modal {
+.zgs-trust-calc-backdrop.is-open {
+  display: flex;
+}
+
+@keyframes zgsTrustFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.zgs-trust-calc-modal {
+  width: 100%;
+  max-width: min(1180px, 96vw);
+  max-height: 94vh;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    rgba(15, 23, 42, 0.98) 0%,
+    rgba(15, 23, 42, 0.94) 100%
+  );
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  border-radius: 1rem;
+  padding: 1.25rem 1.1rem 1rem;
   position: relative;
-  width: min(720px, 100%);
-  height: min(88dvh, 860px);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.55),
+    0 0 60px rgba(16, 185, 129, 0.12);
+  animation: zgsTrustModalIn 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
   display: flex;
   flex-direction: column;
-  background: rgba(15, 23, 42, 0.98);
-  border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-  overflow: hidden;
+  align-items: stretch;
+  box-sizing: border-box;
 }
 
-.zgs-embed-modal__close {
+@keyframes zgsTrustModalIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.zgs-trust-calc-close {
   position: absolute;
-  top: 0.4rem;
-  right: 0.45rem;
-  z-index: 3;
-  width: 2.5rem;
-  height: 2.5rem;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   border: none;
-  border-radius: 0.5rem;
-  background: rgba(15, 23, 42, 0.82);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   line-height: 1;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.15s ease;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  z-index: 5;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
-.zgs-embed-modal__close:hover,
-.zgs-embed-modal__close:focus-visible {
-  background: rgba(30, 41, 59, 0.95);
+.zgs-trust-calc-close:hover,
+.zgs-trust-calc-close:focus-visible {
+  background: rgba(16, 185, 129, 0.85);
+  color: #0f172a;
+  transform: rotate(90deg);
   outline: none;
 }
 
-.zgs-embed-modal__frame {
+.zgs-trust-calc-title {
+  font-family: var(--font-display, "Poppins", system-ui, sans-serif);
+  font-size: clamp(1.25rem, 3.5vw, 1.6rem);
+  font-weight: 800;
+  text-align: center;
+  margin: 0.15rem 2.5rem 0.85rem;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #34d399 0%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zgs-trust-calc-iframe {
+  display: block;
   flex: 1 1 auto;
-  min-height: 0;
+  min-height: min(72vh, 760px);
   width: 100%;
+  min-width: 0;
   border: 0;
+  border-radius: 0.65rem;
   background: #0f172a;
+}
+
+@media (max-width: 640px) {
+  .zgs-trust-calc-iframe {
+    min-height: min(68vh, 640px);
+  }
+}
+
+.zgs-trust-status-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 8500;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: max(0.75rem, env(safe-area-inset-top, 0px))
+    max(0.75rem, env(safe-area-inset-right, 0px))
+    max(0.75rem, env(safe-area-inset-bottom, 0px))
+    max(0.75rem, env(safe-area-inset-left, 0px));
+  box-sizing: border-box;
+  animation: zgsTrustFadeIn 0.3s ease both;
+}
+
+.zgs-trust-status-backdrop.is-open {
+  display: flex;
+}
+
+.zgs-trust-status-modal {
+  width: 100%;
+  max-width: 720px;
+  max-height: 94vh;
+  overflow: hidden;
+  background: linear-gradient(
+    165deg,
+    rgba(15, 23, 42, 0.98) 0%,
+    rgba(15, 23, 42, 0.94) 100%
+  );
+  border: 1px solid rgba(52, 211, 153, 0.45);
+  border-radius: 1rem;
+  padding: 1.2rem 1rem 0.9rem;
+  position: relative;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55);
+  animation: zgsTrustModalIn 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.zgs-trust-status-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.zgs-trust-status-close:hover,
+.zgs-trust-status-close:focus-visible {
+  background: rgba(16, 185, 129, 0.85);
+  color: #0f172a;
+  transform: rotate(90deg);
+  outline: none;
+}
+
+.zgs-trust-status-title {
+  font-family: var(--font-display, "Poppins", system-ui, sans-serif);
+  font-size: clamp(1.15rem, 3vw, 1.45rem);
+  font-weight: 800;
+  text-align: center;
+  margin: 0.1rem 2.5rem 0.75rem;
+  background: linear-gradient(135deg, #34d399 0%, #14b8a6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zgs-trust-status-iframe {
+  display: block;
+  width: 100%;
+  height: min(80vh, 780px);
+  min-height: 320px;
+  border: 0;
+  border-radius: 0.65rem;
+  background: #0f172a;
+}
+
+@media (max-width: 640px) {
+  .zgs-trust-status-iframe {
+    height: min(74vh, 680px);
+  }
 }

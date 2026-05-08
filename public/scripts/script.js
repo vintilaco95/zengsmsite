@@ -424,3 +424,97 @@ document.addEventListener('visibilitychange', () => {
         });
     }
 });
+
+// ===============================
+// Modale calculator + status (model TrustGSM: backdrop HTML static)
+// ===============================
+(function () {
+    const calcBackdrop = document.getElementById('zgs-trust-calc-backdrop');
+    const statusBackdrop = document.getElementById('zgs-trust-status-backdrop');
+
+    function openModalsCount() {
+        let n = 0;
+        if (calcBackdrop && calcBackdrop.classList.contains('is-open')) n += 1;
+        if (statusBackdrop && statusBackdrop.classList.contains('is-open')) n += 1;
+        return n;
+    }
+
+    function syncBodyModalLock() {
+        document.body.classList.toggle('zgs-trust-modal-open', openModalsCount() > 0);
+    }
+
+    function openCalcModal() {
+        if (!calcBackdrop) return;
+        calcBackdrop.classList.add('is-open');
+        syncBodyModalLock();
+    }
+
+    function closeCalcModal() {
+        if (!calcBackdrop) return;
+        calcBackdrop.classList.remove('is-open');
+        syncBodyModalLock();
+    }
+
+    function openStatusModal() {
+        if (!statusBackdrop) return;
+        statusBackdrop.classList.add('is-open');
+        syncBodyModalLock();
+    }
+
+    function closeStatusModal() {
+        if (!statusBackdrop) return;
+        statusBackdrop.classList.remove('is-open');
+        syncBodyModalLock();
+    }
+
+    function pathNorm() {
+        const p = window.location.pathname || '/';
+        return (p.replace(/\/$/, '') || '/').split('?')[0];
+    }
+
+    document.body.addEventListener('click', (e) => {
+        const calcEl = e.target && (e.target instanceof Element) ? e.target.closest('[data-open-calc]') : null;
+        if (calcEl) {
+            if (pathNorm() === '/preturi') {
+                e.preventDefault();
+                document.getElementById('price-wizard-root')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                });
+                return;
+            }
+            e.preventDefault();
+            openCalcModal();
+            return;
+        }
+        const stEl = e.target && (e.target instanceof Element) ? e.target.closest('[data-open-status]') : null;
+        if (stEl) {
+            e.preventDefault();
+            openStatusModal();
+        }
+    });
+
+    if (calcBackdrop) {
+        calcBackdrop.addEventListener('click', (e) => {
+            if (e.target === calcBackdrop) closeCalcModal();
+        });
+        calcBackdrop
+            .querySelector('.zgs-trust-calc-close')
+            ?.addEventListener('click', closeCalcModal);
+    }
+
+    if (statusBackdrop) {
+        statusBackdrop.addEventListener('click', (e) => {
+            if (e.target === statusBackdrop) closeStatusModal();
+        });
+        statusBackdrop
+            .querySelector('.zgs-trust-status-close')
+            ?.addEventListener('click', closeStatusModal);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Escape') return;
+        if (calcBackdrop && calcBackdrop.classList.contains('is-open')) closeCalcModal();
+        if (statusBackdrop && statusBackdrop.classList.contains('is-open')) closeStatusModal();
+    });
+})();

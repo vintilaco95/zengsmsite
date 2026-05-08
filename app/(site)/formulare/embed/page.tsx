@@ -14,7 +14,10 @@ export const metadata: Metadata = {
 export default function FormulareEmbedPage() {
   return (
     <>
-      <LegacyMain legacyFile="formulare-status-embed.html" />
+      <LegacyMain
+        legacyFile="formulare-status-embed.html"
+        className="zgs-embed-legacy-host"
+      />
       <PageScripts jquery extra={["/scripts/forms.js"]} />
     </>
   );

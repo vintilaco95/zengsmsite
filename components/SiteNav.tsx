@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useState } from "react";
-import { useSiteModals } from "./SiteModalsContext";
 
 const LINKS: { href: string; label: string }[] = [
   { href: "/", label: "Acasă" },
@@ -36,16 +35,12 @@ function PreturiNavLink({
   onAfterClick?: () => void;
   children?: React.ReactNode;
 }) {
-  const { openPriceWizard } = useSiteModals();
   return (
     <a
       href="/preturi/"
       className={className}
-      onClick={(e) => {
-        e.preventDefault();
-        onAfterClick?.();
-        openPriceWizard();
-      }}
+      data-open-calc=""
+      onClick={() => onAfterClick?.()}
     >
       {children}
     </a>
@@ -61,16 +56,12 @@ function StatusNavLink({
   onAfterClick?: () => void;
   children?: React.ReactNode;
 }) {
-  const { openStatusForm } = useSiteModals();
   return (
     <a
       href="/formulare/"
       className={className}
-      onClick={(e) => {
-        e.preventDefault();
-        onAfterClick?.();
-        openStatusForm();
-      }}
+      data-open-status=""
+      onClick={() => onAfterClick?.()}
     >
       {children}
     </a>
