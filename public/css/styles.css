@@ -4794,13 +4794,13 @@ body {
     }
 }
 
-body.preturi-wizard-embed-body .price-wizard-boot-loading {
-    font-size: 0.85rem;
+.zgs-embed-price-wizard.page-preturi .price-wizard-boot-loading {
+  font-size: 0.85rem;
 }
 
-body.preturi-wizard-embed-body .price-wizard-boot-spinner {
-    width: 1.1rem;
-    height: 1.1rem;
+.zgs-embed-price-wizard.page-preturi .price-wizard-boot-spinner {
+  width: 1.1rem;
+  height: 1.1rem;
 }
 
 .price-wizard-app {
