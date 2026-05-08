@@ -26,37 +26,23 @@ function linkMatches(pathnameNorm: string, href: string): boolean {
   return h === pathnameNorm;
 }
 
-function ModalPopBtn({
-  kind,
-  className = "",
-  onAfterClick,
-}: {
-  kind: "calc" | "status";
-  className?: string;
-  onAfterClick?: () => void;
-}) {
-  const isCalc = kind === "calc";
-  return (
-    <button
-      type="button"
-      className={`zgs-header__modal-pop${className ? ` ${className}` : ""}`}
-      {...(isCalc
-        ? { "data-open-calc": "" as const }
-        : { "data-open-status": "" as const })}
-      aria-label={
-        isCalc
-          ? "Deschide calculatorul de prețuri într-o fereastră"
-          : "Deschide verificarea status într-o fereastră"
-      }
-      title={isCalc ? "Calculator (fereastră)" : "Status (fereastră)"}
-      onClick={() => onAfterClick?.()}
-    >
-      <i
-        className={`fa ${isCalc ? "fa-calculator" : "fa-search"}`}
-        aria-hidden
-      />
-    </button>
-  );
+/** Fără butoane extra: click normal = pagină; Shift+click = modal (vezi script.js). */
+function shiftModalProps(href: string): {
+  "data-open-calc"?: "";
+  "data-open-status"?: "";
+  title?: string;
+} {
+  if (href === "/preturi/")
+    return {
+      "data-open-calc": "",
+      title: "Shift+click: calculator în fereastră",
+    };
+  if (href === "/formulare/")
+    return {
+      "data-open-status": "",
+      title: "Shift+click: status în fereastră",
+    };
+  return {};
 }
 
 export function SiteNav() {
@@ -119,33 +105,33 @@ export function SiteNav() {
           </Link>
 
           <div className="zgs-header__mobile-quick">
-            <div className="zgs-header__action-pair">
-              <Link
-                href="/formulare/"
-                className="zgs-header__pill zgs-header__pill--solid"
-                onClick={close}
-              >
-                Verifică
-              </Link>
-              <ModalPopBtn kind="status" onAfterClick={close} />
-            </div>
-            <div className="zgs-header__action-pair">
-              <Link
-                href="/preturi/"
-                className="zgs-header__pill zgs-header__pill--ghost"
-                onClick={close}
-              >
-                Prețuri
-              </Link>
-              <ModalPopBtn kind="calc" onAfterClick={close} />
-            </div>
+            <Link
+              href="/formulare/"
+              className="zgs-header__pill zgs-header__pill--solid"
+              onClick={close}
+              {...shiftModalProps("/formulare/")}
+            >
+              Status
+            </Link>
+            <Link
+              href="/preturi/"
+              className="zgs-header__pill zgs-header__pill--ghost"
+              onClick={close}
+              {...shiftModalProps("/preturi/")}
+            >
+              Prețuri
+            </Link>
           </div>
 
           <nav className="zgs-header__nav" aria-label="Pagini site">
             <ul className="zgs-header__list">
               {LINKS.map(({ href, label }) => (
                 <li key={href}>
-                  <Link href={href} className={linkCls(href)}>
+                  <Link
+                    href={href}
+                    className={linkCls(href)}
+                    {...shiftModalProps(href)}
+                  >
                     {label}
                   </Link>
                 </li>
@@ -154,21 +140,20 @@ export function SiteNav() {
           </nav>
 
           <div className="zgs-header__actions">
-            <div className="zgs-header__action-pair">
-              <Link
-                href="/formulare/"
-                className="zgs-header__pill zgs-header__pill--solid"
-              >
-                Verifică status
-              </Link>
-              <ModalPopBtn kind="status" />
-            </div>
-            <div className="zgs-header__action-pair">
-              <Link href="/preturi/" className="zgs-header__pill zgs-header__pill--ghost">
-                Prețuri
-              </Link>
-              <ModalPopBtn kind="calc" />
-            </div>
+            <Link
+              href="/formulare/"
+              className="zgs-header__pill zgs-header__pill--solid"
+              {...shiftModalProps("/formulare/")}
+            >
+              Verifică status
+            </Link>
+            <Link
+              href="/preturi/"
+              className="zgs-header__pill zgs-header__pill--ghost"
+              {...shiftModalProps("/preturi/")}
+            >
+              Prețuri
+            </Link>
             <a
               href="https://licitatii-gsm.ro"
               className="zgs-header__chip zgs-header__chip--auction"
@@ -218,6 +203,7 @@ export function SiteNav() {
                 href={href}
                 className={linkCls(href, true)}
                 onClick={close}
+                {...shiftModalProps(href)}
               >
                 {label}
               </Link>
@@ -225,26 +211,22 @@ export function SiteNav() {
           ))}
         </ul>
         <div className="zgs-header__sheet-actions">
-          <div className="zgs-header__action-pair">
-            <Link
-              href="/formulare/"
-              className="zgs-header__pill zgs-header__pill--solid"
-              onClick={close}
-            >
-              Verifică status
-            </Link>
-            <ModalPopBtn kind="status" onAfterClick={close} />
-          </div>
-          <div className="zgs-header__action-pair">
-            <Link
-              href="/preturi/"
-              className="zgs-header__pill zgs-header__pill--ghost"
-              onClick={close}
-            >
-              Prețuri
-            </Link>
-            <ModalPopBtn kind="calc" onAfterClick={close} />
-          </div>
+          <Link
+            href="/formulare/"
+            className="zgs-header__pill zgs-header__pill--solid"
+            onClick={close}
+            {...shiftModalProps("/formulare/")}
+          >
+            Verifică status
+          </Link>
+          <Link
+            href="/preturi/"
+            className="zgs-header__pill zgs-header__pill--ghost"
+            onClick={close}
+            {...shiftModalProps("/preturi/")}
+          >
+            Prețuri
+          </Link>
           <a
             href="https://licitatii-gsm.ro"
             className="zgs-header__chip zgs-header__chip--auction"
