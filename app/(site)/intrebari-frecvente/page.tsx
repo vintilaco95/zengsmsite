@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { FaqLegacyEnhancements } from "@/components/FaqLegacyEnhancements";
 import { LegacyMain } from "@/components/LegacyMain";
-import { PageScripts } from "@/components/PageScripts";
 import { getSiteUrl } from "@/lib/site-url";
 
 const siteUrl = getSiteUrl();
@@ -16,7 +16,7 @@ export default function FaqPage() {
   return (
     <>
       <LegacyMain legacyFile="intrebari-frecvente.html" />
-      <PageScripts extra={["/scripts/faq.js"]} />
+      <FaqLegacyEnhancements />
     </>
   );
 }

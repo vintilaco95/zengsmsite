@@ -2577,6 +2577,13 @@ body {
     font-size: 1rem;
 }
 
+a.form-tab {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .form-tab:hover {
     background: rgba(255, 255, 255, 0.08);
 }

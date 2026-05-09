@@ -1,269 +1,73 @@
 // Forms Handler for ZengSM Website
-// Handles repair submission, status checking, and IMEI verification
+// Event delegation pe document.body — compatibil cu Next.js (HTML reinserat la navigare client).
 
 // ===============================
-// Form Tabs Switching
+// Utility Functions
 // ===============================
-document.addEventListener('DOMContentLoaded', function() {
-    const formTabs = document.querySelectorAll('.form-tab');
-    const formContainers = document.querySelectorAll('.form-container');
-
-    formTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            const targetTab = this.getAttribute('data-tab');
-            
-            // Remove active class from all tabs and containers
-            formTabs.forEach(t => t.classList.remove('active'));
-            formContainers.forEach(c => c.classList.remove('active'));
-            
-            // Add active class to clicked tab
-            this.classList.add('active');
-            
-            // Show corresponding form
-            const targetForm = document.getElementById(`${targetTab}-form`);
-            if (targetForm) {
-                targetForm.classList.add('active');
-            }
-        });
-    });
-});
-
-// ===============================
-// Repair Submission Form Handler
-// ===============================
-const repairForm = document.getElementById('repairSubmissionForm');
-
-if (repairForm) {
-    repairForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.innerHTML;
-        const messageDiv = document.getElementById('form-message');
-        
-        // Show loading state
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<span>Se trimite...</span>';
-        messageDiv.innerHTML = '';
-        
-        // Get form data
-        const formData = new FormData(this);
-        
-        // Convert to JSON object
-        const data = {};
-        formData.forEach((value, key) => {
-            if (key === 'photos') {
-                // Handle multiple files
-                if (!data.photos) data.photos = [];
-                data.photos.push(value);
-            } else {
-                data[key] = value;
-            }
-        });
-        
-        // Submit via EmailJS
-        try {
-            // Verifică dacă EmailJS este încărcat
-            if (typeof emailjs === 'undefined') {
-                throw new Error('EmailJS SDK nu este încărcat');
-            }
-            
-            // Verifică dacă există fotografii încărcate
-            const photosInput = document.getElementById('photos');
-            const photosCount = photosInput?.files?.length || 0;
-            const photosInfo = photosCount > 0 
-                ? `${photosCount} ${photosCount === 1 ? 'fotografie' : 'fotografii'} încărcată${photosCount > 1 ? 'e' : ''}` 
-                : 'Nu au fost încărcate fotografii';
-            
-            // Generează cod unic pentru urmărire
-            const uniqueCode = 'ZSM-2025-' + Math.random().toString(36).substr(2, 6).toUpperCase();
-            
-            // Verifică checkbox-urile
-            const garantie = document.getElementById('garantie')?.checked ? 'Da' : 'Nu';
-            const urgenta = document.getElementById('urgenta')?.checked ? 'Da' : 'Nu';
-            const gdpr = document.getElementById('gdpr')?.checked ? 'Da' : 'Nu';
-            
-            // Pregătește parametrii pentru template EmailJS
-            const templateParams = {
-                nume: data.nume || 'N/A',
-                telefon: data.telefon || 'N/A',
-                email: data.email || 'N/A',
-                oras: data.oras || 'N/A',
-                adresa: data.adresa || 'N/A',
-                marca: data.marca || 'N/A',
-                model: data.model || 'N/A',
-                imei: data.imei || 'Nu a fost furnizat',
-                culoare: data.culoare || 'N/A',
-                serviciu: data.serviciu || 'N/A',
-                descriere: data.descriere || 'N/A',
-                garantie: garantie,
-                urgenta: urgenta,
-                gdpr: gdpr,
-                comentarii: data.comentarii || 'N/A',
-                fotografii: photosInfo,
-                cod_urmare: uniqueCode,
-                timestamp: new Date().toLocaleString('ro-RO', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                })
-            };
-            
-            // Trimite email via EmailJS
-            // IMPORTANT: Înlocuiește cu ID-urile tale reale de la EmailJS!
-            await emailjs.send(
-                'service_oc9vzjh',           // ← Service ID (același ca pentru vânzare și contact)
-                'template_1co0w1n',  // ← Template ID NOU pentru repair (vezi docs/GHID-INTEGRARE-EMAILJS.md)
-                templateParams
-            );
-            
-            // Succes!
-            messageDiv.innerHTML = `
-                <div class="success-message">
-                    <div class="success-icon">✅</div>
-                    <h3>Cerere Trimisă cu Succes!</h3>
-                    <p>Codul tău unic de urmărire este: <strong>${uniqueCode}</strong></p>
-                    <p>Vei primi un email cu instrucțiuni detaliate și AWB pentru expediere în maximum 30 de minute.</p>
-                    <p>Păstrează codul pentru a verifica statusul reparației!</p>
-                    <a href="#status-form" class="btn btn-primary" onclick="document.querySelector('[data-tab=\"status\"]').click()">Verifică Status</a>
-                </div>
-            `;
-            
-            // Reset form
-            this.reset();
-            
-            // Clear file preview
-            const filePreview = document.getElementById('file-preview');
-            if (filePreview) filePreview.innerHTML = '';
-            
-            // Scroll to message
-            messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            
-            // Restore button after delay
-            setTimeout(() => {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            }, 3000);
-            
-        } catch (error) {
-            console.error('Error:', error);
-            messageDiv.innerHTML = `
-                <div class="error-message">
-                    <div class="error-icon">❌</div>
-                    <h3>Eroare la Trimitere</h3>
-                    <p>Ne pare rău, a apărut o eroare. Te rugăm să încerci din nou sau să ne contactezi telefonic.</p>
-                    <a href="/contact/" class="btn btn-secondary">Contactează-ne Direct</a>
-                </div>
-            `;
-            
-            submitButton.disabled = false;
-            submitButton.innerHTML = originalButtonText;
-        }
-    });
+function getUrlParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
 }
 
-// ===============================
-// File Upload Preview
-// ===============================
-const fileInput = document.getElementById('photos');
-const filePreview = document.getElementById('file-preview');
-
-if (fileInput && filePreview) {
-    fileInput.addEventListener('change', function(e) {
-        filePreview.innerHTML = '';
-        const files = Array.from(e.target.files);
-        
-        if (files.length > 0) {
-            files.forEach((file, index) => {
-                if (file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    
-                    reader.onload = function(e) {
-                        const preview = document.createElement('div');
-                        preview.className = 'file-preview-item';
-                        preview.innerHTML = `
-                            <img src="${e.target.result}" alt="Preview">
-                            <button type="button" class="remove-file" data-index="${index}">×</button>
-                            <p>${file.name}</p>
-                        `;
-                        filePreview.appendChild(preview);
-                    };
-                    
-                    reader.readAsDataURL(file);
-                }
-            });
-        }
+function urlParam(k) {
+    var p = {};
+    location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (s, key, v) {
+        p[key] = v;
     });
-    
-    // Remove file from preview
-    filePreview.addEventListener('click', function(e) {
-        if (e.target.classList.contains('remove-file')) {
-            e.target.parentElement.remove();
-        }
-    });
+    return k ? p[k] : p;
 }
 
-// ===============================
-// Status Check Form (ServiceTelefoaneMobile.ro API)
-// ===============================
-const statusForm = document.getElementById('statusCheckForm');
+function validatePhoneNumber(phone) {
+    const phoneRegex = /^(\+4|0)[0-9]{9}$/;
+    return phoneRegex.test(phone.replace(/\s/g, ''));
+}
 
-if (statusForm) {
-    // Configuration - ID Client ServiceTelefoaneMobile.ro
-    var id_client = 1277; // ID Client ZengSM
-    
-    const codInput = document.getElementById('cod');
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+const STATUS_API_ID_CLIENT = 1277;
+
+// ===============================
+// Status Check (ServiceTelefoaneMobile.ro)
+// ===============================
+function verifica(id_client) {
     const rezultatDiv = document.getElementById('rezultat');
-    
-    // Check on Enter key
-    $("#cod").on("keydown", function(e) {
-        if (e.keyCode === 13) {
-            e.preventDefault();
-            verifica(id_client);
-        }
-    });
-    
-    // Form submission
-    statusForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        verifica(id_client);
-    });
-    
-    // Check if code is in URL parameter
-    var cod = urlParam('cod');
-    if (cod) {
-        $("#cod").val(cod);
-        verifica(id_client);
+    if (!rezultatDiv) return;
+
+    var cod = '';
+    if (typeof $ !== 'undefined' && $('#cod').length) {
+        cod = String($('#cod').val() || '').trim();
+    } else {
+        var el = document.getElementById('cod');
+        cod = el && el.value ? String(el.value).trim() : '';
     }
-    
-    function verifica(id_client) {
-        const cod = $("#cod").val().trim();
-        
-        if (!cod) {
-            rezultatDiv.innerHTML = `
+
+    if (!cod) {
+        rezultatDiv.innerHTML = `
                 <div class="alert-box warning">
                     <p>Te rugăm să introduci un cod valid de urmărire.</p>
                 </div>
             `;
-            return;
-        }
-        
-        // Show loading
-        rezultatDiv.innerHTML = `
+        return;
+    }
+
+    rezultatDiv.innerHTML = `
             <div class="loading-status">
                 <div class="spinner"></div>
                 <p>Se verifică statusul...</p>
             </div>
         `;
-        
-        // API Call to ServiceTelefoaneMobile.ro
-        $.get(
-            "https://servicetelefoanemobile.ro/api-table-html.php?id=" + id_client + "&cod=" + cod,
-            function(data) {
-                if (data && data.trim() !== '') {
-                    rezultatDiv.innerHTML = `
+
+    $.get(
+        'https://servicetelefoanemobile.ro/api-table-html.php?id=' +
+            id_client +
+            '&cod=' +
+            encodeURIComponent(cod),
+        function (data) {
+            if (data && data.trim() !== '') {
+                rezultatDiv.innerHTML = `
                         <div class="status-result-box">
                             <h3>📋 Status Reparație: <span class="code-highlight">${cod}</span></h3>
                             ${data}
@@ -273,8 +77,8 @@ if (statusForm) {
                             </div>
                         </div>
                     `;
-                } else {
-                    rezultatDiv.innerHTML = `
+            } else {
+                rezultatDiv.innerHTML = `
                         <div class="alert-box error">
                             <h4>❌ Cod Inexistent</h4>
                             <p>Nu am găsit nicio reparație cu codul <strong>${cod}</strong></p>
@@ -284,10 +88,10 @@ if (statusForm) {
                             </div>
                         </div>
                     `;
-                }
             }
-        ).fail(function() {
-            rezultatDiv.innerHTML = `
+        }
+    ).fail(function () {
+        rezultatDiv.innerHTML = `
                 <div class="alert-box error">
                     <h4>⚠️ Eroare de Conexiune</h4>
                     <p>Nu am putut verifica statusul în acest moment. Te rugăm să încerci din nou sau să ne contactezi telefonic.</p>
@@ -297,75 +101,195 @@ if (statusForm) {
                     </div>
                 </div>
             `;
-        });
+    });
+}
+
+window.verifica = verifica;
+
+function tryStatusFromUrl() {
+    var cod = urlParam('cod');
+    if (!cod || !document.getElementById('statusCheckForm')) return;
+    if (typeof $ !== 'undefined' && $('#cod').length) {
+        $('#cod').val(decodeURIComponent(String(cod).replace(/\+/g, ' ')));
+    } else {
+        var input = document.getElementById('cod');
+        if (input) input.value = cod;
     }
-    
-    // Make verifica global
-    window.verifica = verifica;
+    verifica(STATUS_API_ID_CLIENT);
 }
 
 // ===============================
-// IMEI Check Form
+// Repair form submit (EmailJS)
 // ===============================
-const imeiForm = document.getElementById('imeiCheckForm');
+async function handleRepairFormSubmit(form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const messageDiv = document.getElementById('form-message');
+    if (!submitButton || !messageDiv) return;
+    const originalButtonText = submitButton.innerHTML;
 
-if (imeiForm) {
-    imeiForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const imeiInput = document.getElementById('imei_check');
-        const imeiValue = imeiInput.value.trim().replace(/\s/g, '');
-        const resultDiv = document.getElementById('imei-result');
-        const submitButton = this.querySelector('button[type="submit"]');
-        
-        // Validate IMEI format (15 digits)
-        if (!/^\d{15}$/.test(imeiValue)) {
-            resultDiv.innerHTML = `
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span>Se trimite...</span>';
+    messageDiv.innerHTML = '';
+
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach(function (value, key) {
+        if (key === 'photos') {
+            if (!data.photos) data.photos = [];
+            data.photos.push(value);
+        } else {
+            data[key] = value;
+        }
+    });
+
+    try {
+        if (typeof emailjs === 'undefined') {
+            throw new Error('EmailJS SDK nu este încărcat');
+        }
+
+        const photosInput = document.getElementById('photos');
+        const photosCount = photosInput?.files?.length || 0;
+        const photosInfo =
+            photosCount > 0
+                ? `${photosCount} ${
+                      photosCount === 1 ? 'fotografie' : 'fotografii'
+                  } încărcată${photosCount > 1 ? 'e' : ''}`
+                : 'Nu au fost încărcate fotografii';
+
+        const uniqueCode =
+            'ZSM-2025-' +
+            Math.random().toString(36).substr(2, 6).toUpperCase();
+
+        const garantie = document.getElementById('garantie')?.checked
+            ? 'Da'
+            : 'Nu';
+        const urgenta = document.getElementById('urgenta')?.checked
+            ? 'Da'
+            : 'Nu';
+        const gdpr = document.getElementById('gdpr')?.checked ? 'Da' : 'Nu';
+
+        const templateParams = {
+            nume: data.nume || 'N/A',
+            telefon: data.telefon || 'N/A',
+            email: data.email || 'N/A',
+            oras: data.oras || 'N/A',
+            adresa: data.adresa || 'N/A',
+            marca: data.marca || 'N/A',
+            model: data.model || 'N/A',
+            imei: data.imei || 'Nu a fost furnizat',
+            culoare: data.culoare || 'N/A',
+            serviciu: data.serviciu || 'N/A',
+            descriere: data.descriere || 'N/A',
+            garantie: garantie,
+            urgenta: urgenta,
+            gdpr: gdpr,
+            comentarii: data.comentarii || 'N/A',
+            fotografii: photosInfo,
+            cod_urmare: uniqueCode,
+            timestamp: new Date().toLocaleString('ro-RO', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+            }),
+        };
+
+        await emailjs.send(
+            'service_oc9vzjh',
+            'template_1co0w1n',
+            templateParams
+        );
+
+        messageDiv.innerHTML = `
+                <div class="success-message">
+                    <div class="success-icon">✅</div>
+                    <h3>Cerere Trimisă cu Succes!</h3>
+                    <p>Codul tău unic de urmărire este: <strong>${uniqueCode}</strong></p>
+                    <p>Vei primi un email cu instrucțiuni detaliate și AWB pentru expediere în maximum 30 de minute.</p>
+                    <p>Păstrează codul pentru a verifica statusul reparației!</p>
+                    <a href="#status-form" class="btn btn-primary" onclick="var b=document.querySelector('.form-tab[data-tab=\\'status\\']');if(b)b.click();return false;">Verifică Status</a>
+                </div>
+            `;
+
+        form.reset();
+
+        const filePreview = document.getElementById('file-preview');
+        if (filePreview) filePreview.innerHTML = '';
+
+        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        setTimeout(function () {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+        }, 3000);
+    } catch (error) {
+        console.error('Error:', error);
+        messageDiv.innerHTML = `
+                <div class="error-message">
+                    <div class="error-icon">❌</div>
+                    <h3>Eroare la Trimitere</h3>
+                    <p>Ne pare rău, a apărut o eroare. Te rugăm să încerci din nou sau să ne contactezi telefonic.</p>
+                    <a href="/contact/" class="btn btn-secondary">Contactează-ne Direct</a>
+                </div>
+            `;
+
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
+    }
+}
+
+// ===============================
+// IMEI Check
+// ===============================
+async function handleImeiFormSubmit(form) {
+    const imeiInput = document.getElementById('imei_check');
+    const resultDiv = document.getElementById('imei-result');
+    const submitButton = form.querySelector('button[type="submit"]');
+    if (!imeiInput || !resultDiv || !submitButton) return;
+    const imeiValue = imeiInput.value.trim().replace(/\s/g, '');
+
+    if (!/^\d{15}$/.test(imeiValue)) {
+        resultDiv.innerHTML = `
                 <div class="alert-box error">
                     <h4>❌ IMEI Invalid</h4>
                     <p>IMEI-ul trebuie să conțină exact 15 cifre. Te rugăm să verifici și să încerci din nou.</p>
                 </div>
             `;
-            return;
-        }
-        
-        // Show loading
-        submitButton.disabled = true;
-        resultDiv.innerHTML = `
+        return;
+    }
+
+    submitButton.disabled = true;
+    resultDiv.innerHTML = `
             <div class="loading-status">
                 <div class="spinner"></div>
                 <p>Se verifică IMEI-ul...</p>
             </div>
         `;
-        
-        try {
-            // TODO: Replace with your actual IMEI API endpoint and key
-            // This is a placeholder implementation
-            
-            // Example API call structure:
-            // const response = await fetch(`YOUR_IMEI_API_ENDPOINT?imei=${imeiValue}&key=YOUR_API_KEY`);
-            // const data = await response.json();
-            
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            // Simulated response (Replace with actual API data)
-            const mockData = {
-                success: true,
-                imei: imeiValue,
-                brand: 'Apple', // This would come from API
-                model: 'iPhone 13 Pro', // This would come from API
-                status: 'Clean', // Clean, Blacklisted, etc.
-                simlock: 'Unlocked', // Locked, Unlocked
-                country: 'România',
-                warranty: 'Expirat'
-            };
-            
-            if (mockData.success) {
-                const statusColor = mockData.status === 'Clean' ? 'success' : 'error';
-                const simlockColor = mockData.simlock === 'Unlocked' ? 'success' : 'warning';
-                
-                resultDiv.innerHTML = `
+
+    try {
+        await new Promise(function (resolve) {
+            setTimeout(resolve, 2000);
+        });
+
+        const mockData = {
+            success: true,
+            imei: imeiValue,
+            brand: 'Apple',
+            model: 'iPhone 13 Pro',
+            status: 'Clean',
+            simlock: 'Unlocked',
+            country: 'România',
+            warranty: 'Expirat',
+        };
+
+        if (mockData.success) {
+            const statusColor =
+                mockData.status === 'Clean' ? 'success' : 'error';
+            const simlockColor =
+                mockData.simlock === 'Unlocked' ? 'success' : 'warning';
+
+            resultDiv.innerHTML = `
                     <div class="imei-result-box">
                         <h3>✅ Rezultate Verificare IMEI</h3>
                         <div class="imei-details">
@@ -409,11 +333,10 @@ if (imeiForm) {
                         </div>
                     </div>
                 `;
-            }
-            
-        } catch (error) {
-            console.error('IMEI Check Error:', error);
-            resultDiv.innerHTML = `
+        }
+    } catch (error) {
+        console.error('IMEI Check Error:', error);
+        resultDiv.innerHTML = `
                 <div class="alert-box error">
                     <h4>⚠️ Eroare la Verificare</h4>
                     <p>Nu am putut verifica IMEI-ul în acest moment. Te rugăm să încerci din nou mai târziu.</p>
@@ -423,74 +346,142 @@ if (imeiForm) {
                     </div>
                 </div>
             `;
-        } finally {
-            submitButton.disabled = false;
+    } finally {
+        submitButton.disabled = false;
+    }
+}
+
+// ===============================
+// Delegated events (single init)
+// ===============================
+(function initZengsmFormDelegations() {
+    if (window.__zengsmFormsDelegations) return;
+    window.__zengsmFormsDelegations = true;
+
+    document.body.addEventListener('click', function (e) {
+        var tab = e.target && e.target.closest && e.target.closest('.form-tab[data-tab]');
+        if (!tab) return;
+        e.preventDefault();
+        var targetTab = tab.getAttribute('data-tab');
+        if (!targetTab) return;
+
+        var formTabs = document.querySelectorAll('.form-tab[data-tab]');
+        var formContainers = document.querySelectorAll('.form-container');
+        formTabs.forEach(function (t) {
+            t.classList.remove('active');
+        });
+        formContainers.forEach(function (c) {
+            c.classList.remove('active');
+        });
+        tab.classList.add('active');
+        var targetForm = document.getElementById(targetTab + '-form');
+        if (targetForm) targetForm.classList.add('active');
+    });
+
+    document.body.addEventListener('submit', function (e) {
+        if (e.target && e.target.id === 'repairSubmissionForm') {
+            e.preventDefault();
+            handleRepairFormSubmit(e.target);
         }
     });
-}
 
-// ===============================
-// Utility Functions
-// ===============================
-function getUrlParam(param) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-
-// URL param parser for status check from URL
-function urlParam(k) {
-    var p = {};
-    location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(s, k, v) {
-        p[k] = v;
-    });
-    return k ? p[k] : p;
-}
-
-// ===============================
-// Form Validation Helpers
-// ===============================
-
-// Phone number validation
-function validatePhoneNumber(phone) {
-    const phoneRegex = /^(\+4|0)[0-9]{9}$/;
-    return phoneRegex.test(phone.replace(/\s/g, ''));
-}
-
-// Email validation
-function validateEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Add real-time validation to phone input
-const phoneInput = document.getElementById('telefon');
-if (phoneInput) {
-    phoneInput.addEventListener('blur', function() {
-        if (this.value && !validatePhoneNumber(this.value)) {
-            this.setCustomValidity('Număr de telefon invalid. Format acceptat: 07XXXXXXXX');
-        } else {
-            this.setCustomValidity('');
+    document.body.addEventListener('submit', function (e) {
+        if (e.target && e.target.id === 'statusCheckForm') {
+            e.preventDefault();
+            verifica(STATUS_API_ID_CLIENT);
         }
     });
-}
 
-// Add real-time validation to email input
-const emailInput = document.getElementById('email');
-if (emailInput) {
-    emailInput.addEventListener('blur', function() {
-        if (this.value && !validateEmail(this.value)) {
-            this.setCustomValidity('Adresă de email invalidă');
-        } else {
-            this.setCustomValidity('');
+    document.body.addEventListener('submit', function (e) {
+        if (e.target && e.target.id === 'imeiCheckForm') {
+            e.preventDefault();
+            handleImeiFormSubmit(e.target);
         }
     });
-}
+
+    document.body.addEventListener('keydown', function (e) {
+        if (e.target && e.target.id === 'cod' && e.key === 'Enter') {
+            e.preventDefault();
+            verifica(STATUS_API_ID_CLIENT);
+        }
+    });
+
+    document.body.addEventListener('change', function (e) {
+        if (!e.target || e.target.id !== 'photos') return;
+        var filePreview = document.getElementById('file-preview');
+        if (!filePreview) return;
+        filePreview.innerHTML = '';
+        var files = Array.from(e.target.files || []);
+        if (files.length > 0) {
+            files.forEach(function (file, index) {
+                if (file.type.startsWith('image/')) {
+                    var reader = new FileReader();
+                    reader.onload = function (ev) {
+                        var preview = document.createElement('div');
+                        preview.className = 'file-preview-item';
+                        preview.innerHTML =
+                            '<img src="' +
+                            ev.target.result +
+                            '" alt="Preview">' +
+                            '<button type="button" class="remove-file" data-index="' +
+                            index +
+                            '">×</button>' +
+                            '<p>' +
+                            file.name +
+                            '</p>';
+                        filePreview.appendChild(preview);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+    });
+
+    document.body.addEventListener('click', function (e) {
+        var rm = e.target && e.target.closest && e.target.closest('.remove-file');
+        if (!rm) return;
+        e.preventDefault();
+        var parent = rm.parentElement;
+        if (parent) parent.remove();
+    });
+
+    document.body.addEventListener(
+        'focusout',
+        function (e) {
+            if (e.target && e.target.id === 'telefon') {
+                if (e.target.value && !validatePhoneNumber(e.target.value)) {
+                    e.target.setCustomValidity(
+                        'Număr de telefon invalid. Format acceptat: 07XXXXXXXX'
+                    );
+                } else {
+                    e.target.setCustomValidity('');
+                }
+            }
+            if (e.target && e.target.id === 'email') {
+                if (e.target.value && !validateEmail(e.target.value)) {
+                    e.target.setCustomValidity('Adresă de email invalidă');
+                } else {
+                    e.target.setCustomValidity('');
+                }
+            }
+        },
+        true
+    );
+})();
+
+queueMicrotask(tryStatusFromUrl);
 
 // ===============================
 // Console Info
 // ===============================
-console.log('%c📱 ZengSM Forms Module Loaded', 'background: #6366f1; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;');
+console.log(
+    '%c📱 ZengSM Forms Module Loaded',
+    'background: #6366f1; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;'
+);
 console.log('%c⚙️ API Configuration:', 'color: #6366f1; font-weight: bold;');
 console.log('Status Check API: servicetelefoanemobile.ro');
 console.log('IMEI Check API: [Configure with your API key]');
-console.log('%c⚠️ Remember to replace placeholder API endpoints with your actual backend URLs!', 'color: #f59e0b; font-weight: bold;');
+console.log(
+    '%c⚠️ Remember to replace placeholder API endpoints with your actual backend URLs!',
+    'color: #f59e0b; font-weight: bold;'
+);

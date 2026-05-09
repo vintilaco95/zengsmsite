@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import { FormulareStatusUrlParam } from "@/components/FormulareStatusUrlParam";
 import { LegacyMain } from "@/components/LegacyMain";
 import { PageScripts } from "@/components/PageScripts";
 import { getSiteUrl } from "@/lib/site-url";
@@ -16,6 +18,9 @@ export default function FormularePage() {
   return (
     <>
       <LegacyMain legacyFile="formulare.html" />
+      <Suspense fallback={null}>
+        <FormulareStatusUrlParam />
+      </Suspense>
       <PageScripts jquery extra={["/scripts/forms.js"]} />
     </>
   );
