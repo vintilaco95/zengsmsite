@@ -158,6 +158,17 @@ export function SiteNav() {
               Prețuri
             </Link>
             <a
+              href="https://gsmos.ro/verifica-imei"
+              className="zgs-header__chip zgs-header__chip--imei"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="zgs-header__chip-long">Verifică IMEI</span>
+              <span className="zgs-header__chip-short" aria-hidden="true">
+                IMEI
+              </span>
+            </a>
+            <a
               href="https://licitatii-gsm.ro"
               className="zgs-header__chip zgs-header__chip--auction"
               target="_blank"
@@ -229,6 +240,17 @@ export function SiteNav() {
           >
             Prețuri
           </Link>
+          <a
+            href="https://gsmos.ro/verifica-imei"
+            className="zgs-header__chip zgs-header__chip--imei"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="zgs-header__chip-long">Verifică IMEI</span>
+            <span className="zgs-header__chip-short" aria-hidden="true">
+              IMEI
+            </span>
+          </a>
           <a
             href="https://licitatii-gsm.ro"
             className="zgs-header__chip zgs-header__chip--auction"
