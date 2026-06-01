@@ -5,75 +5,105 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://zengsm.ro/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/servicii/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/preturi/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/formulare/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/galerie/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/despre/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/blog/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/intrebari-frecvente/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/contact/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/termeni-conditii/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.35</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/politica-confidentialitate/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.35</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/gdpr/</loc>
-    <lastmod>2026-05-09</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.35</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/lava-bold-n2-vine-pe-3-iunie-ce-urmareste-un-service-gsm-inainte-sa-apara-primele-reparatii-mpqq3y72/</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/terraria-primeste-cross-play-si-asta-conteaza-mai-mult-decat-pare-pentru-telefoane-tablete-si-service-mpgq0b6v/</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/controlerul-cloud-xbox-vazut-in-salbaticie-si-ce-spune-asta-despre-reparatii-latenta-si-hardware-compact-mp6pxm37/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/whoop-aduce-consultatii-video-in-aplicatie-ce-inseamna-pentru-datele-de-sanatate-si-pentru-dispozitivul-de-la-mana-mp0tte65/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://zengsm.ro/blog/dji-osmo-pocket-4p-apare-la-orizont-a-doua-camera-schimba-discutia-si-pentru-service-moybfhqi/</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
   <url>
     <loc>https://zengsm.ro/blog/cand-discord-cade-nu-e-mereu-telefonul-vinovat-cum-separi-o-pana-de-serviciu-de-o-problema-reala-pe-device-moxyxdx9/</loc>

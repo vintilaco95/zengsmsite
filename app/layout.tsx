@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     "service iphone timisoara",
   ],
   authors: [{ name: "ZEN GSM - SC Ajutor Technologia SRL" }],
+  verification: {
+    google: "C2zbP43tJr6T_KS_tVoiyBJLb0QeVhXfXXQt4wFSTVg",
+  },
   robots: { index: true, follow: true },
   icons: {
     icon: [
