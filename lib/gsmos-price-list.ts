@@ -9,6 +9,7 @@ export type PriceRow = {
   repair: string;
   p: number;
   m: number;
+  itemId: string;
 };
 
 export type PriceListPayload = {
@@ -40,12 +41,14 @@ export function flattenPriceListJson(json: unknown): PriceListPayload {
       if (item.isActive === false) continue;
       const repair = String(item.serviceOperation || "").trim();
       if (!repair) continue;
+      const rawId = String(item._id || "");
       out.push({
         brand,
         model,
         repair,
         p: Number(item.partsCost) || 0,
         m: Number(item.labourCost) || 0,
+        itemId: /^[a-f0-9]{24}$/i.test(rawId) ? rawId.toLowerCase() : "",
       });
     }
   }
@@ -108,13 +111,13 @@ export function findPrice(
   brandKey: string,
   model: string,
   repair: string,
-): Pick<PriceRow, "p" | "m"> & { t: number } | null {
+): Pick<PriceRow, "p" | "m" | "itemId"> & { t: number } | null {
   const x = rows.find(
     (q) =>
       norm(q.brand) === brandKey && q.model === model && q.repair === repair,
   );
   if (!x) return null;
-  return { p: x.p, m: x.m, t: x.p + x.m };
+  return { p: x.p, m: x.m, t: x.p + x.m, itemId: x.itemId || "" };
 }
 
 /** Simple Icons CDN — aceleași mapping-uri ca în scriptul vechi. */

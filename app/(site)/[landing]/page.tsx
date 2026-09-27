@@ -236,6 +236,25 @@ export default async function SeoLandingPage({ params }: Props) {
                 <a href="tel:+40758060072" className="btn btn-secondary hero-btn-call">
                   <span>Sună acum: 0758 060 072</span>
                 </a>
+                <a
+                  href="https://maps.app.goo.gl/BoRchc8dhF8yepra6"
+                  className="btn hero-btn-map"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Deschide locația în Google Maps"
+                  title="Deschide în Google Maps"
+                >
+                  <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true">
+                    <path fill="#34A853" d="M2.5 6.2 8.2 4.2v14.2L2.5 20.4z" />
+                    <path fill="#FBBC04" d="M8.2 4.2 15.8 6.6v14.2L8.2 18.4z" />
+                    <path fill="#4285F4" d="M15.8 6.6 21.5 4.6v14.2L15.8 20.8z" />
+                    <path
+                      fill="#EA4335"
+                      d="M12 2.4c-2.05 0-3.7 1.6-3.7 3.6 0 2.7 3.7 6.3 3.7 6.3s3.7-3.6 3.7-6.3c0-2-1.65-3.6-3.7-3.6z"
+                    />
+                    <circle cx="12" cy="6" r="1.35" fill="#fff" />
+                  </svg>
+                </a>
               </div>
               <div className="trust-badges">
                 {page.badges.map((b) => (

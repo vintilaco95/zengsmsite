@@ -171,7 +171,7 @@
       "kind": "brand",
       "brand": "Xiaomi",
       "serviceType": "Reparații Xiaomi, Redmi și Poco",
-      "hero": { "variant": "camera", "layout": "center" },
+      "hero": { "variant": "camera", "layout": "side" },
       "meta": {
         "title": "Reparații Xiaomi Timișoara – Display Redmi, Poco, Cameră | ZEN GSM",
         "description": "Service Xiaomi, Redmi și Poco în Timișoara: display spart, touch mort, sticlă cameră, baterie. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
@@ -226,7 +226,7 @@
       "kind": "brand",
       "brand": "Motorola",
       "serviceType": "Reparații Motorola",
-      "hero": { "variant": "baterie", "layout": "center" },
+      "hero": { "variant": "baterie", "layout": "side" },
       "meta": {
         "title": "Reparații Motorola Timișoara – Baterie, Moto G, Edge, Razr | ZEN GSM",
         "description": "Service Motorola în Timișoara: baterie Moto G și Edge, display, mufă, Razr pliabil. Max. 3 ore cu piese din stoc, comandă rapidă, garanție 1–3 ani."
@@ -336,7 +336,7 @@
       "kind": "brand",
       "brand": "OPPO",
       "serviceType": "Reparații OPPO și OnePlus",
-      "hero": { "variant": "mufa", "layout": "center" },
+      "hero": { "variant": "mufa", "layout": "side" },
       "meta": {
         "title": "Reparații OPPO și OnePlus Timișoara – Baterie, Încărcare | ZEN GSM",
         "description": "Service OPPO și OnePlus în Timișoara: baterie, încărcare SuperVOOC, mufă, display. Max. 3 ore cu piese din stoc, comandă rapidă, garanție 1–3 ani."
@@ -446,7 +446,7 @@
       "kind": "service",
       "brand": "",
       "serviceType": "Înlocuire display telefon",
-      "hero": { "variant": "display", "layout": "center" },
+      "hero": { "variant": "display", "layout": "side" },
       "meta": {
         "title": "Înlocuire Display Telefon Timișoara – Ecran în 3 ore | ZEN GSM",
         "description": "Schimb display spart în Timișoara pentru iPhone, Samsung, Xiaomi, Huawei, Honor, OPPO, Motorola. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
@@ -501,7 +501,7 @@
       "kind": "service",
       "brand": "",
       "serviceType": "Înlocuire baterie telefon",
-      "hero": { "variant": "baterie", "layout": "center" },
+      "hero": { "variant": "baterie", "layout": "side" },
       "meta": {
         "title": "Înlocuire Baterie Telefon Timișoara – Baterie Umflată | ZEN GSM",
         "description": "Schimb baterie telefon în Timișoara: autonomie scurtă, baterie umflată, opriri bruște. iPhone, Samsung, Motorola, OPPO. Max. 3 ore, garanție 1–3 ani."
@@ -556,7 +556,7 @@
       "kind": "service",
       "brand": "",
       "serviceType": "Reparație carcasă și sticlă spate telefon",
-      "hero": { "variant": "carcasa", "layout": "center" },
+      "hero": { "variant": "carcasa", "layout": "side" },
       "meta": {
         "title": "Reparație Carcasă și Sticlă Spate Telefon Timișoara | ZEN GSM",
         "description": "Schimb sticlă spate spartă, carcasă sau ramă îndoită în Timișoara. iPhone, Samsung, Honor, Pixel. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
@@ -611,7 +611,7 @@
       "kind": "service",
       "brand": "",
       "serviceType": "Reparație telefon căzut în apă",
-      "hero": { "variant": "apa", "layout": "center" },
+      "hero": { "variant": "apa", "layout": "side" },
       "meta": {
         "title": "Telefon Căzut în Apă Timișoara – Ce faci și cum îl salvăm | ZEN GSM",
         "description": "Telefon căzut în apă în Timișoara? Nu-l încărca și nu-l pune în orez. Curățare ultrasonică, diagnostic pe placă, salvare date. Sună la 0758 060 072."

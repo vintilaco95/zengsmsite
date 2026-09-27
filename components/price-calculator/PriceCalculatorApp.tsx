@@ -4,7 +4,9 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
+  type FormEvent,
 } from "react";
 import {
   brandLogoUrl,
@@ -18,6 +20,7 @@ import {
   repairEmojiHint,
   type PriceRow,
 } from "@/lib/gsmos-price-list";
+import { isLeadPhone, submitPriceLead } from "@/lib/gsmos-leads";
 import styles from "./PriceCalculatorApp.module.css";
 
 export const PRETURI_CALCULATOR_ANCHOR_ID = "preturi-calculator";
@@ -97,6 +100,12 @@ export function PriceCalculatorApp({ variant }: Props) {
   const [brandLabel, setBrandLabel] = useState("");
   const [model, setModel] = useState<string | null>(null);
   const [repair, setRepair] = useState("");
+  const [leadName, setLeadName] = useState("");
+  const [leadPhone, setLeadPhone] = useState("");
+  const [leadStatus, setLeadStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [leadMsg, setLeadMsg] = useState("");
+  const startedAt = useRef(Date.now());
+  const honeypotRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!token.trim()) {
@@ -218,11 +227,69 @@ export function PriceCalculatorApp({ variant }: Props) {
     setModel(null);
     setRepair("");
     setQuery("");
+    setLeadName("");
+    setLeadPhone("");
+    setLeadStatus("idle");
+    setLeadMsg("");
   }, []);
+
+  const submitLead = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      if (!selection || leadStatus === "sending" || leadStatus === "sent") return;
+      const name = leadName.trim();
+      const phone = leadPhone.trim();
+      if (!name) {
+        setLeadStatus("error");
+        setLeadMsg("Numele este obligatoriu.");
+        return;
+      }
+      if (!isLeadPhone(phone)) {
+        setLeadStatus("error");
+        setLeadMsg("Introdu un număr de telefon valid.");
+        return;
+      }
+      if (honeypotRef.current?.value) {
+        setLeadStatus("sent");
+        setLeadMsg("Mulțumim! Te contactăm în cel mai scurt timp.");
+        return;
+      }
+      setLeadStatus("sending");
+      setLeadMsg("");
+      try {
+        const result = await submitPriceLead({
+          name,
+          phone,
+          brand: brandLabel,
+          model: model === "" || model === null ? "Generic" : model,
+          repair,
+          price: selection.t,
+          itemId: selection.itemId,
+          elapsedMs: Date.now() - startedAt.current,
+          honeypot: honeypotRef.current?.value || "",
+        });
+        setLeadStatus("sent");
+        setLeadMsg(result.message);
+      } catch (err) {
+        setLeadStatus("error");
+        setLeadMsg(
+          err instanceof Error
+            ? err.message
+            : "Nu am putut trimite solicitarea.",
+        );
+      }
+    },
+    [selection, leadStatus, leadName, leadPhone, brandLabel, model, repair],
+  );
 
   useEffect(() => {
     setQuery("");
   }, [step]);
+
+  useEffect(() => {
+    setLeadStatus("idle");
+    setLeadMsg("");
+  }, [brandKey, model, repair]);
 
   const shellClass =
     variant === "page" ? styles.shellPage : styles.shellEmbed;
@@ -444,6 +511,73 @@ export function PriceCalculatorApp({ variant }: Props) {
                         <div className={styles.resultTotal}>
                           Total: {selection.t} {currency}
                         </div>
+                        <form className={styles.leadForm} onSubmit={submitLead}>
+                          <p className={styles.leadHint}>
+                            Lasă numele și telefonul și te contactăm pentru reparația asta.
+                          </p>
+                          <label className={styles.leadField}>
+                            <span>Nume</span>
+                            <input
+                              className={styles.leadInput}
+                              name="nume"
+                              type="text"
+                              autoComplete="name"
+                              required
+                              maxLength={80}
+                              value={leadName}
+                              onChange={(e) => setLeadName(e.target.value)}
+                              disabled={leadStatus === "sent"}
+                            />
+                          </label>
+                          <label className={styles.leadField}>
+                            <span>Telefon</span>
+                            <input
+                              className={styles.leadInput}
+                              name="telefon"
+                              type="tel"
+                              inputMode="tel"
+                              autoComplete="tel"
+                              required
+                              maxLength={20}
+                              placeholder="07xx xxx xxx"
+                              value={leadPhone}
+                              onChange={(e) => setLeadPhone(e.target.value)}
+                              disabled={leadStatus === "sent"}
+                            />
+                          </label>
+                          <input
+                            ref={honeypotRef}
+                            className={styles.honeypot}
+                            type="text"
+                            name="_gsmos_hp"
+                            tabIndex={-1}
+                            autoComplete="off"
+                            aria-hidden="true"
+                          />
+                          <button
+                            type="submit"
+                            className={styles.leadBtn}
+                            disabled={leadStatus === "sending" || leadStatus === "sent"}
+                          >
+                            {leadStatus === "sending"
+                              ? "Se trimite…"
+                              : leadStatus === "sent"
+                                ? "Solicitare trimisă"
+                                : "Trimite solicitare"}
+                          </button>
+                          {leadMsg ? (
+                            <p
+                              className={
+                                leadStatus === "error"
+                                  ? styles.leadError
+                                  : styles.leadOk
+                              }
+                              role="status"
+                            >
+                              {leadMsg}
+                            </p>
+                          ) : null}
+                        </form>
                         <a
                           className={styles.waBtn}
                           href={waHref(

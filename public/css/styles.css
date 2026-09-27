@@ -635,9 +635,47 @@ body {
     flex-wrap: wrap;
 }
 
+/* Homepage desktop: telefonul pornește de sus, butoanele + harta pe un rând */
+@media (min-width: 969px) {
+    .hero:not(.lv-hero) .hero-content {
+        align-items: start;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 2.5rem;
+    }
+
+    .hero:not(.lv-hero) .hero-buttons {
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0.7rem;
+    }
+
+    .hero:not(.lv-hero) .hero-buttons .btn:not(.hero-btn-map) {
+        width: auto;
+        flex: 0 0 auto;
+        padding: 0.9rem 1.25rem;
+        white-space: nowrap;
+    }
+}
+
 .hero .label-short,
 .hero .hero-btn-call {
     display: none;
+}
+
+.hero-btn-map {
+    flex: 0 0 auto;
+    width: 3.4rem;
+    min-width: 3.4rem;
+    height: 3.4rem;
+    padding: 0;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.hero-btn-map:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(234, 67, 53, 0.35);
 }
 
 .hero-offer {
@@ -2192,7 +2230,12 @@ body {
 
     .hero-buttons {
         grid-area: buttons;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "price   price"
+            "call    map"
+            "service service";
         gap: 0.7rem;
         margin-top: 1.5rem;
     }
@@ -2213,7 +2256,16 @@ body {
         font-size: 1.05rem;
     }
 
+    .hero-buttons .hero-btn-map {
+        width: 3.4rem;
+        min-width: 3.4rem;
+        min-height: 3.4rem;
+        padding: 0;
+        align-self: flex-start;
+    }
+
     .hero-btn-price {
+        grid-area: price;
         order: 1;
         background: var(--gradient-primary);
         border: none;
@@ -2222,10 +2274,17 @@ body {
 
     .hero .hero-btn-call {
         display: inline-flex;
+        grid-area: call;
         order: 2;
     }
 
+    .hero-buttons .hero-btn-map {
+        grid-area: map;
+        align-self: center;
+    }
+
     .hero-buttons .hero-btn-service {
+        grid-area: service;
         order: 3;
         min-height: 0;
         padding: 0.35rem 0.5rem;

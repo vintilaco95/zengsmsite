@@ -75,17 +75,20 @@ export function HeroVisual({ variant }: { variant: HeroVariant }) {
     return (
       <div className="lv-device lv-device--port" aria-hidden="true">
         <div className="lv-screen">
-          <span className="lv-ring">
-            <span className="lv-ring__bolt">
+          <span className="lv-dial">
+            <svg className="lv-dial__svg" viewBox="0 0 36 36" aria-hidden="true">
+              <circle className="lv-dial__track" cx="18" cy="18" r="14" />
+              <circle className="lv-dial__arc" cx="18" cy="18" r="14" />
+            </svg>
+            <span className="lv-dial__bolt">
               <Bolt />
             </span>
           </span>
-          <span className="lv-port__label">Se încarcă</span>
         </div>
-        <span className="lv-port"></span>
-        <span className="lv-plug">
-          <span className="lv-plug__head"></span>
-          <span className="lv-plug__cable"></span>
+        <span className="lv-usbc" />
+        <span className="lv-lead">
+          <span className="lv-lead__plug" />
+          <span className="lv-lead__wire" />
         </span>
         <StateTags before="Nu încarcă" after="Încarcă rapid" />
       </div>
@@ -96,14 +99,15 @@ export function HeroVisual({ variant }: { variant: HeroVariant }) {
     return (
       <div className="lv-device lv-device--back lv-device--camera" aria-hidden="true">
         <span className="lv-cam">
-          <span className="lv-cam__lens lv-cam__lens--a"></span>
-          <span className="lv-cam__lens lv-cam__lens--b"></span>
-          <span className="lv-cam__lens lv-cam__lens--c"></span>
-          <span className="lv-cam__flash"></span>
-          <span className="lv-cam__crack"></span>
+          <span className="lv-cam__lens lv-cam__lens--a" />
+          <span className="lv-cam__lens lv-cam__lens--b" />
+          <span className="lv-cam__lens lv-cam__lens--c" />
+          <span className="lv-cam__flash" />
+          <svg className="lv-cam__crack" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M46 50 L28 24 L16 6 M46 50 L70 30 L94 14 M46 50 L56 76 L50 98 M46 50 L20 68 L4 78" />
+          </svg>
         </span>
-        <span className="lv-cam-focus"></span>
-        <span className="lv-back-logo">ZEN</span>
+        <span className="lv-brackets" />
         <StateTags before="Poze neclare" after="Cameră clară" />
       </div>
     );
@@ -113,14 +117,13 @@ export function HeroVisual({ variant }: { variant: HeroVariant }) {
     return (
       <div className="lv-device lv-device--back lv-device--glass" aria-hidden="true">
         <span className="lv-cam lv-cam--small">
-          <span className="lv-cam__lens lv-cam__lens--a"></span>
-          <span className="lv-cam__lens lv-cam__lens--b"></span>
+          <span className="lv-cam__lens lv-cam__lens--a" />
+          <span className="lv-cam__lens lv-cam__lens--b" />
         </span>
-        <svg className="lv-cracks" viewBox="0 0 200 400" preserveAspectRatio="none">
-          <path d="M120 160 L90 120 L70 60 M120 160 L160 130 L195 110 M120 160 L140 220 L130 290 L150 400 M120 160 L60 200 L5 230 M140 220 L185 260 M90 120 L40 110" />
+        <svg className="lv-cracks" viewBox="0 0 100 200" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <path d="M58 78 L46 52 L40 22 M58 78 L74 60 L96 48 M58 78 L66 112 L62 150 L70 188 M58 78 L36 98 L8 112 M66 112 L88 128" />
         </svg>
-        <span className="lv-shine"></span>
-        <span className="lv-back-logo">ZEN</span>
+        <span className="lv-shine" />
         <StateTags before="Spate spart" after="Ca nou" />
       </div>
     );
@@ -129,11 +132,12 @@ export function HeroVisual({ variant }: { variant: HeroVariant }) {
   return (
     <div className="lv-device lv-device--water" aria-hidden="true">
       <div className="lv-screen">
-        <span className="lv-water"></span>
-        <span className="lv-drop lv-drop--1"></span>
-        <span className="lv-drop lv-drop--2"></span>
-        <span className="lv-drop lv-drop--3"></span>
-        <span className="lv-drop lv-drop--4"></span>
+        <span className="lv-drops">
+          <span className="lv-drop lv-drop--1" />
+          <span className="lv-drop lv-drop--2" />
+          <span className="lv-drop lv-drop--3" />
+        </span>
+        <span className="lv-water" />
         <span className="lv-dry">
           <Check />
         </span>
