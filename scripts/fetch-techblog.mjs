@@ -27,12 +27,70 @@ function fileKeyForSlug(slug) {
   return Buffer.from(String(slug), "utf8").toString("base64url");
 }
 
+const RETRY_STATUSES = new Set([408, 429, 500, 502, 503, 504]);
+
+function sleep(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
 async function fetchJson(url) {
-  const r = await fetch(url, {
-    headers: { Accept: "application/json" },
-  });
-  const body = await r.json().catch(() => ({}));
-  return { ok: r.ok, status: r.status, body };
+  let last = { ok: false, status: 0, body: {} };
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const r = await fetch(url, {
+        headers: { Accept: "application/json" },
+      });
+      const body = await r.json().catch(() => ({}));
+      last = { ok: r.ok, status: r.status, body };
+      if (r.ok || !RETRY_STATUSES.has(r.status)) return last;
+    } catch (err) {
+      last = { ok: false, status: 0, body: { error: err?.message || String(err) } };
+    }
+    if (attempt < 4) {
+      console.warn(
+        "fetch-techblog: reîncerc",
+        attempt,
+        url,
+        last.status || last.body?.error,
+      );
+      await sleep(1500 * attempt);
+    }
+  }
+  return last;
+}
+
+/** Feed-ul e opțional: un 503 de la e-gsm.ro nu trebuie să oprească deploy-ul site-ului. */
+function continueWithoutFeed(reason) {
+  const manifestPath = path.join(dataDir, "manifest.json");
+  if (fs.existsSync(manifestPath)) {
+    console.warn(
+      "fetch-techblog: păstrez manifestul existent, sincronizarea a eșuat:",
+      reason,
+    );
+    process.exit(0);
+  }
+  fs.mkdirSync(dataDir, { recursive: true });
+  fs.writeFileSync(
+    manifestPath,
+    JSON.stringify(
+      {
+        fetchedAt: null,
+        apiBase,
+        bloggerSlug,
+        blogger: null,
+        articles: [],
+        syncError: reason,
+      },
+      null,
+      2,
+    ),
+    "utf8",
+  );
+  console.warn(
+    "fetch-techblog: feed indisponibil, build-ul continuă fără articole:",
+    reason,
+  );
+  process.exit(0);
 }
 
 if (skip) {
@@ -63,13 +121,9 @@ while (currentPage <= totalPages) {
   const url = `${apiBase}/api/embed/blogger/${encodeURIComponent(bloggerSlug)}?page=${currentPage}&limit=30`;
   const res = await fetchJson(url);
   if (!res.ok || !res.body.ok) {
-    console.error(
-      "fetch-techblog: feed blogger eșuat",
-      url,
-      res.status,
-      res.body?.error || res.body,
+    continueWithoutFeed(
+      `${url} ${res.status} ${JSON.stringify(res.body?.error || res.body || {})}`,
     );
-    process.exit(1);
   }
   bloggerMeta = res.body.blogger || bloggerMeta;
   totalPages = Number(res.body.pages) || 1;
@@ -94,13 +148,9 @@ for (let i = 0; i < unique.length; i++) {
   const url = `${apiBase}/api/embed/article/${encodeURIComponent(slug)}?bloggerSlug=${encodeURIComponent(bloggerSlug)}`;
   const res = await fetchJson(url);
   if (!res.ok || !res.body.ok || !res.body.article) {
-    console.error(
-      "fetch-techblog: articol eșuat",
-      slug,
-      res.status,
-      res.body?.error || "",
+    continueWithoutFeed(
+      `articol ${slug} ${res.status} ${res.body?.error || ""}`,
     );
-    process.exit(1);
   }
   const key = fileKeyForSlug(slug);
   fs.writeFileSync(
