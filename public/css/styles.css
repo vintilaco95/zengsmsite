@@ -105,7 +105,16 @@ body {
     height: 100%;
     z-index: -1;
     overflow: hidden;
-    background: linear-gradient(180deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background: linear-gradient(180deg, #020617 0%, #0b1220 50%, #020617 100%);
+}
+
+.background-animation::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 6, 18, 0.72);
+    z-index: 2;
+    pointer-events: none;
 }
 
 /* Logo Background Watermark */
@@ -121,26 +130,26 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    opacity: 0.4;
+    opacity: 0.16;
     animation: logoFloat 20s ease-in-out infinite;
 }
 
 @keyframes logoFloat {
     0%, 100% {
         transform: translate(-50%, -50%) rotate(0deg) scale(1);
-        opacity: 0.3;
+        opacity: 0.12;
     }
     25% {
         transform: translate(-50%, -45%) rotate(1deg) scale(1.02);
-        opacity: 0.4;
+        opacity: 0.18;
     }
     50% {
         transform: translate(-50%, -50%) rotate(0deg) scale(1);
-        opacity: 0.35;
+        opacity: 0.14;
     }
     75% {
         transform: translate(-50%, -55%) rotate(-1deg) scale(0.98);
-        opacity: 0.4;
+        opacity: 0.18;
     }
 }
 
@@ -148,7 +157,7 @@ body {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.4;
+    opacity: 0.18;
     animation: float 20s infinite ease-in-out;
 }
 

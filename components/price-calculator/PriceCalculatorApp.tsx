@@ -224,19 +224,6 @@ export function PriceCalculatorApp({ variant }: Props) {
     setStep(1);
   }, [step, resetFromBrand]);
 
-  const restart = useCallback(() => {
-    setStep(1);
-    setBrandKey("");
-    setBrandLabel("");
-    setModel(null);
-    setRepair("");
-    setQuery("");
-    setLeadName("");
-    setLeadPhone("");
-    setLeadStatus("idle");
-    setLeadMsg("");
-  }, []);
-
   const submitLead = useCallback(
     async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -340,6 +327,14 @@ export function PriceCalculatorApp({ variant }: Props) {
 
           {load === "ready" ? (
             <>
+              <div className={styles.stepsHead}>
+              {step > 1 ? (
+                <button type="button" className={styles.backBtn} onClick={goBack}>
+                  Înapoi
+                </button>
+              ) : (
+                <span className={styles.backSlot} aria-hidden="true" />
+              )}
               <div className={styles.steps} role="tablist">
                 {[
                   { n: 1, label: "Marcă" },
@@ -361,6 +356,7 @@ export function PriceCalculatorApp({ variant }: Props) {
                     {s.n}. {s.label}
                   </div>
                 ))}
+              </div>
               </div>
 
               {step < 4 ? (
@@ -616,24 +612,6 @@ export function PriceCalculatorApp({ variant }: Props) {
                     ) : null}
                   </form>
                 ) : null}
-              </div>
-
-              <div className={styles.footerBar}>
-                <button
-                  type="button"
-                  className={styles.backBtn}
-                  onClick={goBack}
-                  disabled={step <= 1}
-                >
-                  Înapoi
-                </button>
-                <button
-                  type="button"
-                  className={styles.restartBtn}
-                  onClick={restart}
-                >
-                  Resetează
-                </button>
               </div>
             </>
           ) : null}

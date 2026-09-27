@@ -78,13 +78,21 @@
   min-height: min(70vh, 720px);
 }
 
+.stepsHead {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.75rem 0.55rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
 .steps {
   display: flex;
   justify-content: center;
   gap: 0.3rem;
-  padding: 0.75rem 0.85rem 0.65rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  flex-shrink: 0;
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .stepBtn {
@@ -292,41 +300,21 @@
   }
 }
 
-.footerBar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0.65rem 0.85rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(0, 0, 0, 0.2);
-  flex-shrink: 0;
-}
-
 .backBtn,
-.restartBtn {
-  border-radius: 0.55rem;
-  padding: 0.5rem 0.85rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid transparent;
+.backSlot {
+  flex: 0 0 auto;
+  width: 4.6rem;
 }
 
 .backBtn {
+  border-radius: 0.55rem;
+  padding: 0.45rem 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.08);
   color: #e2e8f0;
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-.restartBtn {
-  margin-left: auto;
-  background: rgba(16, 185, 129, 0.85);
-  color: #0f172a;
-}
-
-.backBtn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
 }
 
 .resultPanel,
