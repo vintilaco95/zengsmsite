@@ -9,12 +9,10 @@
   z-index: 1000;
 }
 
-/* backdrop-filter rămâne doar pe bară — altfel `position:fixed` pe foaia mobilă
-   e ancorat de header și vede doar o „șipcă” din meniu (Safari / iOS). */
+/* Fără backdrop-filter pe bară: pe mobil, blur-ul peste orburile animate
+   blochează firul principal câteva secunde la hamburger și la închiderea modalului. */
 .zgs-header__bar {
   background: rgba(15, 23, 42, 0.94);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid transparent;
   transition:
     border-color 0.2s ease,
@@ -368,7 +366,7 @@
   .zgs-header__bar {
     margin: var(--zgs-float) 0.65rem 0;
     border-radius: 1.2rem;
-    background: rgba(8, 18, 32, 0.55);
+    background: rgba(8, 18, 32, 0.88);
     border: 1px solid rgba(255, 255, 255, 0.16);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
   }
@@ -651,7 +649,10 @@ body.zgs-trust-modal-open {
   inset: 0;
   z-index: 8500;
   background: rgba(2, 6, 18, 0.92);
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   align-items: center;
   justify-content: center;
   padding: max(0.75rem, env(safe-area-inset-top, 0px))
@@ -662,7 +663,9 @@ body.zgs-trust-modal-open {
 }
 
 .zgs-trust-calc-backdrop.is-open {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 @keyframes zgsTrustFadeIn {
@@ -773,7 +776,10 @@ body.zgs-trust-modal-open {
   inset: 0;
   z-index: 8500;
   background: rgba(2, 6, 18, 0.92);
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   align-items: center;
   justify-content: center;
   padding: max(0.75rem, env(safe-area-inset-top, 0px))
@@ -784,7 +790,9 @@ body.zgs-trust-modal-open {
 }
 
 .zgs-trust-status-backdrop.is-open {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .zgs-trust-status-modal {

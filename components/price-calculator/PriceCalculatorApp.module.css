@@ -430,6 +430,38 @@
   cursor: default;
 }
 
+.success {
+  width: min(100%, 26rem);
+  margin: 0.4rem auto 0.2rem;
+  padding: 1.35rem 1rem 1.1rem;
+  text-align: center;
+  border-radius: 1rem;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.successMark {
+  width: 3.25rem;
+  height: 3.25rem;
+  margin: 0 auto 0.85rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #34d399 0%, #14b8a6 100%);
+  color: #052e16;
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.successText {
+  margin: -0.35rem 0 0.65rem;
+  font-size: 1rem;
+  line-height: 1.45;
+  font-weight: 600;
+  color: #ecfdf5;
+}
+
 .leadOk {
   margin: 0;
   font-size: 0.85rem;

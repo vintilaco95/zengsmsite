@@ -471,6 +471,8 @@ document.addEventListener('visibilitychange', () => {
     function openCalcModal() {
         const el = calcBackdrop();
         if (!el) return;
+        const iframe = el.querySelector('iframe');
+        if (iframe) iframe.style.contentVisibility = '';
         mountIframe(el);
         el.classList.add('is-open');
         syncBodyModalLock();
@@ -479,16 +481,23 @@ document.addEventListener('visibilitychange', () => {
     function closeCalcModal() {
         const el = calcBackdrop();
         if (!el) return;
+        const iframe = el.querySelector('iframe');
+        if (iframe) iframe.style.contentVisibility = 'hidden';
         el.classList.remove('is-open');
         syncBodyModalLock();
-        requestAnimationFrame(() => {
-            if (!el.classList.contains('is-open')) releaseIframe(el);
-        });
+        setTimeout(() => {
+            if (!el.classList.contains('is-open')) {
+                releaseIframe(el);
+                if (iframe) iframe.style.contentVisibility = '';
+            }
+        }, 40);
     }
 
     function openStatusModal() {
         const el = statusBackdrop();
         if (!el) return;
+        const iframe = el.querySelector('iframe');
+        if (iframe) iframe.style.contentVisibility = '';
         mountIframe(el);
         el.classList.add('is-open');
         syncBodyModalLock();
@@ -497,11 +506,16 @@ document.addEventListener('visibilitychange', () => {
     function closeStatusModal() {
         const el = statusBackdrop();
         if (!el) return;
+        const iframe = el.querySelector('iframe');
+        if (iframe) iframe.style.contentVisibility = 'hidden';
         el.classList.remove('is-open');
         syncBodyModalLock();
-        requestAnimationFrame(() => {
-            if (!el.classList.contains('is-open')) releaseIframe(el);
-        });
+        setTimeout(() => {
+            if (!el.classList.contains('is-open')) {
+                releaseIframe(el);
+                if (iframe) iframe.style.contentVisibility = '';
+            }
+        }, 40);
     }
 
     document.body.addEventListener('click', (e) => {

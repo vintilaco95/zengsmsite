@@ -71,8 +71,6 @@ function waHref(
   bl: string,
   ml: string,
   rl: string,
-  p: number,
-  m: number,
   t: number,
   currency: string,
 ): string {
@@ -81,7 +79,7 @@ function waHref(
 Am folosit calculatorul de pe zengsm.ro:
 
 📱 ${bl} / ${ml} — ${rl}
-💰 ${p} + ${m} = ${t} ${currency}
+💰 ${t} ${currency}
 
 Aș dori detalii. Mulțumesc!`;
   return `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
@@ -327,6 +325,7 @@ export function PriceCalculatorApp({ variant }: Props) {
 
           {load === "ready" ? (
             <>
+              {step === 5 && leadStatus === "sent" ? null : (
               <div className={styles.stepsHead}>
               {step > 1 ? (
                 <button type="button" className={styles.backBtn} onClick={goBack}>
@@ -358,6 +357,7 @@ export function PriceCalculatorApp({ variant }: Props) {
                 ))}
               </div>
               </div>
+              )}
 
               {step < 4 ? (
                 <div className={styles.search}>
@@ -381,7 +381,7 @@ export function PriceCalculatorApp({ variant }: Props) {
                 </div>
               ) : null}
 
-              {(brandLabel || model !== null || repair) && (
+              {leadStatus === "sent" ? null : (brandLabel || model !== null || repair) && (
                 <div className={styles.chips} aria-live="polite">
                   {brandLabel ? (
                     <span className={styles.chip}>{brandLabel}</span>
@@ -496,18 +496,6 @@ export function PriceCalculatorApp({ variant }: Props) {
                             <span>Reparație</span>
                             <strong>{repair}</strong>
                           </li>
-                          <li>
-                            <span>Componentă</span>
-                            <strong>
-                              {selection.p} {currency}
-                            </strong>
-                          </li>
-                          <li>
-                            <span>Manoperă</span>
-                            <strong>
-                              {selection.m} {currency}
-                            </strong>
-                          </li>
                         </ul>
                         <div className={styles.resultTotal}>
                           Total: {selection.t} {currency}
@@ -525,8 +513,6 @@ export function PriceCalculatorApp({ variant }: Props) {
                             brandLabel,
                             model === "" || model === null ? "—" : model,
                             repair,
-                            selection.p,
-                            selection.m,
                             selection.t,
                             currency,
                           )}
@@ -540,7 +526,26 @@ export function PriceCalculatorApp({ variant }: Props) {
                   </div>
                 ) : null}
 
-                {step === 5 && selection ? (
+                {step === 5 && selection && leadStatus === "sent" ? (
+                  <div className={styles.success} role="status">
+                    <div className={styles.successMark} aria-hidden="true">
+                      ✓
+                    </div>
+                    <h2 className={styles.resultTitle}>Mulțumim!</h2>
+                    <p className={styles.successText}>
+                      Solicitarea a fost trimisă. Te contactăm rapid.
+                    </p>
+                    <p className={styles.leadHint}>
+                      {brandLabel}
+                      {model ? ` · ${model}` : ""}
+                      {repair ? ` · ${repair}` : ""}
+                      {" · "}
+                      {selection.t} {currency}
+                    </p>
+                  </div>
+                ) : null}
+
+                {step === 5 && selection && leadStatus !== "sent" ? (
                   <form className={styles.leadForm} onSubmit={submitLead}>
                     <h2 className={styles.resultTitle}>Solicită reparația</h2>
                     <p className={styles.leadHint}>
@@ -561,7 +566,7 @@ export function PriceCalculatorApp({ variant }: Props) {
                         maxLength={80}
                         value={leadName}
                         onChange={(e) => setLeadName(e.target.value)}
-                        disabled={leadStatus === "sent"}
+                        disabled={leadStatus === "sending"}
                       />
                     </label>
                     <label className={styles.leadField}>
@@ -577,7 +582,7 @@ export function PriceCalculatorApp({ variant }: Props) {
                         placeholder="07xx xxx xxx"
                         value={leadPhone}
                         onChange={(e) => setLeadPhone(e.target.value)}
-                        disabled={leadStatus === "sent"}
+                        disabled={leadStatus === "sending"}
                       />
                     </label>
                     <input
@@ -592,21 +597,14 @@ export function PriceCalculatorApp({ variant }: Props) {
                     <button
                       type="submit"
                       className={styles.leadBtn}
-                      disabled={leadStatus === "sending" || leadStatus === "sent"}
+                      disabled={leadStatus === "sending"}
                     >
                       {leadStatus === "sending"
                         ? "Se trimite…"
-                        : leadStatus === "sent"
-                          ? "Solicitare trimisă"
-                          : "Trimite solicitare"}
+                        : "Trimite solicitare"}
                     </button>
-                    {leadMsg ? (
-                      <p
-                        className={
-                          leadStatus === "error" ? styles.leadError : styles.leadOk
-                        }
-                        role="status"
-                      >
+                    {leadStatus === "error" && leadMsg ? (
+                      <p className={styles.leadError} role="alert">
                         {leadMsg}
                       </p>
                     ) : null}
