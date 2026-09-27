@@ -1,0 +1,665 @@
+{
+  "updatedAt": "2026-09-27",
+  "pages": [
+    {
+      "slug": "reparatii-iphone-timisoara",
+      "kind": "brand",
+      "brand": "iPhone",
+      "serviceType": "Reparații iPhone",
+      "hero": { "variant": "display", "layout": "side" },
+      "meta": {
+        "title": "Reparații iPhone Timișoara – Display, Baterie, Face ID | ZEN GSM",
+        "description": "Service iPhone în Timișoara: schimb display OLED în max. 3 ore cu piese din stoc, baterie, cameră, Face ID. Garanție 1–3 ani. Sună la 0758 060 072."
+      },
+      "breadcrumb": "Reparații iPhone",
+      "h1": { "lead": "Reparații iPhone în Timișoara,", "accent": "display nou în aceeași zi" },
+      "heroLead": "Ecran spart, touch care nu răspunde, pete verzi pe OLED? Schimbăm display-ul pe iPhone 6 până la iPhone 17 Pro Max, cu True Tone și Face ID păstrate.",
+      "badges": [
+        { "long": "Display OLED montat în max. 3 ore", "short": "Display în 3 ore" },
+        { "long": "True Tone și Face ID verificate la predare", "short": "Face ID păstrat" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM repară iPhone în Timișoara, pe strada Constantin Brâncoveanu nr. 2. Display-ul se schimbă în maximum 3 ore când piesa e în stoc, iar pentru modelele rare aducem piesa pe comandă rapidă în câteva zile. Fiecare reparație are garanție între 1 și 3 ani.",
+      "focus": {
+        "heading": "Schimb display iPhone: ce facem concret în atelier",
+        "paragraphs": [
+          "Pe iPhone, ecranul nu e doar sticlă. Stratul OLED, digitizerul tactil și senzorii de lumină lucrează împreună, iar o piesă montată grăbit poate strica True Tone, luminozitatea automată sau chiar camera frontală. De aceea desfacem telefonul pe o stație încălzită controlat, păstrăm garnitura de etanșare și mutăm componentele originale acolo unde e nevoie.",
+          "Înainte să închidem telefonul, testăm touch-ul pe toată suprafața, culoarea la luminozitate mică și mare, senzorul de proximitate în timpul unui apel și Face ID. Abia după aceea montăm adezivul nou, ca telefonul să rămână cât mai protejat la praf și umezeală.",
+          "Când modelul tău are piesa în stoc, reparația se termină de obicei în aceeași vizită, în maximum 3 ore. Pentru variante mai rare aducem display-ul pe comandă rapidă, în doar câteva zile, și te sunăm când a ajuns."
+        ],
+        "points": [
+          "Display-uri OLED și variante compatibile premium, explicate înainte de montaj",
+          "Transfer True Tone acolo unde modelul permite",
+          "Test complet: touch, culoare, proximitate, Face ID, cameră frontală",
+          "Adeziv de etanșare nou la fiecare deschidere"
+        ]
+      },
+      "othersHeading": "Alte reparații iPhone pe care le facem zilnic",
+      "others": [
+        { "title": "Baterie iPhone", "text": "Când procentul scade brusc sau telefonul se oprește la frig, schimbăm bateria și verificăm starea ei în setări după montaj." },
+        { "title": "Sticlă spate", "text": "La modelele cu sticlă pe spate, înlocuim panoul fisurat fără să schimbăm tot corpul telefonului, atunci când construcția o permite." },
+        { "title": "Cameră și lentilă", "text": "Imagine neclară, pete sau focalizare care sare: curățăm, schimbăm lentila spartă sau modulul complet." },
+        { "title": "Mufă și difuzor", "text": "Încărcare intermitentă, sunet slab la apeluri sau microfon care nu te aude: diagnosticăm și schimbăm componenta vinovată." }
+      ],
+      "seriesHeading": "Modele iPhone care ajung des la noi",
+      "series": ["iPhone 11 / 11 Pro", "iPhone 12 / 12 mini", "iPhone 13 / 13 Pro Max", "iPhone 14 / 14 Plus", "iPhone 15 / 15 Pro", "iPhone 16 / 16 Pro Max", "iPhone 17 / 17 Pro Max", "iPhone SE", "iPhone X / XR / XS"],
+      "faqHeading": "Întrebări despre reparațiile iPhone",
+      "faq": [
+        { "q": "Cât durează schimbarea display-ului la iPhone în Timișoara?", "a": "Dacă piesa pentru modelul tău e în stoc, reparația durează maximum 3 ore. Pentru modelele rare aducem display-ul pe comandă rapidă, în câteva zile." },
+        { "q": "Mai funcționează Face ID după schimbarea ecranului?", "a": "Da. Face ID ține de modulul camerei frontale, nu de display, iar noi îl mutăm și îl testăm înainte de predare." },
+        { "q": "Pierd datele de pe iPhone la reparație?", "a": "Schimbarea display-ului sau a bateriei nu șterge datele. Îți recomandăm totuși un backup în iCloud înainte de orice intervenție." },
+        { "q": "Ce garanție primesc la reparația iPhone?", "a": "Garanția este între 1 și 3 ani, în funcție de piesă și de tipul intervenției. Durata exactă e trecută pe documentul de predare." },
+        { "q": "Ce se întâmplă dacă iPhone-ul nu mai poate fi reparat?", "a": "Dacă nu găsim nicio soluție ca același model să funcționeze din nou, primești 100 lei, conform condițiilor ofertei din Termeni." }
+      ],
+      "localHeading": "Service iPhone în centrul Timișoarei",
+      "localText": "Atelierul e pe Constantin Brâncoveanu nr. 2. Poți veni direct cu telefonul pentru un diagnostic sau ne suni înainte să verificăm dacă display-ul pentru modelul tău e în stoc.",
+      "related": ["inlocuire-display-timisoara", "reparatii-samsung-timisoara", "reparatii-google-pixel-timisoara"],
+      "popupLead": "Dacă nu găsim o soluție ca iPhone-ul tău să fie din nou funcțional, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatii-samsung-timisoara",
+      "kind": "brand",
+      "brand": "Samsung",
+      "serviceType": "Reparații Samsung Galaxy",
+      "hero": { "variant": "baterie", "layout": "side" },
+      "meta": {
+        "title": "Reparații Samsung Timișoara – Baterie, Display Galaxy | ZEN GSM",
+        "description": "Service Samsung Galaxy în Timișoara: baterie umflată sau care se descarcă repede, display AMOLED, mufă. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
+      },
+      "breadcrumb": "Reparații Samsung",
+      "h1": { "lead": "Service Samsung Galaxy în Timișoara,", "accent": "baterie nouă, autonomie ca la început" },
+      "heroLead": "Galaxy-ul tău nu mai ține o zi, se încălzește la încărcare sau capacul din spate s-a ridicat? Înlocuim bateria pe seriile S, A, Note și pe pliabile.",
+      "badges": [
+        { "long": "Baterie schimbată în max. 3 ore", "short": "Baterie în 3 ore" },
+        { "long": "Seriile S, A, Note, Fold și Flip", "short": "S, A, Fold, Flip" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "La ZEN GSM în Timișoara schimbăm bateriile Samsung Galaxy în maximum 3 ore când avem piesa în stoc. Pentru modelele mai rare, bateria vine pe comandă rapidă în câteva zile. Garanția e de 1 până la 3 ani, iar atelierul e pe Constantin Brâncoveanu nr. 2.",
+      "focus": {
+        "heading": "Când merită să schimbi bateria la Samsung",
+        "paragraphs": [
+          "Bateriile litiu-ion pierd capacitate cu fiecare ciclu de încărcare. După doi-trei ani, multe telefoane Galaxy trec de la o zi întreagă de utilizare la câteva ore, iar încărcarea rapidă le încălzește tot mai tare. Dacă observi că telefonul se închide la 20% sau că procentul sare brusc, bateria e de obicei cauza.",
+          "Un semn care nu trebuie ignorat este capacul din spate care se ridică sau ecranul împins din ramă. Asta înseamnă că bateria s-a umflat. Nu o mai încărca peste noapte și adu telefonul cât mai repede: o baterie umflată poate crăpa display-ul din interior.",
+          "La deschidere lucrăm cu căldură controlată, pentru că pe multe modele Galaxy bateria e lipită puternic de corp. Montăm bateria nouă, punem adeziv curat pe capac și verificăm încărcarea, inclusiv încărcarea rapidă și wireless, acolo unde telefonul le are."
+        ],
+        "points": [
+          "Test de capacitate și încărcare înainte și după montaj",
+          "Capac spate lipit din nou cu adeziv proaspăt",
+          "Verificare încărcare rapidă și wireless",
+          "Baterie umflată scoasă în siguranță, fără să forțăm display-ul"
+        ]
+      },
+      "othersHeading": "Ce mai reparăm la telefoanele Samsung",
+      "others": [
+        { "title": "Display AMOLED Galaxy", "text": "Linii colorate, pete negre sau touch mort după o cădere: schimbăm ecranul complet, de obicei împreună cu rama, pentru o fixare corectă." },
+        { "title": "Fold și Flip", "text": "Pe pliabile verificăm separat ecranul interior, cel exterior și balamaua, pentru că fiecare se strică altfel." },
+        { "title": "Mufă USB-C", "text": "Când cablul trebuie ținut într-un anumit unghi, curățăm sau schimbăm placa de încărcare." },
+        { "title": "Cameră și sticlă cameră", "text": "O sticlă de cameră spartă strică pozele chiar dacă senzorul e intact. O înlocuim separat când modelul permite." }
+      ],
+      "seriesHeading": "Telefoane Samsung pe care le vedem des",
+      "series": ["Galaxy S21 / S22 / S23", "Galaxy S24 / S25", "Galaxy S26 Ultra", "Galaxy A34 / A54", "Galaxy A35 / A55", "Galaxy A15 / A25", "Galaxy Note 20", "Galaxy Z Fold", "Galaxy Z Flip"],
+      "faqHeading": "Întrebări frecvente despre service-ul Samsung",
+      "faq": [
+        { "q": "Cum îmi dau seama că bateria Samsung trebuie schimbată?", "a": "Telefonul se descarcă în câteva ore, se oprește la procente mari sau se încălzește tare la încărcare. Dacă capacul din spate s-a ridicat, bateria e umflată și trebuie schimbată urgent." },
+        { "q": "Cât durează înlocuirea bateriei la un Galaxy?", "a": "Maximum 3 ore când bateria e în stoc. Pentru modele mai rare o aducem pe comandă rapidă, în câteva zile." },
+        { "q": "Reparați și Samsung Fold sau Flip?", "a": "Da. Verificăm ecranul interior, ecranul exterior, bateria și balamaua, apoi îți spunem ce se poate repara." },
+        { "q": "Telefonul mai rămâne rezistent la apă după reparație?", "a": "Punem adeziv nou la fiecare deschidere, dar nicio reparație nu poate garanta rezistența din fabrică. Îți recomandăm să ferești telefonul de apă după service." },
+        { "q": "Ce garanție are bateria Samsung schimbată la voi?", "a": "Garanția este între 1 și 3 ani, în funcție de piesă. O găsești trecută pe documentul de predare." }
+      ],
+      "localHeading": "Service Samsung aproape de centru",
+      "localText": "Ne găsești pe Constantin Brâncoveanu nr. 2, Timișoara. Dacă bateria e umflată, sună-ne înainte și te primim cât mai repede.",
+      "related": ["inlocuire-baterie-timisoara", "reparatii-motorola-timisoara", "reparatii-xiaomi-timisoara"],
+      "popupLead": "Dacă nu reușim să-ți facem Samsung-ul din nou funcțional, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatii-huawei-timisoara",
+      "kind": "brand",
+      "brand": "Huawei",
+      "serviceType": "Reparații Huawei",
+      "hero": { "variant": "mufa", "layout": "side" },
+      "meta": {
+        "title": "Reparații Huawei Timișoara – Mufă încărcare, Display | ZEN GSM",
+        "description": "Service Huawei în Timișoara: nu se mai încarcă, mufă slăbită, display spart pe P, Mate, Nova. Diagnostic pe placă, max. 3 ore cu piese din stoc."
+      },
+      "breadcrumb": "Reparații Huawei",
+      "h1": { "lead": "Service Huawei în Timișoara:", "accent": "se încarcă din nou, fără cablul ținut strâmb" },
+      "heroLead": "Huawei-ul tău încarcă doar într-o poziție, nu mai vede încărcătorul sau nu mai pornește? Căutăm cauza pe mufă, pe placa de încărcare și pe placa de bază.",
+      "badges": [
+        { "long": "Mufă și placă de încărcare în max. 3 ore", "short": "Mufă în 3 ore" },
+        { "long": "Diagnostic pe placa de bază", "short": "Diagnostic placă" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM repară telefoane Huawei în Timișoara, cu accent pe problemele de încărcare: mufă USB-C, placă de încărcare și circuitele de pe placa de bază. Cu piese din stoc terminăm în maximum 3 ore, iar restul pieselor vin pe comandă rapidă în câteva zile.",
+      "focus": {
+        "heading": "De ce nu se mai încarcă un Huawei și ce reparăm",
+        "paragraphs": [
+          "Cea mai des întâlnită cauză e banală: scame presate în mufă, care nu lasă cablul să intre complet. O curățare atentă, fără obiecte metalice, rezolvă multe cazuri pe loc. Dacă mufa e oxidată sau pinii sunt îndoiți, schimbăm placa de încărcare de jos.",
+          "Când telefonul nu reacționează deloc la încărcător sau se încarcă foarte lent chiar cu mufa nouă, problema e mai adâncă: circuitul de încărcare de pe placa de bază. Aici măsurăm consumul, verificăm componentele și îți spunem clar dacă merită reparat.",
+          "Telefoanele Huawei mai vechi au adesea și baterii obosite, care par defect de mufă. Le testăm pe ambele înainte să schimbăm ceva, ca să plătești doar reparația de care ai nevoie."
+        ],
+        "points": [
+          "Curățare profesională a mufei, fără să zgâriem pinii",
+          "Schimb placă de încărcare cu microfon, unde modelul le are împreună",
+          "Măsurare consum și diagnostic pe placa de bază",
+          "Test cu încărcătorul tău și cu unul de referință"
+        ]
+      },
+      "othersHeading": "Alte intervenții pe Huawei",
+      "others": [
+        { "title": "Display P și Mate", "text": "Ecranele curbate de pe seria Mate se sparg ușor pe margini. Le schimbăm complet și testăm cititorul de amprentă din ecran." },
+        { "title": "Baterie Huawei", "text": "Autonomie scurtă sau opriri bruște: înlocuim bateria și verificăm încărcarea SuperCharge." },
+        { "title": "Cameră Leica", "text": "La modelele P cu camere Leica schimbăm sticla de protecție sau modulul, în funcție de defect." },
+        { "title": "Software și actualizări", "text": "Blocări în logo sau restartări repetate: încercăm întâi recuperarea software, fără să ștergem datele când se poate." }
+      ],
+      "seriesHeading": "Serii Huawei pe care le reparăm des",
+      "series": ["Huawei P30 / P30 Pro", "Huawei P40 / P40 Pro", "Huawei P50 / P60", "Huawei Mate 20 / 30", "Huawei Mate 40 / 50", "Huawei Nova 9 / 10 / 11", "Huawei P Smart", "Huawei Y seria"],
+      "faqHeading": "Întrebări despre reparațiile Huawei",
+      "faq": [
+        { "q": "Huawei-ul meu se încarcă doar dacă țin cablul într-o parte. Ce are?", "a": "De obicei mufa e plină de scame sau are contactele uzate. O curățăm, iar dacă nu ajută, schimbăm placa de încărcare." },
+        { "q": "Cât durează schimbarea mufei la Huawei?", "a": "Cu piesa în stoc, maximum 3 ore. Pentru modelele rare o aducem pe comandă rapidă, în câteva zile." },
+        { "q": "Reparați și defecte pe placa de bază?", "a": "Da. Facem diagnostic pe placa de bază și îți spunem înainte de reparație dacă intervenția are sens pentru telefonul tău." },
+        { "q": "Mai găsiți piese pentru modelele Huawei mai vechi?", "a": "Pentru multe serii P, Mate și Nova avem piese în stoc. Când nu avem, căutăm piesa pe comandă rapidă." },
+        { "q": "Ce se întâmplă dacă Huawei-ul nu mai poate fi reparat?", "a": "Dacă nu există nicio soluție ca același model să funcționeze din nou, primești 100 lei, conform condițiilor din Termeni." }
+      ],
+      "localHeading": "Atelier Huawei în Timișoara",
+      "localText": "Adu telefonul pe Constantin Brâncoveanu nr. 2. Pentru un diagnostic de încărcare, ia cu tine și încărcătorul pe care îl folosești zilnic.",
+      "related": ["reparatii-honor-timisoara", "reparatii-oppo-timisoara", "inlocuire-baterie-timisoara"],
+      "popupLead": "Dacă Huawei-ul tău nu poate fi adus din nou în stare de funcționare, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatii-xiaomi-timisoara",
+      "kind": "brand",
+      "brand": "Xiaomi",
+      "serviceType": "Reparații Xiaomi, Redmi și Poco",
+      "hero": { "variant": "camera", "layout": "center" },
+      "meta": {
+        "title": "Reparații Xiaomi Timișoara – Display Redmi, Poco, Cameră | ZEN GSM",
+        "description": "Service Xiaomi, Redmi și Poco în Timișoara: display spart, touch mort, sticlă cameră, baterie. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
+      },
+      "breadcrumb": "Reparații Xiaomi",
+      "h1": { "lead": "Reparații Xiaomi, Redmi și Poco în Timișoara,", "accent": "ecran nou și cameră clară" },
+      "heroLead": "Redmi Note cu display spart, Poco cu touch care apasă singur sau Xiaomi cu sticla camerei ciobită? Le reparăm pe toate, cu piese testate înainte de montaj.",
+      "badges": [
+        { "long": "Display Redmi și Poco în max. 3 ore", "short": "Display în 3 ore" },
+        { "long": "Sticlă cameră schimbată separat", "short": "Sticlă cameră" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM repară telefoane Xiaomi, Redmi și Poco în Timișoara, pe Constantin Brâncoveanu nr. 2. Cele mai dese reparații sunt display-ul și sticla camerei: cu piese din stoc le terminăm în maximum 3 ore, iar restul pieselor vin pe comandă rapidă în câteva zile.",
+      "focus": {
+        "heading": "Display și cameră pe Xiaomi: ce se strică și cum reparăm",
+        "paragraphs": [
+          "Seria Redmi Note e printre cele mai vândute telefoane din Timișoara, așa că vedem zilnic ecrane sparte după căderi pe asfalt. Uneori sticla e fisurată, dar imaginea e perfectă; alteori apare o pată neagră care crește de la o zi la alta. În ambele cazuri schimbăm ansamblul display, pentru că sticla și panoul sunt lipite din fabrică.",
+          "Pe Poco apare des touch-ul fantomă: telefonul deschide aplicații singur sau nu răspunde într-o zonă a ecranului. După ce excludem o problemă software, înlocuim display-ul și testăm touch-ul punct cu punct.",
+          "Camerele din spate sunt protejate de o sticlă mică, care se ciobește ușor. Dacă pozele au un halou sau o pată mereu în același loc, schimbăm doar sticla, fără să atingem senzorul. Asta costă mult mai puțin decât un modul întreg."
+        ],
+        "points": [
+          "Display-uri AMOLED și LCD, în funcție de model",
+          "Test touch punct cu punct după montaj",
+          "Sticlă cameră înlocuită fără schimbarea senzorului",
+          "Verificare amprentă din ecran sau laterală după reparație"
+        ]
+      },
+      "othersHeading": "Alte reparații Xiaomi pe care le facem",
+      "others": [
+        { "title": "Baterie Redmi", "text": "Telefonul se descarcă până seara sau se oprește la frig: schimbăm bateria și calibrăm afișarea procentului." },
+        { "title": "Mufă de încărcare", "text": "Pe multe modele Redmi mufa e pe o plăcuță separată, deci reparația e rapidă și accesibilă." },
+        { "title": "Capac spate", "text": "Sticla din spate spartă se înlocuiește fără să afecteze restul telefonului." },
+        { "title": "Bootloop și HyperOS", "text": "Telefonul rămâne blocat în logo după o actualizare: încercăm recuperarea software înainte de orice altă intervenție." }
+      ],
+      "seriesHeading": "Modele Xiaomi frecvente în atelier",
+      "series": ["Redmi Note 11 / 12", "Redmi Note 13 / 14", "Redmi Note 15 Pro", "Redmi 12 / 13", "Poco X5 / X6 / X7", "Poco F5 / F6", "Xiaomi 13 / 14", "Xiaomi 15", "Xiaomi 13T / 14T"],
+      "faqHeading": "Întrebări despre service-ul Xiaomi",
+      "faq": [
+        { "q": "Pot schimba doar sticla spartă de pe display la Redmi?", "a": "La majoritatea modelelor, sticla e lipită de panou din fabrică. De aceea schimbăm ansamblul display, ca rezultatul să fie sigur și durabil." },
+        { "q": "Pozele au o pată mereu în același loc. Se repară?", "a": "Da. De obicei e sticla camerei ciobită sau murdară pe interior. O schimbăm fără să înlocuim senzorul." },
+        { "q": "Cât durează reparația display-ului la Xiaomi?", "a": "Maximum 3 ore când piesa e în stoc. Pentru modelele rare o aducem pe comandă rapidă, în câteva zile." },
+        { "q": "Reparați și telefoane Poco?", "a": "Da. Poco face parte din aceeași familie Xiaomi și reparăm display, baterie, mufă și cameră pe aceste modele." },
+        { "q": "Ce garanție oferiți la reparațiile Xiaomi?", "a": "Între 1 și 3 ani, în funcție de piesă. Durata exactă e trecută pe documentul de predare." }
+      ],
+      "localHeading": "Service Xiaomi pe Constantin Brâncoveanu",
+      "localText": "Vino cu telefonul Xiaomi, Redmi sau Poco pe Constantin Brâncoveanu nr. 2. Îți spunem pe loc dacă display-ul pentru modelul tău e în stoc.",
+      "related": ["inlocuire-display-timisoara", "reparatii-oppo-timisoara", "reparatii-honor-timisoara"],
+      "popupLead": "Dacă nu reușim să aducem Xiaomi-ul tău din nou în stare de funcționare, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatii-motorola-timisoara",
+      "kind": "brand",
+      "brand": "Motorola",
+      "serviceType": "Reparații Motorola",
+      "hero": { "variant": "baterie", "layout": "center" },
+      "meta": {
+        "title": "Reparații Motorola Timișoara – Baterie, Moto G, Edge, Razr | ZEN GSM",
+        "description": "Service Motorola în Timișoara: baterie Moto G și Edge, display, mufă, Razr pliabil. Max. 3 ore cu piese din stoc, comandă rapidă, garanție 1–3 ani."
+      },
+      "breadcrumb": "Reparații Motorola",
+      "h1": { "lead": "Service Motorola în Timișoara:", "accent": "Moto G și Edge cu baterie nouă" },
+      "heroLead": "Moto G-ul care ținea două zile acum abia ajunge până după-amiază? Schimbăm bateria pe Moto G, Moto E și Edge, și ne uităm atent și la pliabilele Razr.",
+      "badges": [
+        { "long": "Baterie Moto G și Edge în max. 3 ore", "short": "Baterie în 3 ore" },
+        { "long": "Razr: ecran, balama și baterie", "short": "Razr pliabil" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM schimbă bateria la telefoanele Motorola în Timișoara în maximum 3 ore, când piesa e în stoc. Reparăm și display-uri, mufe și pliabile Razr. Piesele lipsă le aducem pe comandă rapidă, în câteva zile, cu garanție între 1 și 3 ani.",
+      "focus": {
+        "heading": "Baterie Motorola: autonomia pe care o aveai la început",
+        "paragraphs": [
+          "Telefoanele Motorola sunt cunoscute pentru bateriile mari, așa că scăderea autonomiei se simte imediat. Dacă un Moto G care ținea o zi și jumătate acum cere încărcare la prânz, bateria a pierdut o parte importantă din capacitate. Schimbarea ei readuce de obicei autonomia aproape de cea din prima lună.",
+          "Pe seria Edge, cu ecrane curbate, deschiderea cere mai multă grijă: capacul și ecranul sunt lipite puternic. Lucrăm cu căldură controlată și montăm adeziv nou, ca telefonul să rămână bine închis.",
+          "Razr e un caz aparte. La pliabil, problemele țin mai des de ecranul interior și de balama decât de baterie, iar cele două se diagnostichează separat. Îți spunem clar ce se strică și ce se poate repara înainte să deschidem telefonul."
+        ],
+        "points": [
+          "Test de autonomie și încărcare TurboPower după montaj",
+          "Deschidere controlată pe Edge, cu ecran curbat protejat",
+          "Diagnostic separat pentru ecran, balama și baterie la Razr",
+          "Adeziv nou la închidere"
+        ]
+      },
+      "othersHeading": "Alte reparații pe telefoane Motorola",
+      "others": [
+        { "title": "Display Moto G", "text": "Ecranul spart sau cu linii se schimbă complet, apoi testăm touch-ul și luminozitatea." },
+        { "title": "Mufă USB-C", "text": "Mufa slăbită e frecventă la Moto G folosit zilnic la încărcare. O curățăm sau o înlocuim." },
+        { "title": "Ecran interior Razr", "text": "Pentru pliabile verificăm pliul, touch-ul și balamaua, apoi îți propunem soluția potrivită." },
+        { "title": "Difuzor și microfon", "text": "Sunet înfundat sau interlocutor care nu te aude: curățăm grilele sau schimbăm componenta." }
+      ],
+      "seriesHeading": "Telefoane Motorola pe care le vedem des",
+      "series": ["Moto G54 / G84", "Moto G55 / G85", "Moto G24 / G34", "Moto E13 / E14", "Motorola Edge 40 / 50", "Motorola Edge 60", "Razr 40 / 50", "Razr 60 Ultra"],
+      "faqHeading": "Întrebări despre reparațiile Motorola",
+      "faq": [
+        { "q": "Cât durează schimbarea bateriei la Moto G?", "a": "Maximum 3 ore cu piesa în stoc. Dacă bateria pentru modelul tău trebuie comandată, ajunge în câteva zile." },
+        { "q": "Reparați telefoane Motorola Razr?", "a": "Da. Diagnosticăm separat ecranul interior, ecranul exterior, balamaua și bateria, apoi îți spunem ce se poate repara." },
+        { "q": "Merită schimbată bateria sau să iau alt telefon?", "a": "Dacă restul telefonului funcționează bine, o baterie nouă îi mai dă de obicei ani de utilizare, la un cost mult mai mic decât un telefon nou." },
+        { "q": "Ce garanție are bateria Motorola?", "a": "Garanția e între 1 și 3 ani, în funcție de piesă, și e trecută pe documentul de predare." },
+        { "q": "Ce se întâmplă dacă Motorola nu poate fi reparat?", "a": "Dacă nu găsim nicio soluție ca același model să funcționeze din nou, primești 100 lei, conform condițiilor din Termeni." }
+      ],
+      "localHeading": "Service Motorola în Timișoara",
+      "localText": "Ne găsești pe Constantin Brâncoveanu nr. 2. Pentru Razr, adu telefonul deschis și închis de câteva ori înainte, ca să ne spui exact când apare problema.",
+      "related": ["inlocuire-baterie-timisoara", "reparatii-samsung-timisoara", "reparatii-google-pixel-timisoara"],
+      "popupLead": "Dacă nu găsim o soluție ca Motorola ta să funcționeze din nou, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatii-honor-timisoara",
+      "kind": "brand",
+      "brand": "Honor",
+      "serviceType": "Reparații Honor",
+      "hero": { "variant": "carcasa", "layout": "side" },
+      "meta": {
+        "title": "Reparații Honor Timișoara – Display Magic, Sticlă Spate | ZEN GSM",
+        "description": "Service Honor în Timișoara: display curbat Magic, sticlă spate spartă, baterie, mufă. Max. 3 ore cu piese din stoc sau comandă rapidă. Garanție 1–3 ani."
+      },
+      "breadcrumb": "Reparații Honor",
+      "h1": { "lead": "Reparații Honor în Timișoara:", "accent": "ecran curbat și spate ca nou" },
+      "heroLead": "Honor Magic cu ecranul curbat fisurat pe margine sau Honor X cu sticla din spate crăpată? Reparăm fața și spatele telefonului, fără să schimbi tot aparatul.",
+      "badges": [
+        { "long": "Display curbat Honor Magic", "short": "Display curbat" },
+        { "long": "Sticlă spate înlocuită separat", "short": "Sticlă spate" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM repară telefoane Honor în Timișoara: display-uri curbate Magic, sticlă spate, baterii și mufe. Cu piese din stoc terminăm în maximum 3 ore, iar piesele rare vin pe comandă rapidă în câteva zile. Atelierul e pe Constantin Brâncoveanu nr. 2.",
+      "focus": {
+        "heading": "Display și sticlă spate pe Honor: două reparații diferite",
+        "paragraphs": [
+          "Ecranele curbate de pe seria Magic arată spectaculos, dar marginile lor încasează direct orice lovitură laterală. O fisură mică pe margine se poate întinde în câteva zile peste tot ecranul. Schimbăm display-ul complet, apoi testăm touch-ul inclusiv pe zonele curbate și cititorul de amprentă din ecran.",
+          "Sticla din spate se sparge des chiar și atunci când fața telefonului a scăpat neatinsă. Pe multe modele Honor, spatele se poate înlocui separat, fără să atingem ecranul sau bateria. Telefonul arată din nou îngrijit, iar cioburile nu mai zgârie mâna sau buzunarul.",
+          "Pentru ambele reparații folosim adeziv nou și verificăm ca telefonul să se închidă uniform, fără margini ridicate. Când modelul tău are piesa în stoc, reparația durează maximum 3 ore."
+        ],
+        "points": [
+          "Display curbat testat pe toată suprafața, inclusiv pe margini",
+          "Amprentă din ecran reconfigurată și verificată",
+          "Sticlă spate schimbată fără să deschidem ecranul",
+          "Închidere uniformă cu adeziv nou"
+        ]
+      },
+      "othersHeading": "Alte reparații pe telefoane Honor",
+      "others": [
+        { "title": "Baterie Honor", "text": "Autonomie scurtă sau încărcare care se oprește la jumătate: înlocuim bateria și verificăm încărcarea rapidă." },
+        { "title": "Mufă de încărcare", "text": "Cablul care iese singur din mufă sau încărcarea intermitentă se rezolvă de obicei la placa de jos." },
+        { "title": "Sticlă cameră", "text": "Modulul de cameră mare de pe Honor Magic are o sticlă care se ciobește ușor. O schimbăm separat." },
+        { "title": "Honor 400 și X", "text": "Pe modelele mid-range reparăm ecran, baterie și mufă, cu aceeași garanție ca pe seria Magic." }
+      ],
+      "seriesHeading": "Telefoane Honor frecvente în atelier",
+      "series": ["Honor Magic5 / Magic6", "Honor Magic7 / Magic8", "Honor 200 / 400", "Honor 90", "Honor X7 / X8", "Honor X9b / X9c", "Honor Magic V (pliabil)"],
+      "faqHeading": "Întrebări despre reparațiile Honor",
+      "faq": [
+        { "q": "Se poate schimba doar sticla din spate la Honor?", "a": "Pe majoritatea modelelor, da. Înlocuim spatele separat, fără să deschidem ecranul sau să schimbăm bateria." },
+        { "q": "Ecranul curbat are o fisură doar pe margine. Trebuie schimbat?", "a": "Fisurile de pe margine se extind de obicei în timp și pot afecta touch-ul. Îți recomandăm schimbarea display-ului înainte să se agraveze." },
+        { "q": "Mai funcționează amprenta din ecran după reparație?", "a": "Da. După montaj reconfigurăm amprenta și o testăm împreună cu tine la predare." },
+        { "q": "Cât durează reparația unui Honor?", "a": "Maximum 3 ore cu piesa în stoc. Piesele rare le aducem pe comandă rapidă, în câteva zile." },
+        { "q": "Ce garanție primesc?", "a": "Garanția e între 1 și 3 ani, în funcție de piesă, și e trecută pe documentul de predare." }
+      ],
+      "localHeading": "Service Honor în Timișoara",
+      "localText": "Adu telefonul Honor pe Constantin Brâncoveanu nr. 2. Dacă sticla din spate e spartă, pune-l într-o husă până vii, ca să nu se desprindă cioburi.",
+      "related": ["reparatie-carcasa-timisoara", "reparatii-huawei-timisoara", "reparatii-xiaomi-timisoara"],
+      "popupLead": "Dacă nu reușim să-ți facem Honor-ul din nou funcțional, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatii-oppo-timisoara",
+      "kind": "brand",
+      "brand": "OPPO",
+      "serviceType": "Reparații OPPO și OnePlus",
+      "hero": { "variant": "mufa", "layout": "center" },
+      "meta": {
+        "title": "Reparații OPPO și OnePlus Timișoara – Baterie, Încărcare | ZEN GSM",
+        "description": "Service OPPO și OnePlus în Timișoara: baterie, încărcare SuperVOOC, mufă, display. Max. 3 ore cu piese din stoc, comandă rapidă, garanție 1–3 ani."
+      },
+      "breadcrumb": "Reparații OPPO",
+      "h1": { "lead": "Service OPPO și OnePlus în Timișoara:", "accent": "încărcare rapidă care merge din nou" },
+      "heroLead": "Încărcarea SuperVOOC nu mai pornește, bateria se golește în câteva ore sau telefonul încarcă doar lent? Reparăm OPPO Reno, Find, A și OnePlus.",
+      "badges": [
+        { "long": "Baterie și mufă în max. 3 ore", "short": "Baterie în 3 ore" },
+        { "long": "OPPO și OnePlus, aceeași grijă", "short": "OPPO & OnePlus" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM repară telefoane OPPO și OnePlus în Timișoara, cu accent pe baterie și încărcare rapidă. Cu piese din stoc terminăm în maximum 3 ore, iar piesele lipsă vin pe comandă rapidă în câteva zile. Garanția e între 1 și 3 ani.",
+      "focus": {
+        "heading": "Baterie și încărcare rapidă la OPPO și OnePlus",
+        "paragraphs": [
+          "OPPO și OnePlus folosesc încărcare foarte rapidă, iar asta înseamnă că telefonul, cablul și încărcătorul trebuie să comunice corect. Când unul dintre ele e uzat, telefonul trece pe încărcare lentă sau nu mai recunoaște încărcătorul. Primul pas e să aflăm care dintre ele e de vină.",
+          "Dacă mufa e în regulă, dar autonomia a scăzut mult, bateria e cauza. Pe multe modele OPPO bateria e formată din două celule, iar schimbarea ei cere atenție la conectori. După montaj verificăm că încărcarea rapidă pornește din nou și că telefonul nu se încălzește peste normal.",
+          "Când mufa e slăbită, oxidată sau plină de scame, încărcarea se întrerupe la cea mai mică mișcare. O curățăm sau schimbăm placa de încărcare, apoi testăm cu încărcătorul tău."
+        ],
+        "points": [
+          "Test separat pentru telefon, cablu și încărcător",
+          "Baterii cu celule duble montate atent la conectori",
+          "Verificare SuperVOOC și Warp după reparație",
+          "Control termic la încărcare"
+        ]
+      },
+      "othersHeading": "Alte reparații OPPO și OnePlus",
+      "others": [
+        { "title": "Display AMOLED", "text": "Ecranele curbate de pe Reno și Find se schimbă complet, cu testarea amprentei din ecran." },
+        { "title": "OnePlus Nord", "text": "Pe seria Nord reparăm des display-ul și mufa, cu piese testate înainte de montaj." },
+        { "title": "Cameră", "text": "Sticla camerei ciobită sau focalizarea care nu se mai fixează se diagnostichează și se rezolvă separat." },
+        { "title": "ColorOS și OxygenOS", "text": "Blocări sau restartări după actualizare: încercăm recuperarea software înainte de orice altă reparație." }
+      ],
+      "seriesHeading": "Modele OPPO și OnePlus pe care le reparăm",
+      "series": ["OPPO Reno 10 / 11 / 12", "OPPO Reno 13 / 14", "OPPO Find X5 / X6", "OPPO Find X8 / X9", "OPPO A57 / A78 / A98", "OnePlus 11 / 12 / 13", "OnePlus Nord 3 / 4 / 5", "OnePlus Nord CE"],
+      "faqHeading": "Întrebări despre service-ul OPPO și OnePlus",
+      "faq": [
+        { "q": "De ce telefonul OPPO nu mai încarcă rapid?", "a": "Cauza poate fi cablul, încărcătorul, mufa sau bateria. Le testăm pe rând și îți spunem exact ce trebuie schimbat." },
+        { "q": "Reparați și telefoane OnePlus?", "a": "Da. OnePlus și OPPO folosesc tehnologii apropiate, iar noi reparăm baterie, mufă, display și cameră pe ambele." },
+        { "q": "Cât durează schimbarea bateriei la OPPO?", "a": "Maximum 3 ore cu piesa în stoc. Pentru modelele rare o aducem pe comandă rapidă, în câteva zile." },
+        { "q": "E periculos să folosesc un încărcător care nu e original?", "a": "Un încărcător de calitate nu strică telefonul, dar nu va porni încărcarea rapidă proprietară. Dacă se încălzește tare, nu-l mai folosi." },
+        { "q": "Ce se întâmplă dacă telefonul nu poate fi reparat?", "a": "Dacă nu găsim nicio soluție ca același model să funcționeze din nou, primești 100 lei, conform condițiilor din Termeni." }
+      ],
+      "localHeading": "Service OPPO în Timișoara",
+      "localText": "Vino pe Constantin Brâncoveanu nr. 2 cu telefonul, cablul și încărcătorul original. Așa găsim mai repede cauza problemei de încărcare.",
+      "related": ["inlocuire-baterie-timisoara", "reparatii-huawei-timisoara", "reparatii-xiaomi-timisoara"],
+      "popupLead": "Dacă nu reușim să-ți facem OPPO-ul sau OnePlus-ul din nou funcțional, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatii-google-pixel-timisoara",
+      "kind": "brand",
+      "brand": "Google Pixel",
+      "serviceType": "Reparații Google Pixel",
+      "hero": { "variant": "camera", "layout": "side" },
+      "meta": {
+        "title": "Reparații Google Pixel Timișoara – Cameră, Sticlă Spate | ZEN GSM",
+        "description": "Service Google Pixel în Timișoara: bara de cameră spartă, sticlă spate, display, baterie Pixel 6–10. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
+      },
+      "breadcrumb": "Reparații Google Pixel",
+      "h1": { "lead": "Service Google Pixel în Timișoara:", "accent": "cameră și sticlă spate reparate" },
+      "heroLead": "Bara de cameră de pe Pixel s-a crăpat, pozele ies cu halou sau spatele de sticlă e spart? Reparăm Pixel 6 până la Pixel 10, fără să pierzi calitatea camerei.",
+      "badges": [
+        { "long": "Sticlă bară cameră schimbată", "short": "Sticlă cameră" },
+        { "long": "Spate de sticlă înlocuit separat", "short": "Sticlă spate" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM repară telefoane Google Pixel în Timișoara: sticla barei de cameră, spatele de sticlă, display-ul și bateria. Cu piese din stoc terminăm în maximum 3 ore, iar piesele pentru Pixel vin adesea pe comandă rapidă, în câteva zile.",
+      "focus": {
+        "heading": "Camera Pixel: de ce contează fiecare milimetru de sticlă",
+        "paragraphs": [
+          "Pixel își face renumele din poze, iar bara orizontală de cameră iese în evidență pe spate. De aceea e primul loc care se lovește la o cădere. O fisură pe sticla din fața lentilelor produce halou, pete luminoase sau poze neclare, chiar dacă senzorii sunt intacți.",
+          "În multe cazuri e suficient să schimbăm doar sticla barei, cu adeziv nou, fără să deschidem telefonul. Dacă și modulul camerei a fost afectat, testăm fiecare lentilă separat: principală, ultra-wide și telephoto, acolo unde modelul le are.",
+          "Spatele de sticlă se schimbă tot separat de ecran. După reparație verificăm încărcarea wireless, pentru că bobina ei stă chiar sub sticla din spate."
+        ],
+        "points": [
+          "Sticla barei de cameră schimbată fără deschiderea telefonului, când se poate",
+          "Test pe fiecare lentilă, inclusiv zoom și mod noapte",
+          "Spate de sticlă cu verificare încărcare wireless",
+          "Adeziv nou, ca praful să nu intre sub sticlă"
+        ]
+      },
+      "othersHeading": "Alte reparații Google Pixel",
+      "others": [
+        { "title": "Display Pixel", "text": "Ecran spart sau linii verzi: schimbăm display-ul și reconfigurăm amprenta din ecran." },
+        { "title": "Baterie Pixel", "text": "Autonomie scurtă sau baterie umflată, frecventă la modelele mai vechi. O înlocuim cu grijă la ecran." },
+        { "title": "Mufă USB-C", "text": "Încărcare care se întrerupe sau conexiune la PC instabilă: curățăm sau schimbăm placa de încărcare." },
+        { "title": "Pixel a", "text": "Pe Pixel 7a, 8a și 9a reparăm ecran, baterie și cameră, cu aceeași garanție ca la modelele Pro." }
+      ],
+      "seriesHeading": "Modele Pixel pe care le vedem în atelier",
+      "series": ["Pixel 6 / 6 Pro", "Pixel 7 / 7 Pro", "Pixel 7a / 8a / 9a", "Pixel 8 / 8 Pro", "Pixel 9 / 9 Pro", "Pixel 10 / 10 Pro", "Pixel Fold"],
+      "faqHeading": "Întrebări despre reparațiile Google Pixel",
+      "faq": [
+        { "q": "Pot schimba doar sticla de pe bara de cameră la Pixel?", "a": "Da, dacă senzorii nu sunt afectați. Schimbăm doar sticla, iar calitatea pozelor revine." },
+        { "q": "Pozele au halou după ce am scăpat telefonul. Ce e?", "a": "Cel mai des e o fisură pe sticla camerei. O verificăm la lumină și îți spunem dacă ajunge doar sticla sau trebuie și modulul." },
+        { "q": "Mai merge încărcarea wireless după schimbarea spatelui?", "a": "Da. Verificăm încărcarea wireless după fiecare înlocuire a spatelui de sticlă." },
+        { "q": "Cât durează reparația unui Pixel?", "a": "Maximum 3 ore cu piesa în stoc. Multe piese Pixel le aducem pe comandă rapidă, în câteva zile." },
+        { "q": "Ce garanție primesc?", "a": "Garanția e între 1 și 3 ani, în funcție de piesă, și e trecută pe documentul de predare." }
+      ],
+      "localHeading": "Service Google Pixel în Timișoara",
+      "localText": "Ne găsești pe Constantin Brâncoveanu nr. 2. Sună-ne înainte cu modelul exact, ca să verificăm dacă piesa pentru Pixel-ul tău e în stoc sau trebuie comandată.",
+      "related": ["reparatie-carcasa-timisoara", "reparatii-iphone-timisoara", "reparatii-motorola-timisoara"],
+      "popupLead": "Dacă nu reușim să-ți facem Pixel-ul din nou funcțional, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "inlocuire-display-timisoara",
+      "kind": "service",
+      "brand": "",
+      "serviceType": "Înlocuire display telefon",
+      "hero": { "variant": "display", "layout": "center" },
+      "meta": {
+        "title": "Înlocuire Display Telefon Timișoara – Ecran în 3 ore | ZEN GSM",
+        "description": "Schimb display spart în Timișoara pentru iPhone, Samsung, Xiaomi, Huawei, Honor, OPPO, Motorola. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
+      },
+      "breadcrumb": "Înlocuire display",
+      "h1": { "lead": "Înlocuire display în Timișoara:", "accent": "ecran nou pe orice telefon" },
+      "heroLead": "Ecranul s-a spart, are linii, pete negre sau touch-ul nu mai răspunde? Schimbăm display-ul la orice model de telefon, de la iPhone la Redmi și Galaxy.",
+      "badges": [
+        { "long": "Orice marcă și model", "short": "Orice model" },
+        { "long": "Max. 3 ore cu piesa în stoc", "short": "Gata în 3 ore" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM schimbă display-ul la orice model de telefon în Timișoara. Cu piesa în stoc, înlocuirea durează maximum 3 ore; altfel aducem display-ul pe comandă rapidă, în câteva zile. Garanția e între 1 și 3 ani, iar atelierul e pe Constantin Brâncoveanu nr. 2.",
+      "focus": {
+        "heading": "Ce înseamnă o înlocuire de display făcută corect",
+        "paragraphs": [
+          "Un display spart nu e doar o problemă de aspect. Fisurile lasă să intre praf și umezeală, iar cioburile mici pot tăia degetul. În plus, o fisură care azi e doar pe colț ajunge adesea peste tot ecranul după încă o cădere.",
+          "Pe telefoanele moderne, sticla, touch-ul și panoul sunt lipite într-un singur ansamblu. De aceea schimbăm display-ul complet, nu doar sticla de deasupra. Rezultatul e mai durabil și nu apar bule sau zone moarte la touch după câteva săptămâni.",
+          "Îți explicăm înainte de montaj ce tip de piesă folosim pentru modelul tău: originală, OLED compatibil sau LCD de calitate, acolo unde există variante. După montaj testăm touch-ul, luminozitatea, senzorul de proximitate și amprenta din ecran."
+        ],
+        "points": [
+          "Display complet, nu doar sticlă lipită peste",
+          "Tipul de piesă explicat înainte de montaj",
+          "Test touch, luminozitate, proximitate, amprentă",
+          "Adeziv nou și ramă curățată la închidere"
+        ]
+      },
+      "othersHeading": "Semne că display-ul trebuie schimbat",
+      "others": [
+        { "title": "Linii colorate", "text": "Linii verticale verzi, roz sau albe apar când panoul a fost lovit sau conectorul s-a deteriorat." },
+        { "title": "Pete negre care cresc", "text": "La OLED, o pată neagră care se extinde de la o zi la alta înseamnă panou afectat. Nu se repară singură." },
+        { "title": "Touch fantomă", "text": "Telefonul apasă singur sau ignoră o zonă a ecranului. Excludem întâi software-ul, apoi schimbăm display-ul." },
+        { "title": "Ecran negru, telefon pornit", "text": "Auzi notificări, dar nu vezi nimic. De obicei e display-ul sau cablul lui, nu placa de bază." }
+      ],
+      "seriesHeading": "Mărci la care schimbăm display-ul zilnic",
+      "series": ["iPhone", "Samsung Galaxy", "Xiaomi, Redmi, Poco", "Huawei", "Honor", "OPPO și OnePlus", "Motorola", "Google Pixel"],
+      "faqHeading": "Întrebări despre înlocuirea display-ului",
+      "faq": [
+        { "q": "Cât durează schimbarea unui display în Timișoara?", "a": "Maximum 3 ore dacă piesa e în stoc. Pentru modelele rare aducem display-ul pe comandă rapidă, în câteva zile." },
+        { "q": "Pot schimba doar sticla, fără tot display-ul?", "a": "Pe telefoanele moderne sticla e lipită de panou din fabrică. Schimbăm ansamblul complet, pentru că rezultatul e mai sigur și mai durabil." },
+        { "q": "Pierd datele când schimbați display-ul?", "a": "Nu. Înlocuirea display-ului nu atinge memoria telefonului. Îți recomandăm totuși un backup înainte de orice reparație." },
+        { "q": "Ce garanție are display-ul nou?", "a": "Garanția e între 1 și 3 ani, în funcție de piesă, și e trecută pe documentul de predare." },
+        { "q": "Ce se întâmplă dacă telefonul are și alte defecte?", "a": "Îți spunem înainte de reparație tot ce găsim. Dacă nu există nicio soluție ca același model să funcționeze din nou, primești 100 lei, conform condițiilor din Termeni." }
+      ],
+      "localHeading": "Schimb display în Timișoara, pe loc",
+      "localText": "Vino pe Constantin Brâncoveanu nr. 2 sau sună la 0758 060 072 ca să verificăm dacă display-ul pentru modelul tău e în stoc chiar azi.",
+      "related": ["reparatii-iphone-timisoara", "reparatii-xiaomi-timisoara", "reparatii-honor-timisoara"],
+      "popupLead": "Dacă după diagnostic nu găsim o soluție ca telefonul tău să funcționeze din nou, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "inlocuire-baterie-timisoara",
+      "kind": "service",
+      "brand": "",
+      "serviceType": "Înlocuire baterie telefon",
+      "hero": { "variant": "baterie", "layout": "center" },
+      "meta": {
+        "title": "Înlocuire Baterie Telefon Timișoara – Baterie Umflată | ZEN GSM",
+        "description": "Schimb baterie telefon în Timișoara: autonomie scurtă, baterie umflată, opriri bruște. iPhone, Samsung, Motorola, OPPO. Max. 3 ore, garanție 1–3 ani."
+      },
+      "breadcrumb": "Înlocuire baterie",
+      "h1": { "lead": "Înlocuire baterie telefon în Timișoara,", "accent": "o zi întreagă fără încărcător" },
+      "heroLead": "Telefonul se oprește la 30%, abia ține până la prânz sau capacul din spate s-a umflat? Schimbăm bateria la orice model, în aceeași zi când piesa e în stoc.",
+      "badges": [
+        { "long": "Baterie umflată scoasă în siguranță", "short": "Baterie umflată" },
+        { "long": "Max. 3 ore cu piesa în stoc", "short": "Gata în 3 ore" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM schimbă bateria la orice model de telefon în Timișoara. Cu piesa în stoc, înlocuirea durează maximum 3 ore; pentru modelele rare aducem bateria pe comandă rapidă, în câteva zile. Garanția e între 1 și 3 ani.",
+      "focus": {
+        "heading": "Când e momentul să schimbi bateria",
+        "paragraphs": [
+          "O baterie de telefon pierde treptat din capacitate, de obicei vizibil după doi-trei ani de încărcări zilnice. Primele semne sunt autonomia mai scurtă, opririle la procente mari și încălzirea la încărcare. Pe iPhone vezi starea bateriei direct în setări; pe Android, simptomele spun de obicei destul.",
+          "Bateria umflată e o urgență. Dacă ecranul se ridică din ramă sau capacul din spate s-a desprins, nu mai încărca telefonul și adu-l cât mai repede. O baterie umflată poate sparge display-ul din interior și se poate încălzi periculos.",
+          "La schimbare, desprindem bateria veche cu căldură controlată și fără pârghii metalice, ca să nu o perforăm. Montăm bateria nouă, verificăm încărcarea și calibrăm afișarea procentului."
+        ],
+        "points": [
+          "Semnele unei baterii obosite explicate pe modelul tău",
+          "Scoatere sigură a bateriilor umflate",
+          "Verificare încărcare și încălzire după montaj",
+          "Baterie veche predată la reciclare"
+        ]
+      },
+      "othersHeading": "Probleme care par de baterie, dar nu sunt mereu",
+      "others": [
+        { "title": "Mufă murdară", "text": "Dacă telefonul nu se încarcă deloc, întâi curățăm mufa. Uneori asta e tot ce trebuie." },
+        { "title": "Aplicații care consumă", "text": "O aplicație blocată în fundal poate goli bateria. Ne uităm la consum înainte să recomandăm o baterie nouă." },
+        { "title": "Încărcător slab", "text": "Cablurile deteriorate încarcă lent sau intermitent. Testăm și cu un încărcător de referință." },
+        { "title": "Placă de încărcare", "text": "Când telefonul nu vede încărcătorul deloc, problema poate fi pe placă. O diagnosticăm separat." }
+      ],
+      "seriesHeading": "Baterii pe care le schimbăm des",
+      "series": ["iPhone 11–17", "Samsung Galaxy S și A", "Motorola Moto G și Edge", "OPPO Reno și A", "Xiaomi Redmi Note", "Huawei P și Mate", "Honor X și Magic", "Google Pixel"],
+      "faqHeading": "Întrebări despre schimbarea bateriei",
+      "faq": [
+        { "q": "Cât durează schimbarea bateriei la telefon?", "a": "Maximum 3 ore când bateria e în stoc. Pentru modelele rare o aducem pe comandă rapidă, în câteva zile." },
+        { "q": "E periculoasă o baterie umflată?", "a": "Da. Poate sparge ecranul din interior și se poate încălzi. Nu o mai încărca și adu telefonul cât mai repede." },
+        { "q": "Îmi pierd datele când schimbați bateria?", "a": "Nu. Schimbarea bateriei nu atinge memoria telefonului." },
+        { "q": "Cât ține o baterie nouă?", "a": "Cu o utilizare obișnuită, de obicei câțiva ani. Garanția pe care o oferim este între 1 și 3 ani, în funcție de piesă." },
+        { "q": "Ce se întâmplă dacă nu e bateria de vină?", "a": "Îți spunem asta înainte de reparație și nu schimbăm piese inutil. Dacă nu există nicio soluție ca același model să funcționeze din nou, primești 100 lei, conform condițiilor din Termeni." }
+      ],
+      "localHeading": "Schimb baterie în Timișoara",
+      "localText": "Atelierul e pe Constantin Brâncoveanu nr. 2. Pentru o baterie umflată, sună-ne la 0758 060 072 și te primim cu prioritate.",
+      "related": ["reparatii-samsung-timisoara", "reparatii-motorola-timisoara", "reparatii-oppo-timisoara"],
+      "popupLead": "Dacă nu găsim o soluție ca telefonul tău să funcționeze din nou, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "reparatie-carcasa-timisoara",
+      "kind": "service",
+      "brand": "",
+      "serviceType": "Reparație carcasă și sticlă spate telefon",
+      "hero": { "variant": "carcasa", "layout": "center" },
+      "meta": {
+        "title": "Reparație Carcasă și Sticlă Spate Telefon Timișoara | ZEN GSM",
+        "description": "Schimb sticlă spate spartă, carcasă sau ramă îndoită în Timișoara. iPhone, Samsung, Honor, Pixel. Max. 3 ore cu piese din stoc, garanție 1–3 ani."
+      },
+      "breadcrumb": "Reparație carcasă",
+      "h1": { "lead": "Reparație carcasă și sticlă spate în Timișoara:", "accent": "telefonul arată din nou ca nou" },
+      "heroLead": "Sticla din spate e crăpată, rama e îndoită sau colțurile s-au ciobit? Schimbăm spatele, capacul sau carcasa completă, ca telefonul să arate și să se țină bine.",
+      "badges": [
+        { "long": "Sticlă spate fără schimb de ecran", "short": "Sticlă spate" },
+        { "long": "Ramă și carcasă completă", "short": "Ramă și carcasă" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "ZEN GSM schimbă sticla din spate, capacul și carcasa telefoanelor în Timișoara, pe Constantin Brâncoveanu nr. 2. Cu piese din stoc terminăm în maximum 3 ore, iar carcasele rare vin pe comandă rapidă, în câteva zile. Garanția e între 1 și 3 ani.",
+      "focus": {
+        "heading": "Sticlă spate, capac sau carcasă completă: ce alegi",
+        "paragraphs": [
+          "Pe telefoanele cu spate de sticlă, o singură cădere pe spate poate crăpa tot panoul, chiar dacă ecranul a rămas intact. Cioburile zgârie mâna, iar fisurile lasă praful să intre spre cameră și bobina de încărcare wireless. Dacă rama e dreaptă, schimbăm doar sticla din spate.",
+          "Când rama metalică e îndoită, telefonul nu mai stă drept pe masă, butoanele se blochează și ecranul poate fi presat. Aici mutăm toate componentele într-o carcasă nouă. Durează mai mult, dar telefonul iese drept, cu butoane care apasă corect.",
+          "La modelele cu capac din plastic, înlocuirea e rapidă și ieftină. În toate cazurile verificăm la final butoanele, camera din spate, încărcarea wireless și etanșarea cu adeziv nou."
+        ],
+        "points": [
+          "Sticlă spate schimbată separat când rama e intactă",
+          "Carcasă completă pentru rame îndoite",
+          "Verificare butoane, cameră și încărcare wireless",
+          "Adeziv nou și închidere uniformă"
+        ]
+      },
+      "othersHeading": "Reparații de exterior pe care le facem des",
+      "others": [
+        { "title": "Sticlă cameră", "text": "Sticla mică din fața camerelor se ciobește primul. O schimbăm separat, fără să atingem senzorii." },
+        { "title": "Butoane blocate", "text": "Butoane de volum sau pornire care nu mai apasă, des după o cădere pe colț." },
+        { "title": "Capace din plastic", "text": "La Redmi, Moto G și modele din gama medie, capacul se schimbă rapid și accesibil." },
+        { "title": "iPhone cu spate spart", "text": "Pe iPhone, sticla din spate se schimbă în funcție de construcția modelului: separat sau împreună cu rama." }
+      ],
+      "seriesHeading": "Telefoane cu spate spart pe care le vedem des",
+      "series": ["iPhone 12–17", "Samsung Galaxy S", "Honor Magic", "Google Pixel", "Xiaomi 13 / 14 / 15", "OPPO Find X", "Huawei P și Mate"],
+      "faqHeading": "Întrebări despre carcase și sticla din spate",
+      "faq": [
+        { "q": "Pot schimba doar sticla din spate?", "a": "Da, dacă rama e dreaptă și modelul permite. Altfel îți propunem carcasa completă." },
+        { "q": "Mai merge încărcarea wireless după schimbarea spatelui?", "a": "Da. O verificăm la fiecare reparație, pentru că bobina stă sub sticla din spate." },
+        { "q": "Cât durează schimbarea carcasei?", "a": "Maximum 3 ore cu piesa în stoc. Carcasele rare le aducem pe comandă rapidă, în câteva zile." },
+        { "q": "Merită să repar spatele dacă telefonul funcționează?", "a": "Da. Fisurile lasă praful să intre spre cameră și bobina de încărcare, iar cioburile se pot desprinde în buzunar." },
+        { "q": "Ce garanție primesc?", "a": "Garanția e între 1 și 3 ani, în funcție de piesă, și e trecută pe documentul de predare." }
+      ],
+      "localHeading": "Carcase și sticlă spate în Timișoara",
+      "localText": "Vino pe Constantin Brâncoveanu nr. 2. Până atunci, ține telefonul cu spatele spart într-o husă, ca să nu se desprindă cioburi.",
+      "related": ["reparatii-honor-timisoara", "reparatii-google-pixel-timisoara", "reparatii-iphone-timisoara"],
+      "popupLead": "Dacă nu găsim o soluție ca telefonul tău să funcționeze din nou, primești 100 lei credit în magazin."
+    },
+    {
+      "slug": "telefon-cazut-in-apa-timisoara",
+      "kind": "service",
+      "brand": "",
+      "serviceType": "Reparație telefon căzut în apă",
+      "hero": { "variant": "apa", "layout": "center" },
+      "meta": {
+        "title": "Telefon Căzut în Apă Timișoara – Ce faci și cum îl salvăm | ZEN GSM",
+        "description": "Telefon căzut în apă în Timișoara? Nu-l încărca și nu-l pune în orez. Curățare ultrasonică, diagnostic pe placă, salvare date. Sună la 0758 060 072."
+      },
+      "breadcrumb": "Telefon căzut în apă",
+      "h1": { "lead": "Telefon căzut în apă în Timișoara?", "accent": "Oprește-l și adu-l la noi" },
+      "heroLead": "Fiecare oră contează după contactul cu apa. Nu-l încărca, nu-l pune în orez și nu-l usca cu foehnul. Îl desfacem, îl curățăm și salvăm tot ce se poate.",
+      "badges": [
+        { "long": "Desfacere și curățare în aceeași zi", "short": "Curățare azi" },
+        { "long": "Diagnostic pe placa de bază", "short": "Diagnostic placă" },
+        { "long": "Garanție de la 1 an la 3 ani", "short": "Garanție 1–3 ani" }
+      ],
+      "answer": "Dacă telefonul a căzut în apă, oprește-l imediat, nu-l încărca și adu-l la ZEN GSM, pe Constantin Brâncoveanu nr. 2, Timișoara. Îl desfacem, curățăm placa de oxid și schimbăm componentele afectate. Garanția reparației e între 1 și 3 ani.",
+      "focus": {
+        "heading": "Ce se întâmplă în telefon după ce intră apa",
+        "paragraphs": [
+          "Apa în sine nu strică imediat telefonul. Problema e curentul care trece prin placă cât timp e umedă și oxidul care se formează în orele următoare. De aceea primul lucru pe care îl faci este să oprești telefonul și să nu-l încarci, chiar dacă pare că merge.",
+          "Orezul nu scoate apa din interior și lasă praf în mufe. Foehnul poate topi adezivii și deforma componentele. Cel mai bine e să aduci telefonul cât mai repede, oprit, într-o pungă.",
+          "În atelier desfacem telefonul, scoatem bateria din circuit și curățăm placa pentru a îndepărta oxidul. Apoi verificăm pe rând display-ul, mufa, camera, difuzoarele și bateria. Îți spunem clar ce a fost afectat și ce trebuie schimbat."
+        ],
+        "points": [
+          "Deconectarea bateriei cât mai repede",
+          "Curățare a plăcii și a conectorilor",
+          "Verificare componentă cu componentă",
+          "Încercare de recuperare a datelor, când telefonul nu mai pornește"
+        ]
+      },
+      "othersHeading": "Ce se strică cel mai des după apă",
+      "others": [
+        { "title": "Display cu pete", "text": "Umezeala intrată sub ecran lasă pete sau dungi. Uneori dispar după curățare, alteori ecranul trebuie schimbat." },
+        { "title": "Mufa de încărcare", "text": "Oxidul de pe pinii mufei oprește încărcarea. Curățăm sau schimbăm placa de încărcare." },
+        { "title": "Difuzor și microfon", "text": "Sunet înfundat sau hârâit după apă, de obicei rezolvat prin curățare sau înlocuire." },
+        { "title": "Camera cu ceață", "text": "Condensul din spatele lentilei se vede ca ceață pe poze. Curățăm sau schimbăm modulul." }
+      ],
+      "seriesHeading": "Ce trebuie să faci imediat",
+      "series": ["Oprește telefonul", "Nu-l încărca", "Scoate husa și cartela SIM", "Nu-l pune în orez", "Nu folosi foehnul", "Adu-l la atelier cât mai repede"],
+      "faqHeading": "Întrebări despre telefoanele căzute în apă",
+      "faq": [
+        { "q": "Merge să pun telefonul în orez?", "a": "Nu. Orezul nu scoate apa din interior și lasă praf în mufe. Oprește telefonul și adu-l la service cât mai repede." },
+        { "q": "Telefonul a căzut în apă, dar merge. Trebuie să-l aduc?", "a": "Da. Oxidul se formează în orele și zilele următoare, iar defectele pot apărea mai târziu. O curățare la timp previne problemele." },
+        { "q": "Puteți salva datele de pe un telefon ud care nu pornește?", "a": "Încercăm întotdeauna. După curățarea plăcii, multe telefoane pornesc suficient cât să poți salva pozele și contactele." },
+        { "q": "Telefonul meu e rezistent la apă. De ce s-a stricat?", "a": "Rezistența la apă scade în timp și după orice reparație sau lovitură. Apa sărată, piscina și apa caldă sunt cele mai periculoase." },
+        { "q": "Ce se întâmplă dacă telefonul nu poate fi salvat?", "a": "Dacă nu găsim nicio soluție ca același model să funcționeze din nou, primești 100 lei, conform condițiilor din Termeni." }
+      ],
+      "localHeading": "Salvare telefon ud în Timișoara",
+      "localText": "Adu telefonul oprit pe Constantin Brâncoveanu nr. 2 sau sună la 0758 060 072 înainte să pleci. Cu cât ajunge mai repede, cu atât sunt mai mari șansele.",
+      "related": ["inlocuire-display-timisoara", "inlocuire-baterie-timisoara", "reparatii-iphone-timisoara"],
+      "popupLead": "Dacă nu reușim să-ți salvăm telefonul, adică să funcționeze din nou același model, primești 100 lei credit în magazin."
+    }
+  ]
+}

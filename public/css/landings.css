@@ -1,0 +1,1066 @@
+/* ===============================
+   Landinguri SEO (/reparatii-*-timisoara/, /inlocuire-*/ etc.)
+   Se încarcă după styles.css și refolosește structura .hero de pe homepage.
+   Toate animațiile de hero au ciclul de 6s al etichetelor .phone-state (înainte 0–45%, după 52–95%).
+   =============================== */
+
+@property --lv-pct {
+    syntax: '<integer>';
+    inherits: true;
+    initial-value: 0;
+}
+
+a.brand-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand-card__more {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: #6ee7b7;
+}
+
+.lv-breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #d1fae5;
+    text-shadow: 0 1px 6px rgba(2, 6, 23, 0.8);
+}
+
+.lv-breadcrumb a {
+    color: #6ee7b7;
+    text-decoration: none;
+}
+
+.lv-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.lv-hero .hero-title {
+    font-size: clamp(2rem, 3.4vw, 3rem);
+    line-height: 1.12;
+}
+
+.lv-hero .hero-btn-price {
+    background: var(--gradient-primary);
+    border: none;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
+}
+
+.lv-hero .hero-btn-call {
+    display: inline-flex;
+}
+
+.lv-hero .hero-btn-service {
+    order: 3;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: none;
+}
+
+/* ---------- Layout centrat (desktop) ---------- */
+@media (min-width: 769px) {
+    .lv-hero[data-layout="center"] .hero-content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 2.25rem;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .lv-hero[data-layout="center"] .hero-visual {
+        order: -1;
+    }
+
+    .lv-hero[data-layout="center"] .hero-buttons {
+        justify-content: center;
+    }
+
+    .lv-hero[data-layout="center"] .hero-offer {
+        text-align: left;
+    }
+
+    .lv-hero[data-layout="center"] .trust-badges {
+        text-align: left;
+    }
+
+    .lv-hero[data-layout="center"] {
+        padding-top: 7rem;
+    }
+
+    .lv-hero[data-layout="center"] .phone-model {
+        width: 140px;
+        height: 280px;
+        padding: 9px;
+        border-radius: 26px;
+    }
+
+    .lv-hero[data-layout="center"] .phone-screen,
+    .lv-hero[data-layout="center"] .phone-screen::before,
+    .lv-hero[data-layout="center"] .phone-screen::after {
+        border-radius: 19px;
+    }
+
+    .lv-hero[data-layout="center"] .phone-state {
+        bottom: 18px;
+        padding: 0.28rem 0.7rem;
+        font-size: 0.68rem;
+    }
+
+    .lv-hero[data-layout="center"] .lv-device {
+        width: 140px;
+        padding: 7px;
+        border-radius: 26px;
+    }
+
+    .lv-hero[data-layout="center"] .lv-screen {
+        gap: 8px;
+        border-radius: 19px;
+    }
+
+    .lv-hero[data-layout="center"] .lv-battery__pct::after {
+        font-size: 1.3rem;
+    }
+
+    .lv-hero[data-layout="center"] .lv-battery__label,
+    .lv-hero[data-layout="center"] .lv-port__label {
+        font-size: 0.6rem;
+    }
+
+    .lv-hero[data-layout="center"] .lv-device--port {
+        margin-bottom: 44px;
+    }
+
+    .lv-hero[data-layout="center"] .lv-plug__head {
+        height: 22px;
+    }
+
+    .lv-hero[data-layout="center"] .lv-plug__cable {
+        height: 32px;
+    }
+
+    .lv-hero[data-layout="center"] .lv-breadcrumb {
+        justify-content: center;
+    }
+}
+
+/* ---------- Carcasa comună a vizualurilor ---------- */
+.lv-device {
+    position: relative;
+    width: 240px;
+    aspect-ratio: 1 / 2;
+    padding: 10px;
+    border-radius: 38px;
+    background: linear-gradient(150deg, #1f2937 0%, #0b1220 60%, #111827 100%);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    animation: lvFloat 6s ease-in-out infinite;
+}
+
+.lv-device:not(.lv-device--back)::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    z-index: 2;
+    width: 30%;
+    height: 14px;
+    border-radius: 999px;
+    background: #000;
+    transform: translateX(-50%);
+}
+
+@keyframes lvFloat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+}
+
+.lv-screen {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 29px;
+    background: radial-gradient(circle at 50% 30%, #12324a 0%, #07111f 65%, #030712 100%);
+}
+
+.lv-device .phone-state {
+    z-index: 4;
+}
+
+/* ---------- baterie ---------- */
+.lv-device--battery .lv-screen {
+    animation: lvBatteryPct 6s ease-in-out infinite;
+}
+
+@keyframes lvBatteryPct {
+    0%, 45% { --lv-pct: 9; }
+    52% { --lv-pct: 20; }
+    90%, 100% { --lv-pct: 100; }
+}
+
+.lv-battery {
+    position: relative;
+    width: 42%;
+    height: 38%;
+    border: 4px solid rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 5px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.lv-battery::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 36%;
+    height: 8px;
+    border-radius: 4px 4px 0 0;
+    background: rgba(255, 255, 255, 0.85);
+    transform: translateX(-50%);
+}
+
+.lv-battery__fill {
+    display: block;
+    width: 100%;
+    height: calc(var(--lv-pct) * 1%);
+    border-radius: 9px;
+    animation: lvBatteryColor 6s ease-in-out infinite;
+}
+
+@keyframes lvBatteryColor {
+    0%, 45% { background: #ef4444; box-shadow: 0 0 18px rgba(239, 68, 68, 0.7); }
+    60%, 100% { background: linear-gradient(0deg, #059669, #34d399); box-shadow: 0 0 22px rgba(52, 211, 153, 0.7); }
+}
+
+.lv-battery__bolt {
+    position: absolute;
+    inset: 22% 25%;
+    color: #fef3c7;
+    opacity: 0;
+    animation: lvShowAfter 6s ease-in-out infinite;
+}
+
+.lv-battery__pct::after {
+    counter-reset: lvpct var(--lv-pct);
+    content: counter(lvpct) '%';
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.lv-battery__label,
+.lv-port__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a7f3d0;
+    opacity: 0;
+    animation: lvShowAfter 6s ease-in-out infinite;
+}
+
+@keyframes lvShowAfter {
+    0%, 48% { opacity: 0; transform: scale(0.85); }
+    56%, 94% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.85); }
+}
+
+@keyframes lvShowBefore {
+    0%, 44% { opacity: 1; }
+    50%, 97% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ---------- mufă ---------- */
+.lv-device--port {
+    margin-bottom: 70px;
+}
+
+.lv-ring {
+    position: relative;
+    width: 58%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: conic-gradient(#34d399 calc(var(--lv-pct) * 1%), rgba(255, 255, 255, 0.1) 0);
+    animation: lvRing 6s ease-in-out infinite;
+}
+
+.lv-ring::after {
+    content: '';
+    position: absolute;
+    inset: 9px;
+    border-radius: 50%;
+    background: #07111f;
+}
+
+@keyframes lvRing {
+    0%, 48% { --lv-pct: 0; filter: grayscale(1); }
+    52% { --lv-pct: 5; filter: none; }
+    92%, 100% { --lv-pct: 100; filter: none; }
+}
+
+.lv-ring__bolt {
+    position: absolute;
+    inset: 30%;
+    z-index: 1;
+    animation: lvBoltColor 6s ease-in-out infinite;
+}
+
+@keyframes lvBoltColor {
+    0%, 20%, 40% { color: #ef4444; opacity: 1; }
+    10%, 30% { opacity: 0.25; }
+    48% { color: #ef4444; }
+    56%, 100% { color: #fde68a; opacity: 1; }
+}
+
+.lv-port {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    width: 22%;
+    height: 7px;
+    border-radius: 999px;
+    background: #000;
+    transform: translateX(-50%);
+    animation: lvPortGlow 6s ease-in-out infinite;
+}
+
+@keyframes lvPortGlow {
+    0%, 48% { box-shadow: 0 0 0 rgba(52, 211, 153, 0); }
+    56%, 94% { box-shadow: 0 0 16px 4px rgba(52, 211, 153, 0.8); }
+}
+
+.lv-plug {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    transform: translateX(-50%);
+    animation: lvPlug 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.lv-plug__head {
+    width: 100%;
+    height: 34px;
+    border-radius: 8px 8px 6px 6px;
+    background: linear-gradient(180deg, #e5e7eb, #9ca3af);
+}
+
+.lv-plug__cable {
+    width: 22%;
+    height: 60px;
+    background: #e5e7eb;
+    border-radius: 0 0 4px 4px;
+}
+
+@keyframes lvPlug {
+    0%, 12% { transform: translate(-50%, 34px) rotate(8deg); }
+    24% { transform: translate(-50%, 18px) rotate(-6deg); }
+    36%, 45% { transform: translate(-50%, 30px) rotate(4deg); }
+    54%, 94% { transform: translate(-50%, -2px) rotate(0); }
+    100% { transform: translate(-50%, 34px) rotate(8deg); }
+}
+
+/* ---------- spate de telefon (cameră, carcasă) ---------- */
+.lv-device--back {
+    background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, transparent 35%),
+        linear-gradient(150deg, #334155 0%, #1e293b 55%, #0f172a 100%);
+    overflow: hidden;
+}
+
+.lv-back-logo {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: 0.3em;
+    color: rgba(255, 255, 255, 0.25);
+    transform: translateX(-50%);
+}
+
+.lv-cam {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 52%;
+    aspect-ratio: 1;
+    border-radius: 26%;
+    background: linear-gradient(145deg, #111827, #020617);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lv-cam__lens {
+    position: absolute;
+    width: 40%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #60a5fa 0%, #1e3a8a 25%, #020617 60%);
+    border: 3px solid #374151;
+    animation: lvLensBlur 6s ease-in-out infinite;
+}
+
+.lv-cam__lens--a { top: 8%; left: 8%; }
+.lv-cam__lens--b { top: 52%; left: 8%; }
+.lv-cam__lens--c { top: 30%; left: 52%; }
+
+@keyframes lvLensBlur {
+    0%, 45% { filter: blur(1.5px) saturate(0.4); }
+    55%, 95% { filter: none; }
+    100% { filter: blur(1.5px) saturate(0.4); }
+}
+
+.lv-cam__flash {
+    position: absolute;
+    top: 12%;
+    right: 12%;
+    width: 13%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #fef3c7;
+    animation: lvFlash 6s ease-in-out infinite;
+}
+
+@keyframes lvFlash {
+    0%, 60%, 64%, 100% { box-shadow: none; opacity: 0.6; }
+    62% { box-shadow: 0 0 40px 18px rgba(254, 243, 199, 0.95); opacity: 1; }
+}
+
+.lv-cam__crack {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background:
+        linear-gradient(62deg, transparent 47%, rgba(255, 255, 255, 0.85) 48%, transparent 50%),
+        linear-gradient(-28deg, transparent 58%, rgba(255, 255, 255, 0.7) 59%, transparent 60.5%),
+        linear-gradient(15deg, transparent 30%, rgba(255, 255, 255, 0.6) 31%, transparent 32%);
+    animation: lvShowBefore 6s ease-in-out infinite;
+}
+
+.lv-cam-focus {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: calc(52% + 12px);
+    aspect-ratio: 1;
+    border-radius: 30%;
+    border: 3px solid transparent;
+    animation: lvCamFocus 6s ease-in-out infinite;
+}
+
+@keyframes lvCamFocus {
+    0%, 50% { border-color: transparent; transform: scale(1.25); }
+    58% { border-color: #34d399; transform: scale(1); box-shadow: 0 0 24px rgba(52, 211, 153, 0.6); }
+    90% { border-color: #34d399; transform: scale(1); }
+    100% { border-color: transparent; transform: scale(1.25); }
+}
+
+/* ---------- carcasă / sticlă spate ---------- */
+.lv-cam--small {
+    width: 38%;
+}
+
+.lv-cam--small .lv-cam__lens {
+    width: 48%;
+    animation: none;
+}
+
+.lv-cam--small .lv-cam__lens--a { top: 6%; left: 26%; }
+.lv-cam--small .lv-cam__lens--b { top: 52%; left: 26%; }
+
+.lv-cracks {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.75);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.6));
+    animation: lvShowBefore 6s ease-in-out infinite;
+}
+
+.lv-shine {
+    position: absolute;
+    inset: -20% -60%;
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+    transform: translateX(-60%);
+    animation: lvShine 6s ease-in-out infinite;
+}
+
+@keyframes lvShine {
+    0%, 52% { transform: translateX(-60%); opacity: 0; }
+    54% { opacity: 1; }
+    72% { transform: translateX(60%); opacity: 1; }
+    74%, 100% { transform: translateX(60%); opacity: 0; }
+}
+
+/* ---------- telefon ud ---------- */
+.lv-water {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(56, 189, 248, 0.55), rgba(14, 116, 144, 0.85));
+    animation: lvWater 6s ease-in-out infinite;
+}
+
+.lv-water::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -10%;
+    width: 120%;
+    height: 16px;
+    border-radius: 50%;
+    background: rgba(125, 211, 252, 0.7);
+    animation: lvWave 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes lvWater {
+    0% { height: 8%; }
+    40%, 46% { height: 62%; }
+    58%, 100% { height: 0; }
+}
+
+@keyframes lvWave {
+    from { transform: translateX(-6%); }
+    to { transform: translateX(6%); }
+}
+
+.lv-drop {
+    position: absolute;
+    top: -12%;
+    width: 12px;
+    height: 16px;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    background: #7dd3fc;
+    box-shadow: 0 0 10px rgba(125, 211, 252, 0.8);
+    animation: lvDrop 6s linear infinite;
+}
+
+.lv-drop--1 { left: 18%; animation-delay: 0s; }
+.lv-drop--2 { left: 42%; animation-delay: 0.4s; }
+.lv-drop--3 { left: 64%; animation-delay: 0.8s; }
+.lv-drop--4 { left: 80%; animation-delay: 1.2s; }
+
+@keyframes lvDrop {
+    0% { transform: translateY(0); opacity: 1; }
+    20% { transform: translateY(520%); opacity: 1; }
+    21%, 100% { transform: translateY(520%); opacity: 0; }
+}
+
+.lv-dry {
+    position: relative;
+    z-index: 2;
+    width: 44%;
+    aspect-ratio: 1;
+    padding: 10%;
+    border-radius: 50%;
+    background: #34d399;
+    color: #022c22;
+    box-shadow: 0 0 30px rgba(52, 211, 153, 0.7);
+    opacity: 0;
+    animation: lvShowAfter 6s ease-in-out infinite;
+}
+
+/* ---------- secțiuni de conținut ---------- */
+.lv-section {
+    padding: 3.25rem 0;
+}
+
+.lv-h2 {
+    margin-bottom: 1.4rem;
+    font-size: clamp(1.55rem, 3.2vw, 2.25rem);
+    text-shadow: 0 2px 12px rgba(2, 6, 23, 0.8);
+}
+
+.lv-section p {
+    color: #fff;
+}
+
+.lv-answer {
+    padding-top: 1rem;
+}
+
+.lv-answer__card {
+    max-width: 900px;
+    padding: 1.5rem 1.75rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(110, 231, 183, 0.35);
+    border-left: 5px solid #34d399;
+    background: rgba(2, 6, 23, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.lv-answer__label {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fbbf24;
+}
+
+.lv-answer__card p {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.65;
+}
+
+.lv-focus__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.lv-focus__text {
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    background: rgba(2, 6, 23, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.lv-focus__text p {
+    margin: 0 0 1rem;
+    font-size: 1.06rem;
+    font-weight: 500;
+    line-height: 1.75;
+}
+
+.lv-focus__text p:last-child {
+    margin-bottom: 0;
+}
+
+.lv-checklist {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lv-checklist li {
+    position: relative;
+    padding: 1rem 1rem 1rem 3.1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(110, 231, 183, 0.45);
+    background: rgba(2, 6, 23, 0.78);
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.lv-checklist li::before {
+    content: '✓';
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.45rem;
+    height: 1.45rem;
+    border-radius: 50%;
+    background: #34d399;
+    color: #022c22;
+    font-size: 0.85rem;
+    font-weight: 900;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+}
+
+.lv-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+}
+
+.lv-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(2, 6, 23, 0.75);
+    backdrop-filter: blur(10px);
+    transition: transform var(--transition-base), border-color var(--transition-base);
+}
+
+.lv-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(110, 231, 183, 0.5);
+}
+
+.lv-card h3 {
+    margin: 0 0 0.55rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #6ee7b7;
+}
+
+.lv-card p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+.lv-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lv-chips li {
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 231, 183, 0.4);
+    background: rgba(2, 6, 23, 0.75);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.lv-steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lv-steps li {
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    background: rgba(2, 6, 23, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lv-steps__num {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 900;
+    color: #34d399;
+}
+
+.lv-steps h3 {
+    margin: 0 0 0.4rem;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.lv-steps p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.lv-narrow {
+    max-width: 900px;
+}
+
+.lv-faq {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.lv-faq details {
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(2, 6, 23, 0.78);
+}
+
+.lv-faq details[open] {
+    border-color: rgba(110, 231, 183, 0.5);
+}
+
+.lv-faq summary {
+    position: relative;
+    padding: 1.1rem 3rem 1.1rem 1.25rem;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 800;
+    color: #fff;
+}
+
+.lv-faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.lv-faq summary::after {
+    content: '+';
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    font-size: 1.4rem;
+    color: #34d399;
+    transform: translateY(-50%);
+}
+
+.lv-faq details[open] summary::after {
+    content: '−';
+}
+
+.lv-faq details p {
+    margin: 0;
+    padding: 0 1.25rem 1.2rem;
+    line-height: 1.65;
+}
+
+.lv-local__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    background: rgba(2, 6, 23, 0.78);
+    border: 1px solid rgba(110, 231, 183, 0.3);
+}
+
+.lv-local p {
+    line-height: 1.7;
+}
+
+.lv-nap {
+    margin: 1rem 0 1.5rem;
+    font-style: normal;
+    line-height: 1.8;
+    color: #fff;
+}
+
+.lv-nap a {
+    color: #6ee7b7;
+}
+
+.lv-local__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.lv-related h3 {
+    margin: 0 0 0.75rem;
+    color: #fbbf24;
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.lv-related ul {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lv-related a {
+    display: block;
+    padding: 0.7rem 0.9rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.lv-related a:hover {
+    background: rgba(16, 185, 129, 0.25);
+}
+
+.lv-hub {
+    padding-top: 0;
+}
+
+.lv-hub__title {
+    margin: 0 0 1rem;
+    font-size: 1.05rem;
+    color: #d1fae5;
+}
+
+.lv-hub__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lv-hub__list a,
+.lv-hub__list span {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #a7f3d0;
+}
+
+.lv-hub__list span {
+    color: #fff;
+}
+
+@media (max-width: 968px) {
+    .lv-focus__grid,
+    .lv-local__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .lv-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .lv-breadcrumb {
+        margin-bottom: 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .lv-hero .hero-btn-service {
+        background: none;
+        border: none;
+    }
+
+    .lv-hero .hero-title {
+        font-size: clamp(1.3rem, 5.6vw, 1.75rem);
+    }
+
+    .lv-device {
+        width: clamp(116px, 33vw, 148px);
+        padding: 6px;
+        border-radius: 24px;
+    }
+
+    .lv-device:not(.lv-device--back)::before {
+        top: 11px;
+        height: 9px;
+    }
+
+    .lv-screen {
+        gap: 8px;
+        border-radius: 18px;
+    }
+
+    .lv-battery {
+        border-width: 3px;
+        border-radius: 10px;
+        padding: 3px;
+    }
+
+    .lv-battery::before {
+        top: -8px;
+        height: 5px;
+    }
+
+    .lv-battery__fill {
+        border-radius: 6px;
+    }
+
+    .lv-battery__pct::after {
+        font-size: 1.15rem;
+    }
+
+    .lv-battery__label,
+    .lv-port__label {
+        font-size: 0.55rem;
+    }
+
+    .lv-ring::after {
+        inset: 5px;
+    }
+
+    .lv-device--port {
+        margin-bottom: 40px;
+    }
+
+    .lv-plug__head {
+        height: 20px;
+    }
+
+    .lv-plug__cable {
+        height: 30px;
+    }
+
+    .lv-cam {
+        top: 10px;
+        left: 10px;
+    }
+
+    .lv-cam-focus {
+        top: 5px;
+        left: 5px;
+    }
+
+    .lv-back-logo {
+        font-size: 0.7rem;
+    }
+
+    .lv-drop {
+        width: 8px;
+        height: 11px;
+    }
+
+    .lv-section {
+        padding: 2.25rem 0;
+    }
+
+    .lv-focus__text,
+    .lv-local__grid {
+        padding: 1.25rem;
+    }
+
+    .lv-answer__card {
+        padding: 1.2rem;
+    }
+
+    .lv-answer__card p {
+        font-size: 1.02rem;
+    }
+
+    .lv-steps {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lv-device,
+    .lv-device *,
+    .lv-device *::before,
+    .lv-device *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

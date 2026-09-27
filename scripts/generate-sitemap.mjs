@@ -68,6 +68,27 @@ export function generateSitemapFiles(rootDir) {
     });
   }
 
+  const landingsPath = path.join(rootDir, "data", "seo-landings.json");
+  if (fs.existsSync(landingsPath)) {
+    try {
+      const landings = JSON.parse(fs.readFileSync(landingsPath, "utf8"));
+      const lastmod = /^\d{4}-\d{2}-\d{2}$/.test(String(landings.updatedAt || ""))
+        ? landings.updatedAt
+        : today;
+      for (const p of landings.pages || []) {
+        if (!p || !p.slug) continue;
+        urls.push({
+          loc: `${base}/${encodeURIComponent(p.slug)}/`,
+          lastmod,
+          changefreq: "monthly",
+          priority: p.kind === "service" ? "0.85" : "0.9",
+        });
+      }
+    } catch (e) {
+      console.warn("generate-sitemap: seo-landings.json invalid", e.message);
+    }
+  }
+
   const manifestPath = path.join(rootDir, "data", "techblog", "manifest.json");
   if (fs.existsSync(manifestPath)) {
     try {

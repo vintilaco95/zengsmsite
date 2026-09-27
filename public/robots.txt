@@ -1,5 +1,17 @@
 # https://zengsm.ro/robots.txt
+# Motoarele de căutare și asistenții AI au acces explicit la conținutul public.
+# Toți sunt în același grup, ca regulile Disallow să li se aplice tuturor.
 User-agent: *
+User-agent: Googlebot
+User-agent: Google-Extended
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: PerplexityBot
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
 Allow: /
 
 # Rute curate Next (trailing slash); redirecturi *.html rămân indexabile doar ca alias.
