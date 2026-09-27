@@ -189,9 +189,21 @@ export function SiteNav() {
             aria-controls={sheetId}
             onClick={() => setOpen((v) => !v)}
           >
-            <span />
-            <span />
-            <span />
+            <svg className="zgs-driver" viewBox="0 0 28 8" aria-hidden="true">
+              <rect x="0.5" y="1" width="7" height="6" rx="1.4" />
+              <rect x="7.5" y="3" width="13" height="2" />
+              <polygon points="20.5,1.2 27.5,4 20.5,6.8" />
+            </svg>
+            <svg className="zgs-driver" viewBox="0 0 28 8" aria-hidden="true">
+              <rect x="0.5" y="1" width="7" height="6" rx="1.4" />
+              <rect x="7.5" y="3" width="13" height="2" />
+              <polygon points="20.5,1.2 27.5,4 20.5,6.8" />
+            </svg>
+            <svg className="zgs-driver" viewBox="0 0 28 8" aria-hidden="true">
+              <rect x="0.5" y="1" width="7" height="6" rx="1.4" />
+              <rect x="7.5" y="3" width="13" height="2" />
+              <polygon points="20.5,1.2 27.5,4 20.5,6.8" />
+            </svg>
           </button>
         </div>
       </div>

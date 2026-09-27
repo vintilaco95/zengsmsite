@@ -455,9 +455,23 @@ document.addEventListener('visibilitychange', () => {
         document.body.classList.toggle('zgs-trust-modal-open', openModalsCount() > 0);
     }
 
+    function mountIframe(el) {
+        const iframe = el.querySelector('iframe');
+        if (!iframe) return;
+        const src = iframe.getAttribute('data-src');
+        if (src && iframe.getAttribute('src') !== src) iframe.setAttribute('src', src);
+    }
+
+    function releaseIframe(el) {
+        const iframe = el.querySelector('iframe');
+        if (!iframe || !iframe.getAttribute('src')) return;
+        iframe.removeAttribute('src');
+    }
+
     function openCalcModal() {
         const el = calcBackdrop();
         if (!el) return;
+        mountIframe(el);
         el.classList.add('is-open');
         syncBodyModalLock();
     }
@@ -467,11 +481,15 @@ document.addEventListener('visibilitychange', () => {
         if (!el) return;
         el.classList.remove('is-open');
         syncBodyModalLock();
+        requestAnimationFrame(() => {
+            if (!el.classList.contains('is-open')) releaseIframe(el);
+        });
     }
 
     function openStatusModal() {
         const el = statusBackdrop();
         if (!el) return;
+        mountIframe(el);
         el.classList.add('is-open');
         syncBodyModalLock();
     }
@@ -481,6 +499,9 @@ document.addEventListener('visibilitychange', () => {
         if (!el) return;
         el.classList.remove('is-open');
         syncBodyModalLock();
+        requestAnimationFrame(() => {
+            if (!el.classList.contains('is-open')) releaseIframe(el);
+        });
     }
 
     document.body.addEventListener('click', (e) => {
