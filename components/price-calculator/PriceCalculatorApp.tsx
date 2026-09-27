@@ -205,6 +205,10 @@ export function PriceCalculatorApp({ variant }: Props) {
 
   const goBack = useCallback(() => {
     if (step <= 1) return;
+    if (step === 5) {
+      setStep(4);
+      return;
+    }
     if (step === 4) {
       setRepair("");
       setStep(3);
@@ -341,7 +345,8 @@ export function PriceCalculatorApp({ variant }: Props) {
                   { n: 1, label: "Marcă" },
                   { n: 2, label: "Model" },
                   { n: 3, label: "Reparație" },
-                  { n: 4, label: "Rezultat" },
+                  { n: 4, label: "Preț" },
+                  { n: 5, label: "Solicitare" },
                 ].map((s) => (
                   <div
                     key={s.n}
@@ -396,7 +401,7 @@ export function PriceCalculatorApp({ variant }: Props) {
                 </div>
               )}
 
-              <div className={styles.body}>
+              <div className={step >= 4 ? `${styles.body} ${styles.bodyStage}` : styles.body}>
                 {step === 1 ? (
                   <div className={styles.grid}>
                     {filteredBrands.length === 0 ? (
@@ -511,73 +516,13 @@ export function PriceCalculatorApp({ variant }: Props) {
                         <div className={styles.resultTotal}>
                           Total: {selection.t} {currency}
                         </div>
-                        <form className={styles.leadForm} onSubmit={submitLead}>
-                          <p className={styles.leadHint}>
-                            Lasă numele și telefonul și te contactăm pentru reparația asta.
-                          </p>
-                          <label className={styles.leadField}>
-                            <span>Nume</span>
-                            <input
-                              className={styles.leadInput}
-                              name="nume"
-                              type="text"
-                              autoComplete="name"
-                              required
-                              maxLength={80}
-                              value={leadName}
-                              onChange={(e) => setLeadName(e.target.value)}
-                              disabled={leadStatus === "sent"}
-                            />
-                          </label>
-                          <label className={styles.leadField}>
-                            <span>Telefon</span>
-                            <input
-                              className={styles.leadInput}
-                              name="telefon"
-                              type="tel"
-                              inputMode="tel"
-                              autoComplete="tel"
-                              required
-                              maxLength={20}
-                              placeholder="07xx xxx xxx"
-                              value={leadPhone}
-                              onChange={(e) => setLeadPhone(e.target.value)}
-                              disabled={leadStatus === "sent"}
-                            />
-                          </label>
-                          <input
-                            ref={honeypotRef}
-                            className={styles.honeypot}
-                            type="text"
-                            name="_gsmos_hp"
-                            tabIndex={-1}
-                            autoComplete="off"
-                            aria-hidden="true"
-                          />
-                          <button
-                            type="submit"
-                            className={styles.leadBtn}
-                            disabled={leadStatus === "sending" || leadStatus === "sent"}
-                          >
-                            {leadStatus === "sending"
-                              ? "Se trimite…"
-                              : leadStatus === "sent"
-                                ? "Solicitare trimisă"
-                                : "Trimite solicitare"}
-                          </button>
-                          {leadMsg ? (
-                            <p
-                              className={
-                                leadStatus === "error"
-                                  ? styles.leadError
-                                  : styles.leadOk
-                              }
-                              role="status"
-                            >
-                              {leadMsg}
-                            </p>
-                          ) : null}
-                        </form>
+                        <button
+                          type="button"
+                          className={styles.leadBtn}
+                          onClick={() => setStep(5)}
+                        >
+                          Continuă cu solicitarea
+                        </button>
                         <a
                           className={styles.waBtn}
                           href={waHref(
@@ -597,6 +542,79 @@ export function PriceCalculatorApp({ variant }: Props) {
                       </>
                     )}
                   </div>
+                ) : null}
+
+                {step === 5 && selection ? (
+                  <form className={styles.leadForm} onSubmit={submitLead}>
+                    <h2 className={styles.resultTitle}>Solicită reparația</h2>
+                    <p className={styles.leadHint}>
+                      {brandLabel}
+                      {model ? ` · ${model}` : ""}
+                      {repair ? ` · ${repair}` : ""}
+                      {" · "}
+                      {selection.t} {currency}
+                    </p>
+                    <label className={styles.leadField}>
+                      <span>Nume</span>
+                      <input
+                        className={styles.leadInput}
+                        name="nume"
+                        type="text"
+                        autoComplete="name"
+                        required
+                        maxLength={80}
+                        value={leadName}
+                        onChange={(e) => setLeadName(e.target.value)}
+                        disabled={leadStatus === "sent"}
+                      />
+                    </label>
+                    <label className={styles.leadField}>
+                      <span>Telefon</span>
+                      <input
+                        className={styles.leadInput}
+                        name="telefon"
+                        type="tel"
+                        inputMode="tel"
+                        autoComplete="tel"
+                        required
+                        maxLength={20}
+                        placeholder="07xx xxx xxx"
+                        value={leadPhone}
+                        onChange={(e) => setLeadPhone(e.target.value)}
+                        disabled={leadStatus === "sent"}
+                      />
+                    </label>
+                    <input
+                      ref={honeypotRef}
+                      className={styles.honeypot}
+                      type="text"
+                      name="_gsmos_hp"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                    />
+                    <button
+                      type="submit"
+                      className={styles.leadBtn}
+                      disabled={leadStatus === "sending" || leadStatus === "sent"}
+                    >
+                      {leadStatus === "sending"
+                        ? "Se trimite…"
+                        : leadStatus === "sent"
+                          ? "Solicitare trimisă"
+                          : "Trimite solicitare"}
+                    </button>
+                    {leadMsg ? (
+                      <p
+                        className={
+                          leadStatus === "error" ? styles.leadError : styles.leadOk
+                        }
+                        role="status"
+                      >
+                        {leadMsg}
+                      </p>
+                    ) : null}
+                  </form>
                 ) : null}
               </div>
 
