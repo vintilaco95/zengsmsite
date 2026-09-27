@@ -412,6 +412,12 @@
   opacity: 0;
 }
 
+.turnstile {
+  min-height: 65px;
+  display: flex;
+  justify-content: center;
+}
+
 .leadBtn {
   width: 100%;
   box-sizing: border-box;

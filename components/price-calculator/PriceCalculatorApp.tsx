@@ -20,7 +20,7 @@ import {
   repairEmojiHint,
   type PriceRow,
 } from "@/lib/gsmos-price-list";
-import { isLeadPhone, submitPriceLead } from "@/lib/gsmos-leads";
+import { isLeadPhone, submitPriceLead, turnstileSiteKey } from "@/lib/gsmos-leads";
 import styles from "./PriceCalculatorApp.module.css";
 
 export const PRETURI_CALCULATOR_ANCHOR_ID = "preturi-calculator";
@@ -30,6 +30,53 @@ type Variant = "page" | "embed";
 type LoadState = "loading" | "ready" | "error" | "no_token";
 
 const WHATSAPP = "40758060072";
+const TURNSTILE_SITE_KEY = turnstileSiteKey();
+
+type TurnstileApi = {
+  render: (
+    el: HTMLElement,
+    opts: {
+      sitekey: string;
+      theme?: "light" | "dark" | "auto";
+      callback?: (token: string) => void;
+      "expired-callback"?: () => void;
+      "error-callback"?: () => void;
+    },
+  ) => string;
+  remove: (id: string) => void;
+  reset: (id: string) => void;
+};
+
+declare global {
+  interface Window {
+    turnstile?: TurnstileApi;
+    onZgsTurnstileLoad?: () => void;
+    __zgsTurnstileQueue?: Array<() => void>;
+  }
+}
+
+function loadTurnstile(onReady: () => void) {
+  if (window.turnstile) {
+    onReady();
+    return;
+  }
+  const queue = (window.__zgsTurnstileQueue ||= []);
+  queue.push(onReady);
+  window.onZgsTurnstileLoad = () => {
+    const pending = window.__zgsTurnstileQueue || [];
+    window.__zgsTurnstileQueue = [];
+    pending.forEach((fn) => fn());
+  };
+  if (!document.querySelector("script[data-zgs-turnstile]")) {
+    const script = document.createElement("script");
+    script.src =
+      "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onZgsTurnstileLoad";
+    script.async = true;
+    script.defer = true;
+    script.dataset.zgsTurnstile = "1";
+    document.head.appendChild(script);
+  }
+}
 
 function BrandOption({
   brandKey,
@@ -104,6 +151,9 @@ export function PriceCalculatorApp({ variant }: Props) {
   const [leadMsg, setLeadMsg] = useState("");
   const startedAt = useRef(Date.now());
   const honeypotRef = useRef<HTMLInputElement>(null);
+  const turnstileHost = useRef<HTMLDivElement>(null);
+  const turnstileId = useRef<string | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   useEffect(() => {
     if (!token.trim()) {
@@ -238,6 +288,11 @@ export function PriceCalculatorApp({ variant }: Props) {
         setLeadMsg("Introdu un număr de telefon valid.");
         return;
       }
+      if (TURNSTILE_SITE_KEY && !turnstileToken) {
+        setLeadStatus("error");
+        setLeadMsg("Confirmă verificarea înainte de trimitere.");
+        return;
+      }
       if (honeypotRef.current?.value) {
         setLeadStatus("sent");
         setLeadMsg("Mulțumim! Te contactăm în cel mai scurt timp.");
@@ -256,6 +311,7 @@ export function PriceCalculatorApp({ variant }: Props) {
           itemId: selection.itemId,
           elapsedMs: Date.now() - startedAt.current,
           honeypot: honeypotRef.current?.value || "",
+          turnstileToken,
         });
         setLeadStatus("sent");
         setLeadMsg(result.message);
@@ -266,9 +322,13 @@ export function PriceCalculatorApp({ variant }: Props) {
             ? err.message
             : "Nu am putut trimite solicitarea.",
         );
+        setTurnstileToken("");
+        if (turnstileId.current && window.turnstile) {
+          window.turnstile.reset(turnstileId.current);
+        }
       }
     },
-    [selection, leadStatus, leadName, leadPhone, brandLabel, model, repair],
+    [selection, leadStatus, leadName, leadPhone, brandLabel, model, repair, turnstileToken],
   );
 
   useEffect(() => {
@@ -278,7 +338,37 @@ export function PriceCalculatorApp({ variant }: Props) {
   useEffect(() => {
     setLeadStatus("idle");
     setLeadMsg("");
+    setTurnstileToken("");
   }, [brandKey, model, repair]);
+
+  const showTurnstile = step === 5 && leadStatus !== "sent" && !!TURNSTILE_SITE_KEY;
+
+  useEffect(() => {
+    if (!showTurnstile) return;
+    const host = turnstileHost.current;
+    if (!host) return;
+    let dead = false;
+
+    loadTurnstile(() => {
+      if (dead || !host.isConnected || !window.turnstile || turnstileId.current) return;
+      turnstileId.current = window.turnstile.render(host, {
+        sitekey: TURNSTILE_SITE_KEY,
+        theme: "dark",
+        callback: (token) => setTurnstileToken(token),
+        "expired-callback": () => setTurnstileToken(""),
+        "error-callback": () => setTurnstileToken(""),
+      });
+    });
+
+    return () => {
+      dead = true;
+      if (turnstileId.current && window.turnstile) {
+        window.turnstile.remove(turnstileId.current);
+      }
+      turnstileId.current = null;
+      setTurnstileToken("");
+    };
+  }, [showTurnstile]);
 
   const shellClass =
     variant === "page" ? styles.shellPage : styles.shellEmbed;
@@ -594,6 +684,7 @@ export function PriceCalculatorApp({ variant }: Props) {
                       autoComplete="off"
                       aria-hidden="true"
                     />
+                    <div ref={turnstileHost} className={styles.turnstile} />
                     <button
                       type="submit"
                       className={styles.leadBtn}

@@ -10,6 +10,14 @@ export function leadFormKey(): string {
   );
 }
 
+/** Cheie publică Cloudflare Turnstile. Secretul rămâne doar în gsmOS. */
+export function turnstileSiteKey(): string {
+  return (
+    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim() ||
+    "0x4AAAAAAFFbwRGM23UE7pAj"
+  );
+}
+
 export function isLeadPhone(raw: string): boolean {
   const digits = String(raw || "").replace(/[^\d+]/g, "");
   if (digits.length < 6 || digits.length > 16) return false;
@@ -39,6 +47,7 @@ export type PriceLeadInput = {
   itemId?: string;
   elapsedMs: number;
   honeypot?: string;
+  turnstileToken?: string;
 };
 
 export async function submitPriceLead(
@@ -66,6 +75,7 @@ export async function submitPriceLead(
   if (input.itemId && /^[a-f0-9]{24}$/i.test(input.itemId)) {
     body.priceItemId = input.itemId.toLowerCase();
   }
+  if (input.turnstileToken) body.turnstileToken = input.turnstileToken;
 
   const res = await fetch(GSMOS_LEADS_SUBMIT_URL, {
     method: "POST",
@@ -88,6 +98,9 @@ export async function submitPriceLead(
   }
   if (data.error === "origin_not_allowed") {
     throw new Error("Solicitarea nu a putut fi trimisă de pe acest site.");
+  }
+  if (data.error === "captcha_failed") {
+    throw new Error("Verificarea anti-bot a eșuat. Încearcă din nou.");
   }
   throw new Error(
     data.message ||
