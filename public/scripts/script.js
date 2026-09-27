@@ -532,3 +532,77 @@ document.addEventListener('visibilitychange', () => {
         if (st && st.classList.contains('is-open')) closeStatusModal();
     });
 })();
+
+// ===============================
+// Popup ofertă homepage: o dată pe sesiune, după ce vizitatorul trece de mijlocul paginii
+// ===============================
+(function () {
+    if (window.__zengsmOfferPopupInit) return;
+    window.__zengsmOfferPopupInit = true;
+
+    const SEEN_KEY = 'zgs-offer-popup-seen';
+
+    function backdrop() {
+        return document.getElementById('zgs-offer-backdrop');
+    }
+
+    function alreadySeen() {
+        try {
+            return sessionStorage.getItem(SEEN_KEY) === '1';
+        } catch (_) {
+            return false;
+        }
+    }
+
+    function markSeen() {
+        try {
+            sessionStorage.setItem(SEEN_KEY, '1');
+        } catch (_) {}
+    }
+
+    function otherModalOpen() {
+        return !!document.querySelector('.zgs-trust-calc-backdrop.is-open, .zgs-trust-status-backdrop.is-open');
+    }
+
+    function openOffer() {
+        const el = backdrop();
+        if (!el) return;
+        el.hidden = false;
+        requestAnimationFrame(() => el.classList.add('is-open'));
+        document.body.classList.add('zgs-offer-open');
+        markSeen();
+    }
+
+    function closeOffer() {
+        const el = backdrop();
+        if (!el || el.hidden) return;
+        el.classList.remove('is-open');
+        el.hidden = true;
+        document.body.classList.remove('zgs-offer-open');
+    }
+
+    function onScroll() {
+        if (alreadySeen() || !backdrop() || otherModalOpen()) return;
+        const doc = document.documentElement;
+        if (window.scrollY + window.innerHeight >= doc.scrollHeight / 2) openOffer();
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    document.addEventListener('click', (e) => {
+        const el = backdrop();
+        if (!el || el.hidden) return;
+        const t = e.target instanceof Element ? e.target : null;
+        if (!t) return;
+        if (t === el || t.closest('.zgs-offer-close')) {
+            e.preventDefault();
+            closeOffer();
+            return;
+        }
+        if (el.contains(t) && t.closest('[data-open-calc]')) closeOffer();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeOffer();
+    });
+})();

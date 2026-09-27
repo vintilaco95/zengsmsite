@@ -594,6 +594,18 @@ body {
     color: var(--white);
 }
 
+.hero-title .title-line {
+    text-shadow: 0 2px 16px rgba(2, 6, 23, 0.75);
+}
+
+.hero-title .gradient-text {
+    background: none;
+    -webkit-text-fill-color: #ecfdf5;
+    color: #ecfdf5;
+    animation: none;
+    filter: drop-shadow(0 2px 0 rgba(2, 6, 23, 0.55));
+}
+
 .gradient-text {
     background: var(--gradient-hero);
     -webkit-background-clip: text;
@@ -609,16 +621,134 @@ body {
 }
 
 .hero-description {
-    font-size: 1.25rem;
-    color: var(--text-light);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
     margin-bottom: 2rem;
-    line-height: 1.8;
+    line-height: 1.7;
+    text-shadow: 0 2px 12px rgba(2, 6, 23, 0.9);
 }
 
 .hero-buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+}
+
+.hero .label-short,
+.hero .hero-btn-call {
+    display: none;
+}
+
+.hero-offer {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.1rem;
+    max-width: 34rem;
+    margin-bottom: 1.75rem;
+    padding: 0.9rem 1.5rem 0.9rem 0.9rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(251, 191, 36, 0.45);
+    background:
+        radial-gradient(circle at 0% 50%, rgba(251, 191, 36, 0.28), transparent 55%),
+        linear-gradient(135deg, rgba(30, 27, 16, 0.92), rgba(15, 23, 42, 0.88));
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    text-decoration: none;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out 0.15s backwards;
+    transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hero-offer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    transform: translateX(-100%);
+    animation: heroOfferShine 5s ease-in-out 1.5s infinite;
+    pointer-events: none;
+}
+
+@keyframes heroOfferShine {
+    0%, 70% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.hero-offer:hover,
+.hero-offer:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(251, 191, 36, 0.8);
+    box-shadow: 0 22px 48px rgba(245, 158, 11, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    outline: none;
+}
+
+.hero-offer__badge {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 4.6rem;
+    height: 4.6rem;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #fde68a 0%, #fbbf24 45%, #d97706 100%);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.45), inset 0 -3px 0 rgba(0, 0, 0, 0.15);
+    color: #1f1300;
+    font-family: var(--font-display);
+    line-height: 1;
+}
+
+.hero-offer__badge strong {
+    font-size: 1.65rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+}
+
+.hero-offer__badge small {
+    margin-top: 0.1rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.hero-offer__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    min-width: 0;
+}
+
+.hero-offer__kicker {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #fbbf24;
+}
+
+.hero-offer__title {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.hero-offer__nowrap {
+    white-space: nowrap;
+    color: #fbbf24;
+}
+
+.hero-offer__note {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+    text-underline-offset: 3px;
 }
 
 .btn {
@@ -852,6 +982,53 @@ body {
     box-shadow: inset 0 0 50px rgba(16, 185, 129, 0.2);
     z-index: 1;
     will-change: transform, opacity, box-shadow;
+}
+
+/* Etichete sincronizate cu screenTransition / screenTransitionRepaired (același ciclu de 6s) */
+.phone-state {
+    position: absolute;
+    left: 50%;
+    bottom: 32px;
+    z-index: 3;
+    transform: translateX(-50%);
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius-full);
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--white);
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(6px);
+}
+
+.phone-state--before {
+    background: rgba(220, 38, 38, 0.88);
+    box-shadow: 0 6px 18px rgba(239, 68, 68, 0.45);
+    animation: phoneStateBefore 6s ease-in-out infinite;
+}
+
+.phone-state--after {
+    background: var(--gradient-primary);
+    box-shadow: 0 6px 22px rgba(16, 185, 129, 0.6);
+    opacity: 0;
+    animation: phoneStateAfter 6s ease-in-out infinite;
+}
+
+@keyframes phoneStateBefore {
+    0%, 45% { opacity: 1; transform: translateX(-50%) scale(1); }
+    48%, 98% { opacity: 0; transform: translateX(-50%) scale(0.85); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
+
+@keyframes phoneStateAfter {
+    0%, 49% { opacity: 0; transform: translateX(-50%) scale(0.85); }
+    52% { opacity: 1; transform: translateX(-50%) scale(1.12); }
+    55%, 95% { opacity: 1; transform: translateX(-50%) scale(1); }
+    98%, 100% { opacity: 0; transform: translateX(-50%) scale(0.85); }
 }
 
 @keyframes float3D {
@@ -1896,6 +2073,216 @@ body {
     }
 }
 
+/* Hero mobil: titlu + telefon în primul ecran, apoi acțiunile (preț / apel) */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 0;
+        padding-top: 5.25rem;
+        padding-bottom: 2rem;
+    }
+
+    .hero-content {
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            "title   phone"
+            "tagline phone"
+            "buttons buttons"
+            "badges  badges"
+            "desc    desc";
+        column-gap: 0.85rem;
+        row-gap: 0;
+        align-items: center;
+    }
+
+    /* Copiii din .hero-text devin celule ale grid-ului, ca telefonul să stea lângă titlu */
+    .hero-text {
+        display: contents;
+    }
+
+    .hero-title {
+        grid-area: title;
+        align-self: end;
+        font-size: clamp(1.5rem, 6.6vw, 2rem);
+        line-height: 1.12;
+        margin-bottom: 0.6rem;
+        animation: fadeInUp 0.7s ease-out;
+        text-shadow: 0 2px 12px rgba(15, 23, 42, 0.55);
+    }
+
+    .hero-title .gradient-text {
+        -webkit-text-fill-color: #f0fdf4;
+        color: #f0fdf4;
+    }
+
+    .hero-offer {
+        grid-area: tagline;
+        align-self: start;
+        gap: 0.55rem;
+        max-width: none;
+        margin: 0;
+        padding: 0.55rem 0.6rem;
+        border-radius: 0.9rem;
+    }
+
+    .hero-offer__badge {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .hero-offer__badge strong {
+        font-size: 1.05rem;
+    }
+
+    .hero-offer__badge small {
+        font-size: 0.52rem;
+    }
+
+    .hero-offer__kicker {
+        font-size: 0.56rem;
+        letter-spacing: 0.1em;
+    }
+
+    .hero-offer__title {
+        font-size: 0.82rem;
+        line-height: 1.22;
+    }
+
+    .hero-offer__note {
+        font-size: 0.64rem;
+    }
+
+    .hero-visual {
+        grid-area: phone;
+        animation: fadeInUp 0.7s ease-out 0.15s backwards;
+    }
+
+    .phone-3d {
+        perspective: none;
+    }
+
+    .phone-model {
+        width: clamp(116px, 33vw, 148px);
+        height: auto;
+        aspect-ratio: 1 / 2;
+        padding: 7px;
+        border-radius: 24px;
+        animation: phonePulse 6s ease-in-out infinite;
+        transform: none;
+    }
+
+    .phone-model::before {
+        top: 9px;
+        width: 34%;
+        height: 11px;
+        border-radius: 0 0 9px 9px;
+    }
+
+    .phone-screen,
+    .phone-screen::before,
+    .phone-screen::after {
+        border-radius: 18px;
+    }
+
+    .phone-state {
+        bottom: 16px;
+        padding: 0.22rem 0.6rem;
+        font-size: 0.62rem;
+        letter-spacing: 0.06em;
+    }
+
+    .hero-buttons {
+        grid-area: buttons;
+        flex-direction: column;
+        gap: 0.7rem;
+        margin-top: 1.5rem;
+    }
+
+    .hero .label-long {
+        display: none;
+    }
+
+    .hero .label-short {
+        display: inline;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 3.35rem;
+        padding: 0.9rem 1.25rem;
+        font-size: 1.05rem;
+    }
+
+    .hero-btn-price {
+        order: 1;
+        background: var(--gradient-primary);
+        border: none;
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.35);
+    }
+
+    .hero .hero-btn-call {
+        display: inline-flex;
+        order: 2;
+    }
+
+    .hero-buttons .hero-btn-service {
+        order: 3;
+        min-height: 0;
+        padding: 0.35rem 0.5rem;
+        background: none;
+        box-shadow: none;
+        font-size: 0.92rem;
+        font-weight: 500;
+        color: var(--text-light);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .hero-btn-service::before {
+        display: none;
+    }
+
+    .hero .trust-badges {
+        grid-area: badges;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-top: 0.9rem;
+    }
+
+    .hero .badge {
+        align-items: center;
+        padding: 0;
+        border: none;
+        background: none;
+        backdrop-filter: none;
+        gap: 0.22rem;
+        font-size: clamp(0.72rem, 3vw, 0.84rem);
+        font-weight: 800;
+        white-space: nowrap;
+        text-shadow: 0 2px 8px rgba(2, 6, 23, 0.95);
+    }
+
+    .hero .badge-icon {
+        width: 1.15rem;
+        height: 1.15rem;
+        font-size: 0.72rem;
+    }
+
+    .hero-description {
+        grid-area: desc;
+        margin: 1.5rem 0 0;
+        font-size: 1.08rem;
+        font-weight: 700;
+        line-height: 1.6;
+    }
+
+    .hero .scroll-indicator {
+        display: none;
+    }
+}
+
 /* ===============================
    NEW MULTI-PAGE STYLES
    =============================== */
@@ -1922,23 +2309,42 @@ body {
 
 /* Trust Badges */
 .trust-badges {
-    display: flex;
-    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
     margin-top: 2rem;
-    flex-wrap: wrap;
 }
 
 .badge {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--white);
-    font-size: 0.875rem;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(110, 231, 183, 0.55);
+    background: rgba(2, 6, 23, 0.78);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 0.98rem;
+    font-weight: 800;
+    line-height: 1.3;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 .badge-icon {
-    color: var(--primary-light);
-    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.4rem;
+    height: 1.4rem;
+    border-radius: 50%;
+    background: #34d399;
+    color: #022c22;
+    font-size: 0.85rem;
+    font-weight: 900;
+    line-height: 1;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.7);
 }
 
 /* Quick Services */
@@ -5676,4 +6082,156 @@ a.form-tab {
     color: var(--text-secondary);
     margin-top: 1rem;
     font-size: 0.9rem;
+}
+
+/* ===============================
+   Popup ofertă homepage (sub modalele calculator/status și sub bannerul de cookie-uri)
+   =============================== */
+#credit-magazin {
+    scroll-margin-top: 7rem;
+}
+
+body.zgs-offer-open {
+    overflow: hidden;
+}
+
+.zgs-offer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 8400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.zgs-offer-backdrop[hidden] {
+    display: none;
+}
+
+.zgs-offer-backdrop.is-open {
+    opacity: 1;
+}
+
+.zgs-offer-modal {
+    position: relative;
+    width: 100%;
+    max-width: 460px;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    padding: 2rem 1.75rem 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(251, 191, 36, 0.5);
+    background: linear-gradient(165deg, rgba(30, 27, 16, 0.98) 0%, rgba(15, 23, 42, 0.98) 55%);
+    box-shadow: 0 28px 80px rgba(0, 0, 0, 0.55), 0 0 60px rgba(245, 158, 11, 0.15);
+    text-align: center;
+    transform: scale(0.92) translateY(18px);
+    transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.zgs-offer-backdrop.is-open .zgs-offer-modal {
+    transform: none;
+}
+
+.zgs-offer-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    font-size: 1.3rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.zgs-offer-close:hover,
+.zgs-offer-close:focus-visible {
+    background: rgba(255, 255, 255, 0.18);
+    outline: none;
+}
+
+.zgs-offer-kicker {
+    margin: 0 0 0.35rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fbbf24;
+}
+
+.zgs-offer-title {
+    margin: 0 0 0.75rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--white);
+}
+
+.zgs-offer-title span {
+    background: linear-gradient(135deg, #fde68a, #f59e0b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.zgs-offer-lead {
+    margin: 0 0 1.1rem;
+    color: var(--text-light);
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+.zgs-offer-list {
+    list-style: none;
+    margin: 0 0 1.35rem;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.zgs-offer-list li {
+    position: relative;
+    padding: 0.55rem 0.75rem 0.55rem 2.2rem;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.zgs-offer-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0.8rem;
+    color: var(--primary-light);
+    font-weight: 800;
+}
+
+.zgs-offer-actions {
+    display: grid;
+    gap: 0.6rem;
+}
+
+.zgs-offer-actions .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.zgs-offer-terms {
+    display: inline-block;
+    margin-top: 0.9rem;
+    color: var(--text-light);
+    font-size: 0.82rem;
+    text-underline-offset: 3px;
 }
