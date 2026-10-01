@@ -68,7 +68,7 @@ export function YoxoPromo() {
   const [popupOpen, setPopupOpen] = useState(false);
 
   useEffect(() => {
-    setHeroSlot(document.querySelector(".hero .phone-model, .hero .lv-device"));
+    setHeroSlot(document.querySelector<HTMLElement>(".hero .phone-model, .hero .lv-device"));
     setDockOn(storageGet(DOCK_HIDDEN) !== "1");
   }, []);
 
