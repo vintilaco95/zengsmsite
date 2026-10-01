@@ -596,7 +596,7 @@ document.addEventListener('visibilitychange', () => {
     }
 
     function otherModalOpen() {
-        return !!document.querySelector('.zgs-trust-calc-backdrop.is-open, .zgs-trust-status-backdrop.is-open');
+        return !!document.querySelector('.zgs-trust-calc-backdrop.is-open, .zgs-trust-status-backdrop.is-open, .yoxo-popup.is-open');
     }
 
     function openOffer() {

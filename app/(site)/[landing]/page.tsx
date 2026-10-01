@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { JsonLdScripts } from "@/components/JsonLdScripts";
 import { HeroVisual } from "@/components/landing/HeroVisual";
 import { OfferPopup } from "@/components/landing/OfferPopup";
+import { YoxoPromo } from "@/components/YoxoPromo";
 import {
   SEO_LANDINGS_UPDATED_AT,
   getSeoLanding,
@@ -418,6 +419,7 @@ export default async function SeoLandingPage({ params }: Props) {
       </section>
 
       <OfferPopup lead={page.popupLead} />
+      <YoxoPromo />
     </>
   );
 }

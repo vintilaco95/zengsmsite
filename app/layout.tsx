@@ -61,6 +61,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="/css/site-nav.css" />
         <link rel="stylesheet" href="/css/home-blog-carousel.css" />
         <link rel="stylesheet" href="/css/landings.css" />
+        <link rel="stylesheet" href="/css/yoxo-promo.css" />
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
@@ -69,7 +70,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* eslint-disable-next-line @next/next/no-page-custom-font -- același font stack ca site-ul HTML vechi */}
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;800&family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
           rel="stylesheet"
         />
       </head>

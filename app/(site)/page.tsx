@@ -1,4 +1,5 @@
 import { JsonLdScripts } from "@/components/JsonLdScripts";
+import { YoxoPromo } from "@/components/YoxoPromo";
 import { HomeBlogCarouselPortal } from "@/components/HomeBlogCarouselPortal";
 import { LegacyMain } from "@/components/LegacyMain";
 import { loadTechblogManifest, techblogArticleHref } from "@/lib/techblog-data";
@@ -26,6 +27,7 @@ export default function HomePage() {
       <JsonLdScripts blocks={jsonLd} />
       <LegacyMain legacyFile="index.html" />
       <HomeBlogCarouselPortal items={carouselItems} />
+      <YoxoPromo />
     </>
   );
 }
